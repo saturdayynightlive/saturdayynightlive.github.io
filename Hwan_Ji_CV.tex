@@ -1,0 +1,183 @@
+% ============================================================
+%  Hwan Ji — Academic CV
+%  Compile: pdflatex Hwan_Ji_CV.tex   (or upload to Overleaf)
+% ============================================================
+\documentclass[10pt, a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.8cm, bottom=1.8cm, left=2.2cm, right=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{lmodern}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\definecolor{muted}{RGB}{100,100,100}
+
+% ── Section header ──────────────────────────────────────────
+\newcommand{\cvsec}[1]{%
+  \vspace{0.9em}%
+  \noindent{\small\bfseries\MakeUppercase{#1}}%
+  \vspace{0.15em}\newline%
+  \noindent\rule{\linewidth}{0.4pt}%
+  \vspace{0.4em}%
+}
+
+% ── Column widths ───────────────────────────────────────────
+\newlength{\datecol}  \setlength{\datecol}{2.9cm}
+\newlength{\maincol}  \setlength{\maincol}{\dimexpr\linewidth-\datecol-0.3cm}
+
+% ── Two-column entry (minipage prevents column bleed) ───────
+%    #1 date  #2 content (use \\ freely inside)
+\newcommand{\cvrow}[2]{%
+  \noindent
+  \begin{tabular}{@{}p{\datecol}@{\hspace{0.3cm}}p{\maincol}@{}}
+    {\footnotesize\color{muted}\raggedright #1} &
+    \begin{minipage}[t]{\maincol}#2\end{minipage}
+  \end{tabular}\\[0.5em]%
+}
+
+% ── Inline skill row ────────────────────────────────────────
+\newcommand{\skillrow}[2]{%
+  \noindent
+  \begin{tabular}{@{}p{\datecol}@{\hspace{0.3cm}}p{\maincol}@{}}
+    {\footnotesize\color{muted}#1} & {\small #2}
+  \end{tabular}\\[0.3em]%
+}
+
+% ============================================================
+\begin{document}
+
+% ── Header ──────────────────────────────────────────────────
+\begin{center}
+  {\Large\textbf{Hwan Ji}}\\[0.35em]
+  {\small
+    Seoul National University $\cdot$ Seoul, Republic of Korea\\[0.15em]
+    \href{mailto:saturdayynightlive@snu.ac.kr}{saturdayynightlive@snu.ac.kr}
+    $\;\cdot\;$
+    \href{https://github.com/saturdayynightlive}{github.com/saturdayynightlive}
+    $\;\cdot\;$
+    \href{https://saturdayynightlive.github.io}{saturdayynightlive.github.io}
+  }
+\end{center}
+
+% ── Education ───────────────────────────────────────────────
+\cvsec{Education}
+
+\cvrow{Mar.~2025\,--\,Feb.~2029}{%
+  \textbf{Seoul National University}, Seoul, S.Korea\\[0.1em]
+  {\small B.S.\ in Computer Science \& Engineering}\\
+  {\small Minor in Statistics (from Sep.~2026)}\\
+  {\small College of Liberal Studies}%
+}
+
+% ── Research Interests ──────────────────────────────────────
+\cvsec{Research Interests}
+
+\noindent{\small Broadly interested in artificial intelligence and machine learning research.}
+
+% ── Projects ────────────────────────────────────────────────
+\cvsec{Projects}
+
+\cvrow{2024}{%
+  \textbf{Evening Self-Study Request System}\\[0.1em]
+  {\small Node.js $\cdot$ Swift (iPad) $\cdot$ MySQL}\\[0.2em]
+  \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
+    \item[\small$\bullet$] {\small Collaborated with a peer (responsible for app UI design) to digitize the paper-based evening self-study movement request process at a high school.}
+    \item[\small$\bullet$] {\small Developed the backend and chose Swift/iPad as the client platform because the school provided iPads to all students at no cost, ensuring universal access without requiring personal devices.}
+    \item[\small$\bullet$] {\small Completed a pilot; full deployment was deferred due to institutional data-protection requirements for student personal records.}
+  \end{itemize}%
+}
+
+\cvrow{2023}{%
+  \textbf{Green City Planner} --- High School Research Program\\[0.1em]
+  {\small visionOS}\\[0.2em]
+  \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
+    \item[\small$\bullet$] {\small Built a visionOS application for interactive 3D urban design, aimed at streamlining environmental impact assessments.}
+    \item[\small$\bullet$] {\small Collaborated with a peer (responsible for overall UI); led all technical aspects including asset preparation, scene layout, and environmental scoring.}
+  \end{itemize}%
+}
+
+\cvrow{2022}{%
+  \textbf{Optimal Transit Route Distribution via Machine Learning}\\[0.1em]
+  {\small R $\cdot$ Logistic Regression}\\[0.2em]
+  \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
+    \item[\small$\bullet$] {\small Explored correlations between municipal indicators (population, income, bus stops) and tram/subway route placement in Daejeon; built a logistic regression model to predict optimal station distribution.}
+    \item[\small$\bullet$] {\small Led all technical aspects: data collection, preprocessing, visualization, and model training.}
+  \end{itemize}%
+}
+
+% ── Relevant Coursework ─────────────────────────────────────
+\cvsec{Relevant Coursework}
+
+\noindent{\small
+  Statistics\;(A$^{+}$),\enspace
+  Statistics Lab.\;(A$^{+}$),\enspace
+  Discrete Mathematics,\enspace
+  Engineering Mathematics,\enspace
+  Computing Core: Data-Centered AI,\enspace
+  Computer Programming,\enspace
+  Logic Design%
+}
+
+% ── Honors & Awards ─────────────────────────────────────────
+\cvsec{Honors \& Awards}
+
+\cvrow{Mar.~2026}{%
+  \textbf{Silla Foundation Scholarship} --- Full-Tuition for 3 Years\\
+  {\small Silla Cultural Scholarship Foundation, Seoul, S.Korea}\\
+  {\small Competitive merit-based external scholarship; full tuition for three years.}%
+}
+
+\cvrow{Feb.~2026}{%
+  \textbf{SNU Customized Scholarship} --- Tuition Exemption\\
+  {\small Seoul National University, Seoul, S.Korea}\\
+  {\small Merit-based internal scholarship awarded to selected students.}%
+}
+
+\cvrow{Aug.~2025}{%
+  \textbf{Donggok Lee Yong-hee Scholarship} --- Full-Tuition\\
+  {\small Donggok Lee Yong-hee Foundation, Seoul, S.Korea}\\
+  {\small Competitive external scholarship covering full tuition.}%
+}
+
+% ── Skills ──────────────────────────────────────────────────
+\cvsec{Skills}
+
+\skillrow{Programming}{Python,\enspace C,\enspace C\texttt{++},\enspace Java,\enspace Swift,\enspace R}
+\skillrow{Tools}{Git,\enspace Linux;\enspace PyTorch\,(learning)}
+\skillrow{Languages}{Korean\,(Native),\enspace English\,(Fluent --- TEPS\;444)}
+
+% ── Teaching ────────────────────────────────────────────────
+\cvsec{Teaching}
+
+\cvrow{Mar.\,--\,Jun.~2026}{%
+  \textbf{Undergraduate Mentor}\\
+  {\small Freshman Seminar: ``A Journey to Safe Research'', Seoul National University}
+  \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
+    \item[\small$\bullet$] {\small Supervised class activities and provided individual academic guidance for first-year students.}
+    \item[\small$\bullet$] {\small Facilitated discussions on laboratory safety protocols and collaborative research practices.}
+  \end{itemize}%
+}
+
+% ── Extracurricular ─────────────────────────────────────────
+\cvsec{Extracurricular}
+
+\cvrow{Jul.\,--\,Aug.~2025}{%
+  \textbf{Student Mentor}\\
+  {\small SAM (SNU Active Mentoring), College of Education}\\
+  {\small Mentored local middle school students in Mathematics and Science;
+  developed individualized study plans and facilitated goal-setting sessions.}\\
+  {\small Awarded \textbf{Outstanding Mentor of the Semester}.}%
+}
+
+% ── Footer ──────────────────────────────────────────────────
+\vfill
+\noindent{\footnotesize\color{muted}Updated: May 14, 2026}
+
+\end{document}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hwan Ji</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9f8f6;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .card {
+      max-width: 520px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .bio {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #444;
+      margin-bottom: 1.6rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .links a {
+      font-size: 0.85rem;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      transition: border-color 0.15s;
+    }
+
+    .links a:hover { border-color: #888; }
+
+    .links a.primary {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #1a1a1a;
+    }
+
+    .links a.primary:hover { opacity: 0.85; }
+
+    .highlights {
+      border-top: 1px solid #e5e3df;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .highlight {
+      font-size: 0.85rem;
+      color: #555;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .highlight::before {
+      content: '—';
+      color: #bbb;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hwan Ji</h1>
+    <p class="bio">
+      Undergraduate at Seoul National University, majoring in
+      Computer Science &amp; Engineering. Interested in AI research.
+    </p>
+
+    <div class="links">
+      <a href="mailto:saturdayynightlive@snu.ac.kr">Email</a>
+      <a href="https://github.com/saturdayynightlive" target="_blank">GitHub</a>
+      <a href="Hwan_Ji_CV.pdf" download class="primary">Download CV</a>
+    </div>
+
+    <p class="footer">Updated: May 14, 2026</p>
+  </div>
+</body>
+</html>

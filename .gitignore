@@ -1,0 +1,21 @@
+# Large/personal files
+~2024.zip
+transcript.pdf
+book1.pdf
+학부_과목_학점_정리_강조.xlsx
+
+# OMC state
+.omc/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+
+# Private study materials (encrypted into docs/index.html)
+career_roadmap.md
+summer_2026.md
+transformer_concepts.md
+transformer_workbook.md
+transformer_implementation.md
+paper_submission_guide.md
