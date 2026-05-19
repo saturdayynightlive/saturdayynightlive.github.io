@@ -14,6 +14,7 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 DOCS = [
     ('roadmap',  '커리어 로드맵 (~2029)',   'career_roadmap.md'),
     ('summer',   '2026 여름방학 계획',     'summer_2026.md'),
+    ('study22',  '2-2 과목별 공부법',      'study_guide_2_2.md'),
     ('concepts', 'Transformer 개념',       'transformer_concepts.md'),
     ('workbook', 'Transformer 워크북',     'transformer_workbook.md'),
     ('guide',    '구현 가이드 (답안)',      'transformer_implementation.md'),
