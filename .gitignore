@@ -1,9 +1,13 @@
 # Large/personal files
+.DS_Store
 ~2024.zip
 transcript.pdf
 book1.pdf
 학부_과목_학점_정리_강조.xlsx
 roadmap.xlsx
+personal(donotcommit)/
+Lab12 Vibe Coding with GitHub Pages.pdf
+증명사진.jpg
 
 # OMC state
 .omc/
