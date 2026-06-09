@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>L05 Encapsulation</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:," />
+</head>
+<body>
+<nav>
+  <h2>컴퓨터프로그래밍</h2>
+  <ul>
+    <li><a href="index.html">🏠 홈</a></li>
+    <li><a href="lec02.html"><span class="badge">L02</span>Java Basics I</a></li>
+    <li><a href="lec03.html"><span class="badge">L03</span>Java Basics II</a></li>
+    <li><a href="lec04.html"><span class="badge">L04</span>OOP</a></li>
+    <li><a href="lec05.html" class="active"><span class="badge">L05</span>Encapsulation</a></li>
+    <li><a href="lec06.html"><span class="badge">L06</span>Inheritance</a></li>
+    <li><a href="lec07.html"><span class="badge">L07</span>Polymorphism</a></li>
+    <li><a href="lec08.html"><span class="badge">L08</span>Collections</a></li>
+    <li><a href="lec09.html"><span class="badge">L09</span>Collections II</a></li>
+    <li><a href="lec10.html"><span class="badge">L10</span>I/O</a></li>
+    <li><a href="lec11.html"><span class="badge">L11</span>Exceptions</a></li>
+    <li><a href="lec12.html"><span class="badge">L12</span>Design Patterns</a></li>
+    <li><a href="lec13.html"><span class="badge">L13</span>C++ Basics</a></li>
+    <li><a href="lec14.html"><span class="badge">L14</span>OOP in C++</a></li>
+  </ul>
+</nav>
+<main>
+  <h1>Encapsulation <small>Lecture 05</small></h1>
+  <p class="subtitle">접근 제어자 · Getter/Setter · 패키지</p>
+
+  <h2>캡슐화란?</h2>
+  <div class="def">
+    <strong>Encapsulation (캡슐화)</strong>: 클래스의 속성(데이터)을 외부로부터 숨기고, 검증된 메서드를 통해서만 접근하도록 하는 OOP 원칙.<br><br>
+    목적:<br>
+    · <strong>Abstraction</strong>: 내부 구현 세부사항을 숨기고 공개 인터페이스만 노출<br>
+    · <strong>Defensive Programming</strong>: 외부로부터의 무단 변경 방지
+  </div>
+
+  <h2>접근 제어자 (Access Modifiers)</h2>
+  <table>
+    <tr><th>제어자</th><th>같은 클래스</th><th>같은 패키지</th><th>서브클래스 (다른 패키지)</th><th>그 외</th></tr>
+    <tr><td><code>private</code></td><td>O</td><td>X</td><td>X</td><td>X</td></tr>
+    <tr><td><code>(default)</code></td><td>O</td><td>O</td><td>X</td><td>X</td></tr>
+    <tr><td><code>protected</code></td><td>O</td><td>O</td><td>O</td><td>X</td></tr>
+    <tr><td><code>public</code></td><td>O</td><td>O</td><td>O</td><td>O</td></tr>
+  </table>
+  <div class="tip">암기: private &lt; default &lt; protected &lt; public (좁음 → 넓음)</div>
+  <div class="warn">
+    클래스에는 <code>public</code> 또는 <code>default</code>만 사용 가능.<br>
+    <code>private</code> 클래스는 Inner Class에서만 허용.
+  </div>
+
+  <h2>Getter / Setter</h2>
+  <div class="def">
+    <strong>Getter</strong>: private 속성의 값을 반환하는 메서드. 형식: <code>public Type getXxx()</code><br>
+    <strong>Setter</strong>: private 속성에 값을 설정하는 메서드. 형식: <code>public void setXxx(Type xxx)</code><br><br>
+    Java 문법이 아닌 <strong>컨벤션(관례)</strong>.
+  </div>
+  <pre><code><span class="kw">private int</span> age;
+
+<span class="kw">public int</span> <span class="fn">getAge</span>() { <span class="kw">return</span> age; }
+<span class="kw">public void</span> <span class="fn">setAge</span>(<span class="kw">int</span> age) { <span class="kw">this</span>.age = age; }</code></pre>
+
+  <h3>Getter/Setter 활용 목적</h3>
+  <table>
+    <tr><th>목적</th><th>방법</th></tr>
+    <tr><td>읽기 전용</td><td>getter만 제공, setter 없음</td></tr>
+    <tr><td>쓰기 전용</td><td>setter만 제공, getter 없음</td></tr>
+    <tr><td>입력 검증</td><td>setter 내에서 유효성 확인 후 설정</td></tr>
+    <tr><td>접근 추적</td><td>getter/setter 내에서 로그 기록</td></tr>
+  </table>
+  <pre><code><span class="cm">// 검증 예시</span>
+<span class="kw">public void</span> <span class="fn">setName</span>(String name) {
+    <span class="kw">if</span> (name == <span class="kw">null</span> || name.equals(<span class="st">""</span>)) {
+        System.out.println(<span class="st">"Name cannot be null or empty"</span>);
+    } <span class="kw">else</span> {
+        <span class="kw">this</span>.name = name;
+    }
+}</code></pre>
+
+  <h2>패키지 (Packages)</h2>
+  <div class="def">
+    <strong>Package</strong>: 관련 클래스·인터페이스·서브패키지를 묶은 그룹. Java의 네임스페이스 기능.<br><br>
+    장점:<br>
+    · 이름 충돌 방지 (다른 패키지에 같은 이름의 클래스 존재 가능)<br>
+    · 접근 제어 (default/protected 활용)<br>
+    · 유지보수성 향상
+  </div>
+  <pre><code><span class="cm">// 패키지 선언 (파일 최상단)</span>
+<span class="kw">package</span> computer;
+<span class="kw">public class</span> Keyboard { }
+
+<span class="cm">// 다른 패키지에서 사용</span>
+<span class="kw">import</span> computer.Keyboard;       <span class="cm">// 특정 클래스 임포트</span>
+<span class="kw">import</span> computer.*;              <span class="cm">// 패키지 전체 임포트</span></code></pre>
+
+  <h3>주요 내장 패키지</h3>
+  <table>
+    <tr><th>패키지</th><th>포함 내용</th></tr>
+    <tr><td><code>java.lang</code></td><td>String, System, Math (자동 임포트)</td></tr>
+    <tr><td><code>java.util</code></td><td>ArrayList, Scanner, Arrays 등</td></tr>
+    <tr><td><code>java.io</code></td><td>파일 I/O 클래스들</td></tr>
+  </table>
+
+  <h2>Inner Class</h2>
+  <div class="def">
+    <strong>Inner Class</strong>: 다른 클래스 내부에 선언된 클래스.<br>
+    <code>private</code> 접근 제어자는 오직 Inner Class에서만 사용 가능.
+  </div>
+
+  <h2>캡슐화의 장점</h2>
+  <ul class="bullets">
+    <li><strong>유연성</strong>: 내부 구현을 바꿔도 외부 코드에 영향 없음</li>
+    <li><strong>재사용성</strong>: 캡슐화된 코드는 안전하게 재사용 가능</li>
+    <li><strong>유지보수성</strong>: 한 부분 변경이 다른 부분을 깨지 않음</li>
+  </ul>
+</main>
+<script src="auto-nav.js" defer></script>
+</body>
+</html>

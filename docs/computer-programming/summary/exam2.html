@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>기말 예상 문제 2회</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.q-block {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin: 1em 0;
+  overflow: hidden;
+}
+.q-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7em;
+  padding: 0.8em 1.2em;
+  background: #f5f5f5;
+  color: #1a1a1a;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.q-num { font-size: 0.8em; font-weight: 700; color: #aaa; min-width: 2.2em; }
+.q-body { padding: 0.8em 1.2em 1em; }
+.badge-easy { background: #d1fae5; color: #065f46; font-size: 0.72em; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.badge-hard { background: #fee2e2; color: #991b1b; font-size: 0.72em; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.badge-mid  { background: #fef3c7; color: #92400e; font-size: 0.72em; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.badge-retry { background: #ede9fe; color: #5b21b6; font-size: 0.72em; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.choices { list-style: none; padding: 0; margin: 0.6em 0 0; }
+.choices li { padding: 0.25em 0; color: #333; font-size: 14px; }
+.choices li::before { content: attr(data-n) " "; color: #aaa; }
+details { margin-top: 0.8em; }
+details summary { cursor: pointer; color: #2563eb; font-size: 0.88em; user-select: none; padding: 0.3em 0; }
+details summary:hover { color: #1d4ed8; }
+.answer {
+  margin-top: 0.5em; padding: 0.8em 1em;
+  background: #f0f4ff; border-left: 3px solid #2563eb;
+  border-radius: 0 4px 4px 0; font-size: 0.92em; line-height: 1.7; color: #1a1a1a;
+}
+.answer strong { color: #1d4ed8; }
+.answer code { background: #e8eeff; padding: 1px 5px; border-radius: 3px; font-size: 0.95em; color: #c0392b; }
+.section-desc { color: #888; font-size: 0.88em; margin: -0.3em 0 1em; }
+
+.check-row { display: flex; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #f0f0f0; }
+.check-row button { border: 1px solid #e0e0e0; background: #fff; border-radius: 4px; padding: 3px 10px; font-size: 12px; cursor: pointer; color: #555; }
+.check-row button:hover { background: #f5f5f5; }
+.btn-correct.active-correct { background: #d1fae5; border-color: #34d399; color: #065f46; font-weight: 700; }
+.btn-wrong.active-wrong     { background: #fee2e2; border-color: #f87171; color: #991b1b; font-weight: 700; }
+.q-block.marked-correct { border-left: 3px solid #34d399; }
+.q-block.marked-wrong   { border-left: 3px solid #f87171; }
+
+#score-bar { position: sticky; bottom: 0; background: #fff; border-top: 1px solid #e0e0e0; padding: 10px 0; margin-top: 32px; display: flex; align-items: center; gap: 10px; }
+#score-summary { font-weight: 700; font-size: 14px; color: #111; white-space: nowrap; }
+#score-line { font-size: 12px; color: #555; font-family: 'Consolas', monospace; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 4px 8px; flex: 1; white-space: nowrap; overflow-x: auto; cursor: text; user-select: all; }
+#copy-btn { border: 1px solid #2563eb; background: #fff; color: #2563eb; border-radius: 4px; padding: 4px 12px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+#copy-btn:hover { background: #eff6ff; }
+
+.answer-input {
+  width: 100%;
+  min-height: 80px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+  resize: vertical;
+  color: #1a1a1a;
+  background: #fafafa;
+}
+.answer-input:focus { outline: none; border-color: #2563eb; background: #fff; }
+.answer-input::placeholder { color: #bbb; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:," />
+</head>
+<body>
+<nav>
+  <h2>컴퓨터프로그래밍</h2>
+  <ul>
+    <li><a href="index.html">🏠 홈</a></li>
+    <li><a href="lec02.html"><span class="badge">L02</span>Java Basics I</a></li>
+    <li><a href="lec03.html"><span class="badge">L03</span>Java Basics II</a></li>
+    <li><a href="lec04.html"><span class="badge">L04</span>OOP</a></li>
+    <li><a href="lec05.html"><span class="badge">L05</span>Encapsulation</a></li>
+    <li><a href="lec06.html"><span class="badge">L06</span>Inheritance</a></li>
+    <li><a href="lec07.html"><span class="badge">L07</span>Polymorphism</a></li>
+    <li><a href="lec08.html"><span class="badge">L08</span>Collections</a></li>
+    <li><a href="lec09.html"><span class="badge">L09</span>Collections II</a></li>
+    <li><a href="lec10.html"><span class="badge">L10</span>I/O</a></li>
+    <li><a href="lec11.html"><span class="badge">L11</span>Exceptions</a></li>
+    <li><a href="lec12.html"><span class="badge">L12</span>Design Patterns</a></li>
+    <li><a href="lec13.html"><span class="badge">L13</span>C++ Basics</a></li>
+    <li><a href="lec14.html"><span class="badge">L14</span>OOP in C++</a></li>
+    <li><a href="exam.html"><span class="badge" style="background:#f38ba8">★</span>예상 문제 1회</a></li>
+    <li><a href="exam2.html" class="active"><span class="badge" style="background:#f38ba8">★</span>예상 문제 2회</a></li>
+  </ul>
+</nav>
+<main>
+  <h1>기말고사 예상 문제 2회 <small>30문제</small></h1>
+  <p class="subtitle">1회 틀린 항목 재출제 + 미출제 주제 신규 출제 · <span style="color:#5b21b6;font-weight:600">보라</span> = 1회 틀린 유형 재출제</p>
+
+  <!-- ===== Section 1 — 객관식 ===== -->
+  <h2>Section 1 — 객관식</h2>
+  <p class="section-desc">10문제</p>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q1</span><span class="badge-retry">재출제</span> 다음 중 RuntimeException의 하위 클래스가 <strong>아닌</strong> 것은?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①">NullPointerException</li>
+        <li data-n="②">ArrayIndexOutOfBoundsException</li>
+        <li data-n="③">ClassCastException</li>
+        <li data-n="④">IOException</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>④ IOException</strong><br>
+          IOException은 Exception의 직접 하위 클래스 → Checked Exception.<br>
+          ①②③은 모두 RuntimeException 하위 → Unchecked Exception.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q2</span><span class="badge-easy">기본</span> 다음 중 접근 제어자의 접근 범위가 넓은 순서로 올바르게 나열된 것은?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①">public > protected > private > default</li>
+        <li data-n="②">public > protected > default > private</li>
+        <li data-n="③">public > default > protected > private</li>
+        <li data-n="④">protected > public > default > private</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② public > protected > default > private</strong><br>
+          public: 모든 곳<br>
+          protected: 같은 패키지 + 서브클래스<br>
+          default(생략): 같은 패키지 내<br>
+          private: 같은 클래스 내
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q3</span><span class="badge-easy">기본</span> abstract class와 interface에 대한 설명으로 <strong>틀린</strong> 것은?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①">abstract class는 생성자를 가질 수 있다</li>
+        <li data-n="②">interface는 다중 구현(implements)이 가능하다</li>
+        <li data-n="③">abstract class는 일반 메서드(구현 포함)를 가질 수 있다</li>
+        <li data-n="④">Java 클래스는 abstract class를 여러 개 extends할 수 있다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>④ Java 클래스는 abstract class를 여러 개 extends할 수 없다</strong><br>
+          Java는 단일 상속만 지원 → extends는 하나만 가능.<br>
+          다중 구현은 interface로만 가능 (implements A, B, C).
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q4</span><span class="badge-easy">기본</span> 아래 코드의 출력은?</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Animal { Animal() { System.out.println(<span class="st">"Animal"</span>); } }
+<span class="kw">class</span> Dog <span class="kw">extends</span> Animal {
+    Dog() {
+        <span class="kw">super</span>();
+        System.out.println(<span class="st">"Dog"</span>);
+    }
+}
+<span class="kw">new</span> Dog();</code></pre>
+      <ul class="choices">
+        <li data-n="①">Dog</li>
+        <li data-n="②">Animal</li>
+        <li data-n="③">Animal<br>&nbsp;&nbsp;&nbsp;&nbsp;Dog</li>
+        <li data-n="④">Dog<br>&nbsp;&nbsp;&nbsp;&nbsp;Animal</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>③ Animal → Dog</strong><br>
+          super()가 먼저 호출되므로 부모 생성자 → 자식 생성자 순서. super()를 명시하지 않아도 컴파일러가 자동 삽입.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q5</span><span class="badge-easy">기본</span> HashMap에 대한 설명으로 올바른 것은?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①">키의 삽입 순서를 보장한다</li>
+        <li data-n="②">키 중복을 허용한다</li>
+        <li data-n="③">키는 중복 불가, 값은 중복 허용</li>
+        <li data-n="④">null 키를 허용하지 않는다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>③ 키는 중복 불가, 값은 중복 허용</strong><br>
+          같은 키로 put하면 기존 값이 덮어씌워짐.<br>
+          삽입 순서 보장은 LinkedHashMap. 정렬은 TreeMap.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q6</span><span class="badge-easy">기본</span> HashSet에 대한 설명으로 올바른 것은?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①">삽입 순서를 유지한다</li>
+        <li data-n="②">중복 원소를 허용하지 않는다</li>
+        <li data-n="③">get(index)로 원소에 접근할 수 있다</li>
+        <li data-n="④">항상 정렬된 순서로 저장된다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② 중복 원소를 허용하지 않는다</strong><br>
+          Set의 핵심 특성: 중복 없음. 인덱스 접근 불가. 순서 미보장(정렬 원하면 TreeSet).
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q7</span><span class="badge-easy">기본</span> Queue 인터페이스의 메서드에 대한 설명으로 올바른 것은?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①">offer()는 큐가 가득 찰 때 예외를 던진다</li>
+        <li data-n="②">poll()은 큐가 비어 있을 때 예외를 던진다</li>
+        <li data-n="③">peek()은 첫 번째 원소를 제거하고 반환한다</li>
+        <li data-n="④">poll()은 큐가 비어 있을 때 null을 반환한다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>④ poll()은 큐가 비어 있을 때 null을 반환한다</strong><br>
+          offer: 실패 시 false 반환 (add는 예외)<br>
+          poll: 비었을 때 null (remove는 예외)<br>
+          peek: 제거 없이 첫 원소 반환, 비었을 때 null
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q8</span><span class="badge-easy">기본</span> C++ struct와 class의 차이는?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①">struct는 메서드를 가질 수 없다</li>
+        <li data-n="②">struct의 멤버 기본 접근 제어자는 public, class는 private이다</li>
+        <li data-n="③">class만 생성자를 가질 수 있다</li>
+        <li data-n="④">struct는 상속이 불가능하다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② struct 기본값 public, class 기본값 private</strong><br>
+          C++에서 struct와 class의 유일한 차이는 기본 접근 제어자. struct도 메서드, 생성자, 상속 모두 가능.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q9</span><span class="badge-easy">기본</span> 아래 C++ 코드의 출력은?</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Counter {
+<span class="kw">public</span>:
+    <span class="kw">static int</span> count;
+    Counter() { count++; }
+};
+<span class="kw">int</span> Counter::count = <span class="nu">0</span>;
+
+Counter a, b, c;
+cout &lt;&lt; Counter::count;</code></pre>
+      <ul class="choices">
+        <li data-n="①">0</li>
+        <li data-n="②">1</li>
+        <li data-n="③">3</li>
+        <li data-n="④">컴파일 에러</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>③ 3</strong><br>
+          static 멤버 변수는 모든 인스턴스가 공유. 객체가 3개 생성되면서 생성자가 3번 호출 → count = 3.<br>
+          C++에서 static 멤버는 클래스 외부에서 <code>int Counter::count = 0;</code>으로 반드시 정의해야 함.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q10</span><span class="badge-easy">기본</span> C++ 복사 생성자(copy constructor)가 호출되는 상황이 <strong>아닌</strong> 것은?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①">객체를 같은 타입 객체로 초기화할 때 (<code>Point b = a;</code>)</li>
+        <li data-n="②">함수 인자로 객체를 값으로 전달할 때</li>
+        <li data-n="③">함수가 객체를 값으로 반환할 때</li>
+        <li data-n="④">포인터로 객체를 전달할 때 (<code>func(&amp;a)</code>)</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>④ 포인터로 전달할 때</strong><br>
+          포인터 전달은 주소만 복사하므로 복사 생성자 호출 안 됨. 레퍼런스 전달도 마찬가지.<br>
+          ①②③ 모두 객체 자체가 복사될 때 호출됨.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== Section 2 — 코드 출력 예측 ===== -->
+  <h2>Section 2 — 코드 출력 예측</h2>
+  <p class="section-desc">8문제</p>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q11</span><span class="badge-retry">재출제</span> 아래 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">try</span> {
+    System.out.println(<span class="st">"A"</span>);
+    <span class="kw">if</span> (<span class="kw">true</span>) <span class="kw">throw new</span> RuntimeException();
+    System.out.println(<span class="st">"B"</span>);
+} <span class="kw">catch</span> (RuntimeException e) {
+    System.out.println(<span class="st">"C"</span>);
+    <span class="kw">return</span>;
+} <span class="kw">finally</span> {
+    System.out.println(<span class="st">"D"</span>);
+}
+System.out.println(<span class="st">"E"</span>);</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>A<br>C<br>D</strong><br>
+          "B"는 예외로 건너뜀. catch에서 return을 만나도 finally는 반드시 실행. return 후에는 메서드를 빠져나가므로 "E"는 출력 안 됨.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q12</span><span class="badge-mid">중간</span> 아래 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code>HashMap&lt;String, Integer&gt; map = <span class="kw">new</span> HashMap&lt;&gt;();
+map.<span class="fn">put</span>(<span class="st">"a"</span>, <span class="nu">1</span>);
+map.<span class="fn">put</span>(<span class="st">"b"</span>, <span class="nu">2</span>);
+map.<span class="fn">put</span>(<span class="st">"a"</span>, <span class="nu">10</span>);
+System.out.println(map.<span class="fn">get</span>(<span class="st">"a"</span>));
+System.out.println(map.<span class="fn">size</span>());</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>10<br>2</strong><br>
+          같은 키 "a"로 두 번 put → 두 번째 값 10이 덮어씀. 키 개수는 "a", "b" 두 개 → size = 2.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q13</span><span class="badge-mid">중간</span> 아래 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code>Animal a = <span class="kw">new</span> Dog();
+System.out.println(a <span class="kw">instanceof</span> Dog);
+System.out.println(a <span class="kw">instanceof</span> Animal);
+System.out.println(a <span class="kw">instanceof</span> String);</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>true<br>true<br>컴파일 에러</strong><br>
+          Dog는 Animal의 하위 타입 → 둘 다 true.<br>
+          String은 Animal과 아무 관계 없는 타입 → 컴파일러가 "incompatible types" 에러 발생.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q14</span><span class="badge-mid">중간</span> 아래 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code>TreeSet&lt;Integer&gt; ts = <span class="kw">new</span> TreeSet&lt;&gt;();
+ts.<span class="fn">add</span>(<span class="nu">5</span>); ts.<span class="fn">add</span>(<span class="nu">1</span>); ts.<span class="fn">add</span>(<span class="nu">3</span>); ts.<span class="fn">add</span>(<span class="nu">1</span>);
+System.out.println(ts);</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>[1, 3, 5]</strong><br>
+          TreeSet: 중복 제거(1이 두 번 → 한 번) + 오름차순 자동 정렬.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q15</span><span class="badge-mid">중간</span> 아래 C++ 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Box {
+<span class="kw">public</span>:
+    <span class="kw">int</span> val;
+    Box(<span class="kw">int</span> v) : val(v) {}
+    Box(<span class="kw">const</span> Box&amp; other) : val(other.val * <span class="nu">2</span>) {}
+};
+
+Box a(<span class="nu">5</span>);
+Box b = a;
+cout &lt;&lt; a.val &lt;&lt; <span class="st">" "</span> &lt;&lt; b.val;</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>5 10</strong><br>
+          <code>Box b = a</code> → 복사 생성자 호출 → b.val = a.val * 2 = 10.<br>
+          a.val은 변경 없이 5.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q16</span><span class="badge-mid">중간</span> 아래 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Parent {
+    <span class="kw">int</span> x = <span class="nu">10</span>;
+    <span class="kw">void</span> <span class="fn">print</span>() { System.out.println(<span class="st">"Parent: "</span> + x); }
+}
+<span class="kw">class</span> Child <span class="kw">extends</span> Parent {
+    <span class="kw">int</span> x = <span class="nu">20</span>;
+    <span class="op">@Override</span>
+    <span class="kw">void</span> <span class="fn">print</span>() { System.out.println(<span class="st">"Child: "</span> + x); }
+}
+
+Parent p = <span class="kw">new</span> Child();
+p.<span class="fn">print</span>();
+System.out.println(p.x);</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>Child: 20<br>10</strong><br>
+          메서드는 동적 바인딩 → 실제 객체(Child)의 print() 호출 → "Child: 20".<br>
+          필드는 정적 바인딩 → 참조 타입(Parent)의 x → 10.<br>
+          메서드와 필드의 동작 차이가 핵심.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q17</span><span class="badge-mid">중간</span> 아래 C++ 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> MyClass {
+<span class="kw">public</span>:
+    MyClass()  { cout &lt;&lt; <span class="st">"생성"</span> &lt;&lt; endl; }
+    ~MyClass() { cout &lt;&lt; <span class="st">"소멸"</span> &lt;&lt; endl; }
+};
+
+{
+    MyClass obj;
+}
+cout &lt;&lt; <span class="st">"끝"</span>;</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>생성<br>소멸<br>끝</strong><br>
+          obj가 블록(중괄호) 범위를 벗어나는 순간 소멸자 자동 호출. Java는 GC가 처리하지만 C++는 스코프 종료 시 즉시 소멸.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q18</span><span class="badge-mid">중간</span> 아래 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">try</span> {
+    <span class="kw">int</span>[] arr = <span class="kw">new int</span>[<span class="nu">3</span>];
+    arr[<span class="nu">5</span>] = <span class="nu">10</span>;
+} <span class="kw">catch</span> (NullPointerException e) {
+    System.out.println(<span class="st">"NPE"</span>);
+} <span class="kw">catch</span> (ArrayIndexOutOfBoundsException e) {
+    System.out.println(<span class="st">"AIOOBE"</span>);
+} <span class="kw">catch</span> (RuntimeException e) {
+    System.out.println(<span class="st">"RuntimeException"</span>);
+}</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>AIOOBE</strong><br>
+          arr[5]는 크기 3인 배열의 범위 초과 → ArrayIndexOutOfBoundsException.<br>
+          catch는 위에서 아래로 매칭되므로 정확한 타입인 두 번째 catch 블록이 실행됨.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== Section 3 — 개념 서술 ===== -->
+  <h2>Section 3 — 개념 서술</h2>
+  <p class="section-desc">6문제</p>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q19</span><span class="badge-retry">재출제</span> 아래 코드가 위반하는 SOLID 원칙의 이름과 이유, 개선 방향을 서술하시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Penguin <span class="kw">extends</span> Bird {
+    <span class="op">@Override</span>
+    <span class="kw">public void</span> <span class="fn">setAltitude</span>(<span class="kw">double</span> alt) {
+        <span class="cm">// 펭귄은 날 수 없으므로 아무것도 하지 않음</span>
+    }
+}</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>LSP — Liskov Substitution Principle (리스코프 치환 원칙)</strong><br><br>
+          위반 이유: Bird를 사용하는 코드가 setAltitude()를 호출하면 "고도가 변경된다"고 기대하지만, Penguin은 아무것도 하지 않아 기대를 위반함. 서브클래스가 슈퍼클래스를 대체할 수 없는 상황.<br><br>
+          개선: Bird에서 setAltitude()를 제거하고, FlyingBird 중간 추상 클래스를 만들어 날 수 있는 새만 setAltitude()를 갖도록 계층 구조를 재설계.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q20</span><span class="badge-retry">재출제</span> Checked Exception을 처리하는 두 가지 방법을 코드와 함께 설명하시오.</div>
+    <div class="q-body">
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>방법 1: try-catch로 직접 처리</strong>
+          <pre style="margin:0.4em 0"><code>void readFile() {
+    try {
+        FileReader fr = new FileReader("file.txt");
+    } catch (IOException e) {
+        System.out.println("파일 없음: " + e.getMessage());
+    }
+}</code></pre>
+          <strong>방법 2: throws로 호출자에게 위임</strong>
+          <pre style="margin:0.4em 0"><code>void readFile() throws IOException {
+    FileReader fr = new FileReader("file.txt");
+    // 예외를 호출한 쪽에서 처리해야 함
+}</code></pre>
+          throws는 "나는 처리 안 한다, 나를 호출한 곳에서 처리하라"는 선언.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q21</span><span class="badge-retry">재출제</span> 제네릭(Generics)을 사용하지 않았을 때의 문제점과 제네릭이 이를 해결하는 방법을 설명하시오.</div>
+    <div class="q-body">
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>제네릭 없는 코드의 문제:</strong>
+          <pre style="margin:0.4em 0"><code>ArrayList list = new ArrayList();   // raw type
+list.add("hello");
+list.add(123);                       // 다른 타입도 들어감
+String s = (String) list.get(1);    // 런타임 ClassCastException!</code></pre>
+          모든 원소를 Object로 저장 → 꺼낼 때 캐스팅 필요 → 잘못된 타입이면 런타임 에러.<br><br>
+          <strong>제네릭으로 해결:</strong>
+          <pre style="margin:0.4em 0"><code>ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.add("hello");
+list.add(123);     // 컴파일 에러 — 사전에 차단
+String s = list.get(0);  // 캐스팅 불필요</code></pre>
+          타입 안전성 보장 + 캐스팅 불필요.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q22</span><span class="badge-mid">중간</span> C++ 소멸자(Destructor)의 역할을 설명하고, 소멸자가 반드시 필요한 상황의 예를 드시오.</div>
+    <div class="q-body">
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>소멸자</strong>: 객체가 소멸될 때 자동으로 호출되는 특수 메서드. 이름은 <code>~ClassName()</code>.<br><br>
+          Java의 GC와 달리 C++는 수동 메모리 관리가 필요하므로, 생성자에서 동적 할당한 메모리를 소멸자에서 해제해야 한다.<br><br>
+          반드시 필요한 상황: 생성자에서 <code>new</code>로 힙 메모리를 할당한 경우.
+          <pre style="margin:0.4em 0"><code>class MyArray {
+    int* data;
+public:
+    MyArray(int n) { data = new int[n]; }
+    ~MyArray() { delete[] data; }  // 소멸자 없으면 메모리 누수
+};</code></pre>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q23</span><span class="badge-mid">중간</span> Java I/O에서 바이트 스트림과 문자 스트림의 차이를 설명하고, 텍스트 파일을 읽을 때 어느 것을 사용하는 것이 적절한지 이유와 함께 서술하시오.</div>
+    <div class="q-body">
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>바이트 스트림</strong>: InputStream/OutputStream 계열. 1바이트 단위로 처리. 이미지·동영상 등 바이너리 파일에 적합.<br><br>
+          <strong>문자 스트림</strong>: Reader/Writer 계열. 2바이트(char) 단위로 처리. 문자 인코딩(UTF-8 등)을 자동 변환.<br><br>
+          텍스트 파일에는 <strong>문자 스트림(FileReader, BufferedReader)</strong>이 적합. 한글 등 멀티바이트 문자를 바이트 스트림으로 처리하면 깨질 수 있기 때문.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q24</span><span class="badge-mid">중간</span> 커스텀 예외(Custom Exception)를 만드는 방법을 설명하고, 아래 요구사항에 맞는 예외 클래스를 작성하시오.<br><small>요구사항: 잔액이 부족할 때 발생하는 InsufficientBalanceException. 부족한 금액을 메시지로 포함.</small></div>
+    <div class="q-body">
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          Checked Exception으로 만들려면 Exception을, Unchecked로 만들려면 RuntimeException을 상속.
+          <pre style="margin:0.4em 0"><code>class InsufficientBalanceException extends Exception {
+    InsufficientBalanceException(int amount) {
+        super("잔액 부족: " + amount + "원 필요");
+    }
+}
+
+// 사용
+void withdraw(int amount) throws InsufficientBalanceException {
+    if (balance < amount)
+        throw new InsufficientBalanceException(amount - balance);
+}</code></pre>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== Section 4 — 코드 작성/수정 ===== -->
+  <h2>Section 4 — 코드 작성 / 수정</h2>
+  <p class="section-desc">6문제</p>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q25</span><span class="badge-retry">재출제</span> 아래 Student 리스트를 이름(name) 알파벳 오름차순으로 정렬하는 코드를 작성하시오. Comparator를 사용하되 람다식으로 작성하시오.</div>
+    <div class="q-body">
+      <pre><code>List&lt;Student&gt; students = <span class="kw">new</span> ArrayList&lt;&gt;();
+students.<span class="fn">add</span>(<span class="kw">new</span> Student(<span class="st">"Charlie"</span>, <span class="nu">85</span>));
+students.<span class="fn">add</span>(<span class="kw">new</span> Student(<span class="st">"Alice"</span>, <span class="nu">90</span>));
+students.<span class="fn">add</span>(<span class="kw">new</span> Student(<span class="st">"Bob"</span>, <span class="nu">78</span>));
+<span class="cm">// 여기에 정렬 코드 작성</span></code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <pre style="margin:0.4em 0"><code>students.sort((a, b) -> a.name.compareTo(b.name));
+// 또는
+Collections.sort(students, (a, b) -> a.name.compareTo(b.name));</code></pre>
+          Comparator는 두 객체를 비교하는 함수형 인터페이스.<br>
+          compareTo() 반환값: 음수 → a가 앞, 0 → 동일, 양수 → b가 앞.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q26</span><span class="badge-hard">응용</span> 아래 코드에서 에러를 찾고 수정하시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">try</span> {
+    FileReader fr = <span class="kw">new</span> FileReader(<span class="st">"data.txt"</span>);
+    BufferedReader br = <span class="kw">new</span> BufferedReader(fr);
+    String line = br.<span class="fn">readLine</span>();
+    System.out.println(line);
+}</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>에러: IOException 처리 없음</strong><br><br>
+          FileReader, readLine()은 모두 Checked Exception(IOException) 발생 가능 → try-catch 또는 throws 필수.<br><br>
+          수정:
+          <pre style="margin:0.4em 0"><code>try {
+    FileReader fr = new FileReader("data.txt");
+    BufferedReader br = new BufferedReader(fr);
+    String line = br.readLine();
+    System.out.println(line);
+} catch (IOException e) {
+    e.printStackTrace();
+}</code></pre>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q27</span><span class="badge-hard">응용</span> 아래 코드에서 에러를 찾고 이유를 설명하시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Animal { }
+<span class="kw">class</span> Dog <span class="kw">extends</span> Animal { <span class="kw">void</span> <span class="fn">bark</span>() { System.out.println(<span class="st">"Woof"</span>); } }
+
+Animal a = <span class="kw">new</span> Dog();
+a.<span class="fn">bark</span>();           <span class="cm">// (A)</span>
+Dog d = (Dog) a;
+d.<span class="fn">bark</span>();           <span class="cm">// (B)</span>
+
+Animal b = <span class="kw">new</span> Animal();
+Dog d2 = (Dog) b;   <span class="cm">// (C)</span>
+d2.<span class="fn">bark</span>();</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>(A) 컴파일 에러</strong>: 참조 타입이 Animal이므로 Animal에 없는 bark() 호출 불가.<br><br>
+          <strong>(B) 정상</strong>: Dog로 다운캐스팅 후 bark() 호출 가능.<br><br>
+          <strong>(C) 런타임 에러 (ClassCastException)</strong>: 실제 객체는 Animal인데 Dog로 캐스팅 시도 → 컴파일은 통과하지만 런타임에 ClassCastException 발생.<br>
+          해결: 캐스팅 전 <code>if (b instanceof Dog)</code>로 확인.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q28</span><span class="badge-hard">응용</span> 아래 조건을 만족하는 Java 코드를 작성하시오.<br><small>조건: Flyable 인터페이스(fly() 메서드), Swimmable 인터페이스(swim() 메서드). Duck 클래스가 둘 다 구현. main에서 Duck 객체로 fly(), swim() 호출.</small></div>
+    <div class="q-body">
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <pre style="margin:0.4em 0"><code>interface Flyable  { void fly(); }
+interface Swimmable { void swim(); }
+
+class Duck implements Flyable, Swimmable {
+    public void fly()  { System.out.println("Duck flies"); }
+    public void swim() { System.out.println("Duck swims"); }
+}
+
+// main
+Duck d = new Duck();
+d.fly();
+d.swim();</code></pre>
+          Java는 클래스 다중 상속 불가지만, 인터페이스 다중 구현은 가능.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q29</span><span class="badge-hard">응용</span> 아래 C++ 코드의 에러를 찾고, virtual 소멸자가 필요한 이유를 설명하시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Base {
+<span class="kw">public</span>:
+    ~Base() { cout &lt;&lt; <span class="st">"Base 소멸"</span>; }
+};
+<span class="kw">class</span> Derived : <span class="kw">public</span> Base {
+<span class="kw">public</span>:
+    ~Derived() { cout &lt;&lt; <span class="st">"Derived 소멸"</span>; }
+};
+
+Base* p = <span class="kw">new</span> Derived();
+<span class="kw">delete</span> p;  <span class="cm">// 출력: ?</span></code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>문제</strong>: 소멸자가 virtual이 아니므로 "Base 소멸"만 출력됨. Derived 소멸자가 호출되지 않아 Derived에서 할당한 리소스가 해제 안 됨 → 메모리 누수.<br><br>
+          <strong>수정</strong>: Base 소멸자에 <code>virtual</code> 추가
+          <pre style="margin:0.4em 0"><code>virtual ~Base() { cout &lt;&lt; "Base 소멸"; }</code></pre>
+          virtual 소멸자 → delete 시 실제 객체 타입(Derived)의 소멸자가 먼저 호출되고, 그 다음 Base 소멸자 호출 → "Derived 소멸" + "Base 소멸".
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q30</span><span class="badge-retry">재출제</span> 아래 Product 클래스에 Comparable을 구현하여 가격(price) 오름차순으로 정렬되도록 하시오. 가격이 같으면 이름(name) 알파벳 순으로 정렬.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Product {
+    String name;
+    <span class="kw">int</span> price;
+    Product(String name, <span class="kw">int</span> price) {
+        <span class="kw">this</span>.name = name; <span class="kw">this</span>.price = price;
+    }
+    <span class="cm">// TODO</span>
+}</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <pre style="margin:0.4em 0"><code>class Product implements Comparable&lt;Product&gt; {
+    String name;
+    int price;
+    Product(String name, int price) {
+        this.name = name; this.price = price;
+    }
+
+    @Override
+    public int compareTo(Product other) {
+        if (this.price != other.price)
+            return this.price - other.price;  // 가격 오름차순
+        return this.name.compareTo(other.name); // 가격 같으면 이름순
+    }
+}</code></pre>
+          compareTo가 0을 반환하면 "같다"고 판단. 1차 기준이 같을 때 2차 기준으로 넘어가는 패턴.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div id="score-bar">
+    <span id="score-summary">0 / 30 맞음</span>
+    <span id="score-line">채점을 시작하면 여기에 결과가 표시됩니다.</span>
+    <button id="copy-btn" onclick="copyScore()">복사</button>
+  </div>
+</main>
+
+<script>
+const TOTAL = 30;
+const state = {};
+
+const subjective = {};
+
+document.querySelectorAll('.q-block').forEach((block, i) => {
+  const num = `Q${i+1}`;
+  block.dataset.q = num;
+  const body = block.querySelector('.q-body');
+  const isSubjective = !body.querySelector('.choices');
+
+  if (isSubjective) {
+    const ta = document.createElement('textarea');
+    ta.className = 'answer-input';
+    ta.placeholder = '답안을 여기에 작성하세요...';
+    ta.dataset.q = num;
+    ta.addEventListener('input', updateScore);
+    body.insertBefore(ta, body.querySelector('details'));
+    subjective[num] = true;
+  }
+
+  const row = document.createElement('div');
+  row.className = 'check-row';
+  row.innerHTML =
+    `<button class="btn-correct" onclick="mark('${num}','correct')">✓ 맞음</button>` +
+    `<button class="btn-wrong"   onclick="mark('${num}','wrong')">✗ 틀림</button>` +
+    `<button class="btn-reset"   onclick="mark('${num}',null)">취소</button>`;
+  body.appendChild(row);
+});
+
+function mark(q, result) {
+  state[q] = result;
+  const block = document.querySelector(`[data-q="${q}"]`);
+  block.querySelector('.btn-correct').classList.toggle('active-correct', result === 'correct');
+  block.querySelector('.btn-wrong').classList.toggle('active-wrong',   result === 'wrong');
+  block.classList.toggle('marked-correct', result === 'correct');
+  block.classList.toggle('marked-wrong',   result === 'wrong');
+  updateScore();
+}
+
+function updateScore() {
+  const correct = Object.values(state).filter(v => v === 'correct').length;
+  const wrong   = Object.values(state).filter(v => v === 'wrong').length;
+  const done    = correct + wrong;
+  let line = '[기말 채점 2회] ';
+  for (let i = 1; i <= TOTAL; i++) {
+    const s = state[`Q${i}`];
+    line += `Q${i}` + (s === 'correct' ? '✓' : s === 'wrong' ? '✗' : '-') + ' ';
+  }
+  line += `| ${correct}/${TOTAL} (${done}문제 채점)`;
+  document.getElementById('score-line').textContent = line;
+  document.getElementById('score-summary').textContent = `${correct} / ${TOTAL} 맞음`;
+}
+
+function copyScore() {
+  let text = document.getElementById('score-line').textContent;
+  const subLines = [];
+  for (let i = 1; i <= TOTAL; i++) {
+    const num = `Q${i}`;
+    if (!subjective[num]) continue;
+    const ta = document.querySelector(`textarea[data-q="${num}"]`);
+    const ans = ta ? ta.value.trim() : '';
+    const mark = state[num] === 'correct' ? '✓' : state[num] === 'wrong' ? '✗' : '-';
+    subLines.push(`${num}(${mark}): ${ans || '(미작성)'}`);
+  }
+  if (subLines.length) text += '\n--- 주관식 답안 ---\n' + subLines.join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '복사됨!';
+    setTimeout(() => btn.textContent = '복사', 1500);
+  });
+}
+</script>
+<script src="auto-nav.js" defer></script>
+</body>
+</html>

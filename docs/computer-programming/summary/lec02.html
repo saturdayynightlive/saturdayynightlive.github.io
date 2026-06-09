@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>L02 Java Basics I</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:," />
+</head>
+<body>
+<nav>
+  <h2>컴퓨터프로그래밍</h2>
+  <ul>
+    <li><a href="index.html">🏠 홈</a></li>
+    <li><a href="lec02.html" class="active"><span class="badge">L02</span>Java Basics I</a></li>
+    <li><a href="lec03.html"><span class="badge">L03</span>Java Basics II</a></li>
+    <li><a href="lec04.html"><span class="badge">L04</span>OOP</a></li>
+    <li><a href="lec05.html"><span class="badge">L05</span>Encapsulation</a></li>
+    <li><a href="lec06.html"><span class="badge">L06</span>Inheritance</a></li>
+    <li><a href="lec07.html"><span class="badge">L07</span>Polymorphism</a></li>
+    <li><a href="lec08.html"><span class="badge">L08</span>Collections</a></li>
+    <li><a href="lec09.html"><span class="badge">L09</span>Collections II</a></li>
+    <li><a href="lec10.html"><span class="badge">L10</span>I/O</a></li>
+    <li><a href="lec11.html"><span class="badge">L11</span>Exceptions</a></li>
+    <li><a href="lec12.html"><span class="badge">L12</span>Design Patterns</a></li>
+    <li><a href="lec13.html"><span class="badge">L13</span>C++ Basics</a></li>
+    <li><a href="lec14.html"><span class="badge">L14</span>OOP in C++</a></li>
+  </ul>
+</nav>
+<main>
+  <h1>Java Basics I <small>Lecture 02</small></h1>
+  <p class="subtitle">타입 시스템 · 캐스팅 · String · 연산자</p>
+
+  <h2>main() 메서드</h2>
+  <div class="def">
+    <strong>public static void main(String[] args)</strong> — 모든 Java 프로그램의 진입점.<br>
+    · <code>public</code>: 어디서나 접근 가능<br>
+    · <code>static</code>: 클래스 소속 (객체 생성 없이 호출 가능)<br>
+    · <code>void</code>: 반환값 없음<br>
+    · <code>String[] args</code>: 커맨드라인 인수
+  </div>
+  <div class="warn">public 클래스 이름은 반드시 파일명과 일치해야 한다.</div>
+
+  <h2>8가지 기본 타입 (Primitive Types)</h2>
+  <table>
+    <tr><th>타입</th><th>크기</th><th>범위 / 특징</th><th>리터럴</th></tr>
+    <tr><td><code>byte</code></td><td>8 bits</td><td>-128 ~ 127</td><td></td></tr>
+    <tr><td><code>short</code></td><td>16 bits</td><td>-32768 ~ 32767</td><td></td></tr>
+    <tr><td><code>int</code></td><td>32 bits</td><td>-2^31 ~ 2^31-1</td><td>기본 정수 리터럴</td></tr>
+    <tr><td><code>long</code></td><td>64 bits</td><td>-2^63 ~ 2^63-1</td><td>숫자 뒤 <code>L</code></td></tr>
+    <tr><td><code>float</code></td><td>32 bits</td><td>소수 6-7자리</td><td>숫자 뒤 <code>f</code></td></tr>
+    <tr><td><code>double</code></td><td>64 bits</td><td>소수 15자리</td><td>기본 실수 리터럴</td></tr>
+    <tr><td><code>char</code></td><td>16 bits</td><td>유니코드 문자</td><td>작은따옴표 <code>'A'</code></td></tr>
+    <tr><td><code>boolean</code></td><td>-</td><td>true / false</td><td></td></tr>
+  </table>
+  <div class="warn">
+    <code>float f = 3.72;</code> → 에러 (3.72는 double 리터럴)<br>
+    <code>int i = 1000L;</code> → 에러 (long → int 암묵적 불가)
+  </div>
+
+  <h2>타입 캐스팅</h2>
+  <div class="def">
+    <strong>Widening (확장, 자동)</strong>: 작은 타입 → 큰 타입<br>
+    byte → short → int → long → float → double<br><br>
+    <strong>Narrowing (축소, 명시적)</strong>: 큰 타입 → 작은 타입, 반드시 <code>(type)</code> 캐스트 필요
+  </div>
+  <pre><code><span class="kw">double</span> d = 9.99;
+<span class="kw">int</span> i = (<span class="kw">int</span>) d;   <span class="cm">// 9 — 소수점 버림 (반올림 아님!)</span></code></pre>
+
+  <h2>String</h2>
+  <div class="def">
+    <strong>String</strong>은 기본 타입이 아닌 참조 타입 (Reference type). 대문자 시작.<br>
+    <strong>불변 (Immutable)</strong>: 한번 생성된 String 객체의 내용은 변경 불가.
+  </div>
+  <table>
+    <tr><th>생성 방식</th><th>저장 위치</th><th>== 비교</th></tr>
+    <tr><td><code>String s = "Hello";</code></td><td>String Pool (공유)</td><td>같은 리터럴이면 <code>true</code></td></tr>
+    <tr><td><code>String s = new String("Hello");</code></td><td>Heap (새 객체)</td><td>항상 <code>false</code></td></tr>
+  </table>
+  <div class="warn">String 내용 비교는 반드시 <code>.equals()</code> 사용!</div>
+  <pre><code>String a = <span class="kw">new</span> String(<span class="st">"Apple"</span>);
+String b = <span class="kw">new</span> String(<span class="st">"Apple"</span>);
+a == b;        <span class="cm">// false — 주소 비교</span>
+a.equals(b);   <span class="cm">// true  — 내용 비교</span></code></pre>
+
+  <h2>기본 타입 vs 참조 타입</h2>
+  <table>
+    <tr><th>구분</th><th>기본 타입 (Primitive)</th><th>참조 타입 (Non-Primitive)</th></tr>
+    <tr><td>정의</td><td>Java에 미리 정의됨</td><td>사용자 정의 (String 포함)</td></tr>
+    <tr><td>메서드</td><td>없음</td><td>있음</td></tr>
+    <tr><td>기본값</td><td>0, false 등</td><td><code>null</code></td></tr>
+    <tr><td>표기</td><td>소문자 (<code>int</code>)</td><td>대문자 (<code>String</code>)</td></tr>
+  </table>
+
+  <h2>연산자</h2>
+  <h3>산술 연산</h3>
+  <div class="def">
+    정수 나눗셈: <code>5 / 2 = 2</code> (소수점 버림)<br>
+    <code>5 / 0</code> → <code>ArithmeticException</code> (정수 / 0은 런타임 에러)
+  </div>
+  <pre><code><span class="kw">int</span> x = <span class="nu">1</span>, y = <span class="nu">1</span>;
+x + ++y;   <span class="cm">// 3 — prefix: y가 먼저 2로 증가 후 덧셈</span>
+x + y++;   <span class="cm">// 2 — postfix: y=1로 덧셈 후 2로 증가</span></code></pre>
+
+  <h3>논리 연산 — Short-Circuit</h3>
+  <div class="def">
+    <code>&amp;&amp;</code>: 좌변이 false면 우변 평가 안 함<br>
+    <code>||</code>: 좌변이 true면 우변 평가 안 함
+  </div>
+
+  <h3>연산자 우선순위 (높음 → 낮음)</h3>
+  <table>
+    <tr><th>순위</th><th>연산자</th></tr>
+    <tr><td>1</td><td><code>++</code> (prefix) / <code>--</code> (prefix) / <code>!</code></td></tr>
+    <tr><td>2</td><td><code>*</code> <code>/</code> <code>%</code></td></tr>
+    <tr><td>3</td><td><code>+</code> <code>-</code></td></tr>
+    <tr><td>4</td><td><code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code></td></tr>
+    <tr><td>5</td><td><code>==</code> <code>!=</code></td></tr>
+    <tr><td>6</td><td><code>&amp;&amp;</code></td></tr>
+    <tr><td>7</td><td><code>||</code></td></tr>
+    <tr><td>8 (우결합)</td><td><code>=</code> (대입)</td></tr>
+  </table>
+
+  <h3>String + 연산</h3>
+  <pre><code>System.out.println(<span class="st">"답은: "</span> + <span class="nu">2</span> + <span class="nu">3</span> + <span class="st">"!"</span>);  <span class="cm">// 답은: 23!</span>
+System.out.println(<span class="nu">2</span> + <span class="nu">3</span> + <span class="st">" is the answer"</span>); <span class="cm">// 5 is the answer</span></code></pre>
+  <div class="tip">+ 연산은 왼쪽부터 평가. String이 먼저 오면 이후는 모두 문자열 연결.</div>
+</main>
+<script src="auto-nav.js" defer></script>
+</body>
+</html>

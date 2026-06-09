@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>L12 Design Patterns</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:," />
+</head>
+<body>
+<nav>
+  <h2>컴퓨터프로그래밍</h2>
+  <ul>
+    <li><a href="index.html">🏠 홈</a></li>
+    <li><a href="lec02.html"><span class="badge">L02</span>Java Basics I</a></li>
+    <li><a href="lec03.html"><span class="badge">L03</span>Java Basics II</a></li>
+    <li><a href="lec04.html"><span class="badge">L04</span>OOP</a></li>
+    <li><a href="lec05.html"><span class="badge">L05</span>Encapsulation</a></li>
+    <li><a href="lec06.html"><span class="badge">L06</span>Inheritance</a></li>
+    <li><a href="lec07.html"><span class="badge">L07</span>Polymorphism</a></li>
+    <li><a href="lec08.html"><span class="badge">L08</span>Collections</a></li>
+    <li><a href="lec09.html"><span class="badge">L09</span>Collections II</a></li>
+    <li><a href="lec10.html"><span class="badge">L10</span>I/O</a></li>
+    <li><a href="lec11.html"><span class="badge">L11</span>Exceptions</a></li>
+    <li><a href="lec12.html" class="active"><span class="badge">L12</span>Design Patterns</a></li>
+    <li><a href="lec13.html"><span class="badge">L13</span>C++ Basics</a></li>
+    <li><a href="lec14.html"><span class="badge">L14</span>OOP in C++</a></li>
+  </ul>
+</nav>
+<main>
+  <h1>Design Patterns <small>Lecture 12</small></h1>
+  <p class="subtitle">Clean Code 6원칙 + SOLID 5원칙</p>
+
+  <h2>왜 Clean Code인가?</h2>
+  <div class="def">
+    개발자는 코드를 <strong>작성하는 시간보다 읽는 시간이 10배 더 많다</strong>.<br>
+    동작하는 코드 ≠ 좋은 코드. Clean code는 생산성, 유지보수성, 신뢰성을 높인다.
+  </div>
+
+  <h2>Clean Code 6원칙</h2>
+
+  <h3>1. 명확한 이름 사용 (Clear Names)</h3>
+  <div class="def">
+    변수·메서드·클래스 이름은 <strong>의도를 명확히</strong> 드러내야 한다.<br>
+    · 변수/메서드: camelCase / 클래스: PascalCase<br>
+    · 과도한 축약 금지, 잘못된 정보 전달 금지
+  </div>
+  <pre><code><span class="cm">// Bad</span>
+<span class="kw">int</span> d;  <span class="cm">// 경과 시간? 날짜?</span>
+
+<span class="cm">// Good</span>
+<span class="kw">int</span> elapsedTimeInDays;</code></pre>
+
+  <h3>2. 개념당 단어 하나 (One Word per Concept)</h3>
+  <div class="def">
+    같은 개념에는 <strong>일관된 단어</strong>를 사용. get/fetch/retrieve를 섞지 말 것.
+  </div>
+
+  <h3>3. 함수를 작게 (Small Functions)</h3>
+  <div class="def">
+    함수는 <strong>한 가지 일만</strong> 해야 한다. 15줄 이상이면 분리를 고려.
+  </div>
+
+  <h3>4. 부작용 최소화 (Minimize Side Effects)</h3>
+  <div class="def">
+    <strong>Side Effect</strong>: 함수가 자신의 범위 밖의 변수(static/인스턴스 변수)를 변경하는 것.<br>
+    공유 상태 변경은 신중하게 다루어야 한다.
+  </div>
+
+  <h3>5. DRY 원칙 (Don't Repeat Yourself)</h3>
+  <div class="def">
+    <strong>DRY</strong>: 코드를 반복하지 말 것. 반복된 코드는 수정 시 누락으로 버그가 생긴다.
+  </div>
+  <pre><code><span class="cm">// Bad: 3개의 별도 print 함수</span>
+<span class="kw">static void</span> <span class="fn">printInt</span>(Integer i)  { System.out.println(<span class="st">"Type: Integer, Value: "</span> + i); }
+<span class="kw">static void</span> <span class="fn">printStr</span>(String s)   { System.out.println(<span class="st">"Type: String, Value: "</span>  + s); }
+
+<span class="cm">// Good: 제네릭 하나로 통합</span>
+<span class="kw">static void</span> <span class="fn">print</span>(Object obj) {
+    System.out.printf(<span class="st">"Type: %s, Value: %s\n"</span>, obj.<span class="fn">getClass</span>().<span class="fn">getSimpleName</span>(), obj);
+}</code></pre>
+
+  <h3>6. 명확한 주석 (Clear Comments)</h3>
+  <div class="def">
+    주석을 쓰기 전에 먼저 코드 자체를 명확하게 만들 수 없는지 고민.<br>
+    <strong>WHAT(무엇)이 아닌 WHY(왜)</strong>를 설명하는 주석만 가치 있다.
+  </div>
+
+  <hr>
+
+  <h2>SOLID 5원칙</h2>
+
+  <h3>S — Single Responsibility Principle (SRP)</h3>
+  <div class="def">
+    <strong>단일 책임 원칙</strong>: 클래스는 <strong>변경되어야 할 이유가 하나뿐</strong>이어야 한다.<br>
+    하나의 클래스 = 하나의 책임(역할).
+  </div>
+  <pre><code><span class="cm">// Bad: 한 클래스가 설정 변경 + 보안 검사 두 가지 역할</span>
+<span class="kw">class</span> UserSettingService {
+    <span class="kw">void</span> <span class="fn">changeEmail</span>(User u) { <span class="kw">if</span> (<span class="fn">checkAccess</span>(u)) { ... } }
+    <span class="kw">boolean</span> <span class="fn">checkAccess</span>(User u) { ... }
+}
+
+<span class="cm">// Good: 책임 분리</span>
+<span class="kw">class</span> UserSettingService { <span class="kw">void</span> <span class="fn">changeEmail</span>(User u) { ... } }
+<span class="kw">class</span> SecurityService     { <span class="kw">boolean</span> <span class="fn">checkAccess</span>(User u) { ... } }</code></pre>
+
+  <h3>O — Open-Closed Principle (OCP)</h3>
+  <div class="def">
+    <strong>개방-폐쇄 원칙</strong>: 클래스는 <strong>확장에 열려 있고</strong>, <strong>수정에 닫혀 있어야</strong> 한다.<br>
+    새 기능 추가 시 기존 코드를 수정하지 않고 확장으로만 해결.
+  </div>
+  <pre><code><span class="cm">// Bad: 새 도형 추가 시 AreaCalculator 수정 필요</span>
+<span class="cm">// Good: Shape 인터페이스 구현으로 확장</span>
+<span class="kw">interface</span> Shape { <span class="kw">double</span> <span class="fn">getArea</span>(); }
+<span class="kw">class</span> Rectangle <span class="kw">implements</span> Shape { <span class="kw">public double</span> <span class="fn">getArea</span>() { <span class="kw">return</span> w * h; } }
+<span class="kw">class</span> Circle    <span class="kw">implements</span> Shape { <span class="kw">public double</span> <span class="fn">getArea</span>() { <span class="kw">return</span> r * r * Math.PI; } }
+<span class="cm">// 새 도형? → Shape를 implements하는 클래스만 추가하면 됨</span></code></pre>
+
+  <h3>L — Liskov Substitution Principle (LSP)</h3>
+  <div class="def">
+    <strong>리스코프 치환 원칙</strong>: 서브클래스는 언제나 <strong>슈퍼클래스를 대체할 수 있어야</strong> 한다.<br>
+    서브클래스가 슈퍼클래스의 기대를 위반하면 LSP 위반.
+  </div>
+  <pre><code><span class="cm">// Bad: Penguin은 날 수 없는데 setAltitude()가 강제됨</span>
+<span class="kw">class</span> Penguin <span class="kw">extends</span> Bird {
+    <span class="op">@Override</span>
+    <span class="kw">public void</span> <span class="fn">setAltitude</span>(<span class="kw">double</span> alt) { }  <span class="cm">// 아무것도 안 함 → LSP 위반</span>
+}
+
+<span class="cm">// Good: FlyingBird 분리</span>
+<span class="kw">abstract class</span> Bird       { <span class="kw">void</span> <span class="fn">draw</span>(); }
+<span class="kw">abstract class</span> FlyingBird <span class="kw">extends</span> Bird { <span class="kw">void</span> <span class="fn">setAltitude</span>(<span class="kw">double</span> alt); }
+<span class="kw">class</span> Duck    <span class="kw">extends</span> FlyingBird { ... }
+<span class="kw">class</span> Penguin <span class="kw">extends</span> Bird       { ... }  <span class="cm">// setAltitude 없음</span></code></pre>
+
+  <h3>I — Interface Segregation Principle (ISP)</h3>
+  <div class="def">
+    <strong>인터페이스 분리 원칙</strong>: 클래스는 <strong>사용하지 않는 인터페이스 메서드를 구현하도록 강제되어서는 안 된다</strong>.<br>
+    큰 인터페이스 하나보다 작은 인터페이스 여러 개가 낫다.
+  </div>
+  <pre><code><span class="cm">// Bad: UIList가 write/delete를 구현 강제</span>
+<span class="kw">interface</span> ArticleService { <span class="kw">void</span> <span class="fn">list</span>(); <span class="kw">void</span> <span class="fn">write</span>(); <span class="kw">void</span> <span class="fn">delete</span>(); }
+
+<span class="cm">// Good: 인터페이스 분리</span>
+<span class="kw">interface</span> ArticleListService  { <span class="kw">void</span> <span class="fn">list</span>(); }
+<span class="kw">interface</span> ArticleWriteService { <span class="kw">void</span> <span class="fn">write</span>(); }
+<span class="kw">class</span> UIList  <span class="kw">implements</span> ArticleListService  { <span class="kw">public void</span> <span class="fn">list</span>()  { } }
+<span class="kw">class</span> UIWrite <span class="kw">implements</span> ArticleWriteService { <span class="kw">public void</span> <span class="fn">write</span>() { } }</code></pre>
+
+  <h3>D — Dependency Inversion Principle (DIP)</h3>
+  <div class="def">
+    <strong>의존 역전 원칙</strong>: 구체적인 클래스가 아닌 <strong>추상(인터페이스)</strong>에 의존해야 한다.<br>
+    고수준 모듈이 저수준 모듈에 직접 의존하면 안 됨.
+  </div>
+  <pre><code><span class="cm">// Bad: Foo가 Logger 구현체에 직접 의존</span>
+<span class="kw">class</span> Foo { <span class="kw">private</span> Logger logger = <span class="kw">new</span> Logger(); }
+
+<span class="cm">// Good: ILogger 인터페이스에 의존</span>
+<span class="kw">interface</span> ILogger { <span class="kw">void</span> <span class="fn">log</span>(String msg); }
+<span class="kw">class</span> Foo {
+    <span class="kw">private</span> ILogger logger;
+    <span class="kw">void</span> <span class="fn">setLogger</span>(ILogger impl) { <span class="kw">this</span>.logger = impl; }
+}</code></pre>
+
+  <h2>SOLID 한눈에 요약</h2>
+  <table>
+    <tr><th>원칙</th><th>핵심 한 줄</th></tr>
+    <tr><td><strong>S</strong>RP</td><td>클래스는 변경 이유가 하나여야 한다</td></tr>
+    <tr><td><strong>O</strong>CP</td><td>확장에 열리고, 수정에 닫혀야 한다</td></tr>
+    <tr><td><strong>L</strong>SP</td><td>서브클래스는 슈퍼클래스를 대체할 수 있어야 한다</td></tr>
+    <tr><td><strong>I</strong>SP</td><td>안 쓰는 인터페이스 메서드를 구현 강제하면 안 된다</td></tr>
+    <tr><td><strong>D</strong>IP</td><td>구현이 아닌 추상에 의존해야 한다</td></tr>
+  </table>
+</main>
+<script src="auto-nav.js" defer></script>
+</body>
+</html>

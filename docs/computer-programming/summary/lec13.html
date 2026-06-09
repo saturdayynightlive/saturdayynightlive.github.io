@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>L13 C++ Basics</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:," />
+</head>
+<body>
+<nav>
+  <h2>컴퓨터프로그래밍</h2>
+  <ul>
+    <li><a href="index.html">🏠 홈</a></li>
+    <li><a href="lec02.html"><span class="badge">L02</span>Java Basics I</a></li>
+    <li><a href="lec03.html"><span class="badge">L03</span>Java Basics II</a></li>
+    <li><a href="lec04.html"><span class="badge">L04</span>OOP</a></li>
+    <li><a href="lec05.html"><span class="badge">L05</span>Encapsulation</a></li>
+    <li><a href="lec06.html"><span class="badge">L06</span>Inheritance</a></li>
+    <li><a href="lec07.html"><span class="badge">L07</span>Polymorphism</a></li>
+    <li><a href="lec08.html"><span class="badge">L08</span>Collections</a></li>
+    <li><a href="lec09.html"><span class="badge">L09</span>Collections II</a></li>
+    <li><a href="lec10.html"><span class="badge">L10</span>I/O</a></li>
+    <li><a href="lec11.html"><span class="badge">L11</span>Exceptions</a></li>
+    <li><a href="lec12.html"><span class="badge">L12</span>Design Patterns</a></li>
+    <li><a href="lec13.html" class="active"><span class="badge">L13</span>C++ Basics</a></li>
+    <li><a href="lec14.html"><span class="badge">L14</span>OOP in C++</a></li>
+  </ul>
+</nav>
+<main>
+  <h1>C++ Basics <small>Lecture 13</small></h1>
+  <p class="subtitle">cout/cin · namespace · 포인터 · 레퍼런스 · 헤더파일</p>
+
+  <h2>C++란?</h2>
+  <div class="def">
+    C의 확장으로 OOP, 제네릭, 함수형 특성을 추가한 언어.<br>
+    저수준 메모리 조작 + 고성능이 특징. 임베디드·OS·게임엔진에 사용.
+  </div>
+  <pre><code>#include &lt;iostream&gt;
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    std::cout &lt;&lt; <span class="st">"Hello World!"</span> &lt;&lt; std::endl;
+    <span class="kw">return</span> <span class="nu">0</span>;  <span class="cm">// main에서는 생략 가능</span>
+}</code></pre>
+  <pre><code>g++ -o main main.cpp   <span class="cm"># 컴파일</span>
+./main                  <span class="cm"># 실행</span></code></pre>
+
+  <h2>콘솔 I/O</h2>
+  <pre><code><span class="cm">// 출력</span>
+std::cout &lt;&lt; i &lt;&lt; <span class="st">' '</span> &lt;&lt; f &lt;&lt; std::endl;
+<span class="cm">// std::endl 또는 '\n' 으로 줄바꿈</span>
+
+<span class="cm">// 입력</span>
+<span class="kw">int</span> var;
+std::cin &gt;&gt; var;
+
+<span class="kw">int</span> ivar; <span class="kw">char</span> cvar;
+std::cin &gt;&gt; ivar &gt;&gt; cvar;  <span class="cm">// 공백 구분으로 연속 입력</span></code></pre>
+
+  <h2>Namespace</h2>
+  <div class="def">
+    <strong>Namespace</strong>: 식별자에 범위(scope)를 부여하여 이름 충돌을 방지. Java의 패키지와 유사.
+  </div>
+  <pre><code><span class="kw">namespace</span> my_ns {
+    <span class="kw">int</span> x = <span class="nu">123</span>;
+}
+std::cout &lt;&lt; my_ns::x;  <span class="cm">// 123</span>
+
+<span class="cm">// using 선언으로 매번 std:: 생략 가능</span>
+<span class="kw">using namespace</span> std;
+cout &lt;&lt; <span class="st">"Hello"</span> &lt;&lt; endl;</code></pre>
+
+  <h2>헤더 파일 (.h)</h2>
+  <div class="def">
+    C++에서는 <strong>피호출 함수가 호출 함수보다 먼저</strong> 나와야 한다 (Java와 다름).<br>
+    <strong>헤더 파일</strong>: 함수 시그니처만 선언하여 이 문제를 해결.
+  </div>
+  <pre><code><span class="cm">// add.h</span>
+#ifndef ADD_H
+#define ADD_H
+<span class="kw">int</span> <span class="fn">add</span>(<span class="kw">int</span> x, <span class="kw">int</span> y);
+#endif
+
+<span class="cm">// add.cpp</span>
+#include <span class="st">"add.h"</span>
+<span class="kw">int</span> <span class="fn">add</span>(<span class="kw">int</span> x, <span class="kw">int</span> y) { <span class="kw">return</span> x + y; }
+
+<span class="cm">// main.cpp</span>
+#include <span class="st">"add.h"</span>
+<span class="kw">int</span> <span class="fn">main</span>() { cout &lt;&lt; <span class="fn">add</span>(<span class="nu">1</span>, <span class="nu">3</span>); }  <span class="cm">// 4</span></code></pre>
+  <div class="tip">#ifndef / #define / #endif: include guard — 같은 헤더가 여러 번 포함되는 것을 방지.</div>
+
+  <h2>Macro (#define)</h2>
+  <pre><code>#define PI 3.14              <span class="cm">// 상수 매크로</span>
+#define ADD(x,y) x+y         <span class="cm">// 함수형 매크로 (주의!)</span>
+
+cout &lt;&lt; ADD(a,b)/c;  <span class="cm">// = a+b/c (NOT (a+b)/c) → 괄호 누락 위험!</span></code></pre>
+  <div class="warn">함수형 매크로는 연산자 우선순위 문제가 생길 수 있다. 인라인 함수 사용을 권장.</div>
+
+  <h2>typedef</h2>
+  <pre><code><span class="kw">typedef long</span> miles_t;
+<span class="kw">typedef</span> std::vector&lt;std::pair&lt;std::string,std::string&gt;&gt; pairlist_t;
+pairlist_t pl;  <span class="cm">// 긴 타입명을 짧게</span></code></pre>
+
+  <h2>포인터 (Pointer)</h2>
+  <div class="def">
+    <strong>포인터</strong>: 변수의 <strong>메모리 주소</strong>를 저장하는 변수.<br>
+    · <code>&amp;</code>: 주소 연산자 (address-of)<br>
+    · <code>*</code>: 역참조 연산자 (dereference)
+  </div>
+  <pre><code><span class="kw">int</span> var = <span class="nu">3</span>;
+<span class="kw">int</span>* ptr = &amp;var;    <span class="cm">// ptr에 var의 주소 저장</span>
+cout &lt;&lt; ptr;        <span class="cm">// 주소 출력 (예: 0x7fff...)</span>
+cout &lt;&lt; *ptr;       <span class="cm">// 3 (역참조: 주소의 값)</span>
+*ptr = <span class="nu">10</span>;          <span class="cm">// var가 10으로 변경</span></code></pre>
+  <div class="warn">
+    <code>char *str1, str2;</code> → str1은 char*, str2는 char (포인터 아님!)
+  </div>
+  <pre><code><span class="cm">// 힙 메모리 할당/해제</span>
+<span class="kw">int</span>* ptr = <span class="kw">new int</span>;  <span class="cm">// 힙 할당</span>
+<span class="kw">delete</span> ptr;           <span class="cm">// 반드시 해제! (Java는 GC가 자동 처리)</span></code></pre>
+
+  <h2>레퍼런스 (Reference)</h2>
+  <div class="def">
+    <strong>Reference</strong>: 기존 변수의 <strong>별명(alias)</strong>. 생성 시 바인딩되며 이후 변경 불가.<br>
+    Java의 참조와 다름 — C++의 레퍼런스는 포인터처럼 주소를 들고 다니지 않음.
+  </div>
+  <pre><code>string food = <span class="st">"Pizza"</span>;
+string&amp; alias = food;
+alias = <span class="st">"Burger"</span>;     <span class="cm">// food도 "Burger"로 변경</span></code></pre>
+
+  <h2>포인터 vs 레퍼런스로 swap</h2>
+  <pre><code><span class="cm">// 포인터 방식</span>
+<span class="kw">void</span> <span class="fn">swap</span>(<span class="kw">int</span>* a, <span class="kw">int</span>* b) {
+    <span class="kw">int</span> t = *a; *a = *b; *b = t;
+}
+<span class="fn">swap</span>(&amp;x, &amp;y);   <span class="cm">// 호출 시 & 필요</span>
+
+<span class="cm">// 레퍼런스 방식 (더 깔끔)</span>
+<span class="kw">void</span> <span class="fn">swap</span>(<span class="kw">int</span>&amp; a, <span class="kw">int</span>&amp; b) {
+    <span class="kw">int</span> t = a; a = b; b = t;
+}
+<span class="fn">swap</span>(x, y);     <span class="cm">// 호출 시 & 불필요</span></code></pre>
+
+  <h2>Java vs C++ 주요 차이점</h2>
+  <table class="cmp">
+    <tr><th>특성</th><th>Java</th><th>C++</th></tr>
+    <tr><td>포인터</td><td>없음 (참조만)</td><td>있음</td></tr>
+    <tr><td>메모리 관리</td><td>자동 (GC)</td><td>수동 (new/delete)</td></tr>
+    <tr><td>전역 변수/함수</td><td>없음</td><td>있음</td></tr>
+    <tr><td>좁히기 변환</td><td>명시적 캐스트 필요</td><td>자동 (경고만)</td></tr>
+    <tr><td>String 비교</td><td>.equals() 필요</td><td>== 작동</td></tr>
+    <tr><td>함수 순서</td><td>순서 무관</td><td>피호출자가 먼저 와야 함</td></tr>
+    <tr><td>bool 출력</td><td>true/false</td><td>1/0</td></tr>
+  </table>
+
+  <hr>
+  <h2>2D 배열 <span style="font-size:12px;color:#89b4fa;font-weight:normal">★ Lab 10 — 슬라이드에 없음</span></h2>
+
+  <div class="def">
+    C++에서 2D 배열을 동적으로 만드는 방법 두 가지.
+  </div>
+
+  <h3>방법 1: 단일 포인터 (1D 배열로 2D 시뮬레이션)</h3>
+  <pre><code><span class="kw">int</span>* arr = <span class="kw">new int</span>[N * N];          <span class="cm">// N×N 크기 1D 할당</span>
+arr[row * N + col] = value;           <span class="cm">// 2D 인덱스 → 1D 변환</span>
+<span class="kw">delete</span>[] arr;                         <span class="cm">// 해제: delete[] (배열은 [])</span></code></pre>
+
+  <h3>방법 2: 이중 포인터 (포인터의 포인터)</h3>
+  <pre><code><span class="kw">int</span>** arr = <span class="kw">new int</span>*[N];             <span class="cm">// N개의 포인터 배열 할당</span>
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="nu">0</span>; i &lt; N; i++)
+    arr[i] = <span class="kw">new int</span>[N];             <span class="cm">// 각 행 할당</span>
+
+arr[row][col] = value;                <span class="cm">// 일반 2D 배열처럼 사용</span>
+
+<span class="cm">// 해제: 역순으로</span>
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="nu">0</span>; i &lt; N; i++)
+    <span class="kw">delete</span>[] arr[i];                  <span class="cm">// 각 행 먼저 해제</span>
+<span class="kw">delete</span>[] arr;                         <span class="cm">// 포인터 배열 해제</span></code></pre>
+  <div class="warn">배열 해제 시 반드시 <code>delete[]</code> 사용. 단순 <code>delete</code>는 첫 원소만 해제.</div>
+
+  <h3>포인터와 배열의 관계</h3>
+  <div class="def">
+    배열 변수 자체가 <strong>첫 번째 원소의 포인터</strong>.<br>
+    <code>array == &amp;array[0]</code> → 같은 주소
+  </div>
+  <pre><code><span class="kw">int</span> array[<span class="nu">5</span>] = {<span class="nu">9</span>, <span class="nu">7</span>, <span class="nu">5</span>, <span class="nu">3</span>, <span class="nu">1</span>};
+<span class="kw">int</span>* ptr = array;           <span class="cm">// array와 &array[0]는 동일</span>
+cout &lt;&lt; *ptr;               <span class="cm">// 9</span>
+cout &lt;&lt; *(++ptr);           <span class="cm">// 7 — 포인터 산술로 순회</span></code></pre>
+</main>
+<script src="auto-nav.js" defer></script>
+</body>
+</html>

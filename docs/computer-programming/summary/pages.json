@@ -1,0 +1,117 @@
+[
+  {
+    "file": "index.html",
+    "label": "홈",
+    "badge": "🏠"
+  },
+  {
+    "file": "cheatsheet.html",
+    "label": "치트시트",
+    "badge": "⚡"
+  },
+  {
+    "file": "snippets.html",
+    "label": "코드 스니펫",
+    "badge": "&lt;/&gt;"
+  },
+  {
+    "file": "lec02.html",
+    "label": "Java Basics I",
+    "badge": "L02"
+  },
+  {
+    "file": "lec03.html",
+    "label": "Java Basics II",
+    "badge": "L03"
+  },
+  {
+    "file": "lec04.html",
+    "label": "OOP",
+    "badge": "L04"
+  },
+  {
+    "file": "lec05.html",
+    "label": "Encapsulation",
+    "badge": "L05"
+  },
+  {
+    "file": "lec06.html",
+    "label": "Inheritance",
+    "badge": "L06"
+  },
+  {
+    "file": "lec07.html",
+    "label": "Polymorphism",
+    "badge": "L07"
+  },
+  {
+    "file": "lec08.html",
+    "label": "Collections",
+    "badge": "L08"
+  },
+  {
+    "file": "lec09.html",
+    "label": "Collections II",
+    "badge": "L09"
+  },
+  {
+    "file": "lec10.html",
+    "label": "I/O",
+    "badge": "L10"
+  },
+  {
+    "file": "lec11.html",
+    "label": "Exceptions",
+    "badge": "L11"
+  },
+  {
+    "file": "lec12.html",
+    "label": "Design Patterns",
+    "badge": "L12"
+  },
+  {
+    "file": "lec13.html",
+    "label": "C++ Basics",
+    "badge": "L13"
+  },
+  {
+    "file": "lec14.html",
+    "label": "OOP in C++",
+    "badge": "L14"
+  },
+  {
+    "file": "exam.html",
+    "label": "예상 문제 1회",
+    "badge": "★"
+  },
+  {
+    "file": "exam2.html",
+    "label": "예상 문제 2회",
+    "badge": "★"
+  },
+  {
+    "file": "exam3.html",
+    "label": "예상 문제 3회",
+    "badge": "★"
+  },
+  {
+    "file": "exam4.html",
+    "label": "예상 문제 4회",
+    "badge": "★"
+  },
+  {
+    "file": "exam5.html",
+    "label": "예상 문제 5회",
+    "badge": "★"
+  },
+  {
+    "file": "exam6.html",
+    "label": "예상 문제 6회",
+    "badge": "★"
+  },
+  {
+    "file": "exam7.html",
+    "label": "예상 문제 7회",
+    "badge": "★"
+  }
+]

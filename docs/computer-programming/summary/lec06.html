@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>L06 Inheritance</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:," />
+</head>
+<body>
+<nav>
+  <h2>컴퓨터프로그래밍</h2>
+  <ul>
+    <li><a href="index.html">🏠 홈</a></li>
+    <li><a href="lec02.html"><span class="badge">L02</span>Java Basics I</a></li>
+    <li><a href="lec03.html"><span class="badge">L03</span>Java Basics II</a></li>
+    <li><a href="lec04.html"><span class="badge">L04</span>OOP</a></li>
+    <li><a href="lec05.html"><span class="badge">L05</span>Encapsulation</a></li>
+    <li><a href="lec06.html" class="active"><span class="badge">L06</span>Inheritance</a></li>
+    <li><a href="lec07.html"><span class="badge">L07</span>Polymorphism</a></li>
+    <li><a href="lec08.html"><span class="badge">L08</span>Collections</a></li>
+    <li><a href="lec09.html"><span class="badge">L09</span>Collections II</a></li>
+    <li><a href="lec10.html"><span class="badge">L10</span>I/O</a></li>
+    <li><a href="lec11.html"><span class="badge">L11</span>Exceptions</a></li>
+    <li><a href="lec12.html"><span class="badge">L12</span>Design Patterns</a></li>
+    <li><a href="lec13.html"><span class="badge">L13</span>C++ Basics</a></li>
+    <li><a href="lec14.html"><span class="badge">L14</span>OOP in C++</a></li>
+  </ul>
+</nav>
+<main>
+  <h1>Inheritance <small>Lecture 06</small></h1>
+  <p class="subtitle">extends · overriding · super · interface · abstract class</p>
+
+  <h2>상속이란?</h2>
+  <div class="def">
+    <strong>Inheritance (상속)</strong>: 기존 클래스(부모/슈퍼클래스)를 기반으로 새 클래스(자식/서브클래스)를 만드는 메커니즘. 자식 클래스는 부모의 속성과 메서드를 물려받는다.<br><br>
+    장점: 모듈성, 재사용성, 일관성
+  </div>
+  <pre><code><span class="kw">class</span> Child <span class="kw">extends</span> Parent {
+    <span class="cm">// 추가 속성/메서드</span>
+}</code></pre>
+
+  <h2>Is-a vs Has-a 규칙</h2>
+  <div class="def">
+    <strong>Is-a (상속)</strong>: "B is an A"가 성립할 때만 상속 사용.<br>
+    예) CarOwner is-a Person → extends 사용<br><br>
+    <strong>Has-a (합성)</strong>: "B has an A"이면 멤버 변수 사용.<br>
+    예) CarOwner has-a Car → Car 타입 필드로 가짐
+  </div>
+
+  <h2>상속 유형</h2>
+  <table>
+    <tr><th>유형</th><th>설명</th><th>Java 지원</th></tr>
+    <tr><td>Single</td><td>부모 하나</td><td>O</td></tr>
+    <tr><td>Multi-level</td><td>A → B → C 체인</td><td>O</td></tr>
+    <tr><td>Hierarchical</td><td>부모 하나, 자식 여럿</td><td>O</td></tr>
+    <tr><td>Multiple</td><td>부모 여럿</td><td>X (diamond problem)</td></tr>
+  </table>
+  <div class="tip">모든 클래스는 암묵적으로 <code>Object</code>를 상속한다.</div>
+
+  <h2>instanceof 연산자</h2>
+  <div class="def">
+    <code>obj instanceof ClassName</code>: 객체가 해당 클래스(또는 슈퍼클래스)의 인스턴스인지 boolean 반환.
+  </div>
+  <pre><code>Child c = <span class="kw">new</span> Child();
+c <span class="kw">instanceof</span> Child   <span class="cm">// true</span>
+c <span class="kw">instanceof</span> Parent  <span class="cm">// true (Child is-a Parent)</span></code></pre>
+
+  <h2>메서드 오버라이딩 (Overriding)</h2>
+  <div class="def">
+    <strong>Overriding</strong>: 서브클래스가 슈퍼클래스의 인스턴스 메서드를 <strong>동일한 시그니처</strong>로 재정의하는 것.
+  </div>
+  <ul class="bullets">
+    <li><code>@Override</code> 어노테이션 사용 권장 (컴파일 오류 잡아줌)</li>
+    <li>반환 타입: 동일하거나 공변 서브타입</li>
+    <li>접근 제어자: 같거나 더 넓어야 함</li>
+    <li><strong>오버라이딩 불가</strong>: <code>private</code>, <code>static</code>, <code>final</code> 메서드</li>
+  </ul>
+
+  <h2>Overriding vs Hiding</h2>
+  <table class="cmp">
+    <tr><th>구분</th><th>인스턴스 메서드</th><th>static 메서드</th></tr>
+    <tr><td>이름</td><td>Overriding</td><td>Hiding</td></tr>
+    <tr><td>결정 시점</td><td>런타임 (동적 바인딩)</td><td>컴파일 타임 (정적 바인딩)</td></tr>
+    <tr><td>기준</td><td>실제 객체의 타입</td><td>변수의 선언 타입</td></tr>
+  </table>
+  <pre><code>Super s = <span class="kw">new</span> Sub();
+s.greeting(); <span class="cm">// static → "Goodnight" (Super 기준)</span>
+s.name();     <span class="cm">// instance → "Henry"    (Sub 기준, 동적 바인딩)</span></code></pre>
+
+  <h2>타입 캐스팅</h2>
+  <table>
+    <tr><th>방향</th><th>이름</th><th>방법</th><th>안전성</th></tr>
+    <tr><td>자식 → 부모</td><td>Upcasting</td><td>자동 (or 명시적)</td><td>항상 안전</td></tr>
+    <tr><td>부모 → 자식</td><td>Downcasting</td><td>반드시 명시적 <code>(ChildType)</code></td><td>ClassCastException 가능</td></tr>
+  </table>
+  <div class="warn">업캐스팅 후에도 <strong>인스턴스 메서드는 실제 객체의 버전으로 동작</strong>한다 (동적 바인딩).</div>
+
+  <h2>super 키워드</h2>
+  <div class="def">
+    <strong>super</strong>: 부모 클래스의 멤버를 참조.<br>
+    · <code>super()</code>: 부모 생성자 호출 — 반드시 생성자의 <strong>첫 번째 줄</strong><br>
+    · <code>super.method()</code>: 부모 메서드 호출<br>
+    · <code>super.super.method()</code>는 불가 (조부모 직접 접근 금지)
+  </div>
+
+  <h2>생성자 체이닝 (Constructor Chaining)</h2>
+  <div class="def">
+    생성자 호출 시 Object까지 자동으로 체인 연결됨. 명시적 <code>super()</code>가 없으면 컴파일러가 자동 삽입.<br><br>
+    실행 순서: 조부모 생성자 → 부모 생성자 → 인스턴스 변수 초기화 → 생성자 본문
+  </div>
+
+  <h2>final 키워드</h2>
+  <table>
+    <tr><th>대상</th><th>의미</th></tr>
+    <tr><td><code>final class</code></td><td>상속 불가</td></tr>
+    <tr><td><code>final method</code></td><td>오버라이딩 불가 (상속은 가능)</td></tr>
+    <tr><td><code>final variable</code></td><td>재할당 불가 (상수)</td></tr>
+  </table>
+
+  <h2>인터페이스 (Interface)</h2>
+  <div class="def">
+    <strong>Interface</strong>: 메서드 시그니처만 정의하는 청사진(blueprint). 클래스가 아님.<br>
+    · 모든 메서드: 기본적으로 abstract (본문 없음)<br>
+    · 모든 변수: 묵시적으로 <code>public static final</code><br>
+    · 하나의 클래스가 <strong>여러 인터페이스 구현 가능</strong> (다중 상속 대안)
+  </div>
+  <pre><code><span class="kw">interface</span> Flyable {
+    <span class="kw">void</span> <span class="fn">fly</span>();  <span class="cm">// abstract by default</span>
+}
+<span class="kw">class</span> Bird <span class="kw">implements</span> Flyable {
+    <span class="op">@Override</span>
+    <span class="kw">public void</span> <span class="fn">fly</span>() { System.out.println(<span class="st">"Bird flies"</span>); }
+}</code></pre>
+
+  <h2>추상 클래스 (Abstract Class)</h2>
+  <div class="def">
+    <strong>Abstract Class</strong>: abstract 메서드와 일반 메서드를 모두 가질 수 있는 클래스.<br>
+    · <strong>직접 인스턴스화 불가</strong><br>
+    · 서브클래스는 abstract 메서드를 반드시 오버라이딩해야 함
+  </div>
+  <pre><code><span class="kw">abstract class</span> Person {
+    String name;
+    <span class="kw">void</span> <span class="fn">printName</span>() { System.out.println(name); }  <span class="cm">// 구현됨</span>
+    <span class="kw">abstract void</span> <span class="fn">work</span>();                            <span class="cm">// 반드시 오버라이딩</span>
+}</code></pre>
+
+  <h2>Abstract Class vs Interface</h2>
+  <table class="cmp">
+    <tr><th>구분</th><th>Abstract Class</th><th>Interface</th></tr>
+    <tr><td>메서드</td><td>abstract + 구현 모두 가능</td><td>abstract만 (Java 8+: default/static 허용)</td></tr>
+    <tr><td>변수</td><td>모든 종류</td><td>public static final만</td></tr>
+    <tr><td>상속/구현</td><td>하나만 extends</td><td>여러 개 implements 가능</td></tr>
+    <tr><td>사용 시기</td><td>공유 로직 + 공통 인터페이스</td><td>다중 구현 / 순수 설계 명세</td></tr>
+  </table>
+
+  <h2>toString() / equals() 오버라이딩</h2>
+  <pre><code><span class="op">@Override</span>
+<span class="kw">public</span> String <span class="fn">toString</span>() {
+    <span class="kw">return</span> String.format(<span class="st">"%s %s (%d)"</span>, fName, lName, id);
+}
+
+<span class="op">@Override</span>
+<span class="kw">public boolean</span> <span class="fn">equals</span>(Object o) {
+    <span class="kw">if</span> (<span class="kw">this</span> == o) <span class="kw">return true</span>;
+    <span class="kw">if</span> (o <span class="kw">instanceof</span> Student) {
+        Student s = (Student) o;
+        <span class="kw">return this</span>.id == s.id;
+    }
+    <span class="kw">return false</span>;
+}</code></pre>
+</main>
+<script src="auto-nav.js" defer></script>
+</body>
+</html>

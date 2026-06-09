@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>기말 예상 문제 4회</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.q-block {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin: 1em 0;
+  overflow: hidden;
+}
+.q-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7em;
+  padding: 0.8em 1.2em;
+  background: #f5f5f5;
+  color: #1a1a1a;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.q-num { font-size: 0.8em; font-weight: 700; color: #aaa; min-width: 2.2em; }
+.q-body { padding: 0.8em 1.2em 1em; }
+.badge-easy { background: #d1fae5; color: #065f46; font-size: 0.72em; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.badge-hard { background: #fee2e2; color: #991b1b; font-size: 0.72em; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.badge-mid  { background: #fef3c7; color: #92400e; font-size: 0.72em; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.badge-retry { background: #ede9fe; color: #5b21b6; font-size: 0.72em; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.choices { list-style: none; padding: 0; margin: 0.6em 0 0; }
+.choices li { padding: 0.25em 0; color: #333; font-size: 14px; }
+.choices li::before { content: attr(data-n) " "; color: #aaa; }
+details { margin-top: 0.8em; }
+details summary { cursor: pointer; color: #2563eb; font-size: 0.88em; user-select: none; padding: 0.3em 0; }
+details summary:hover { color: #1d4ed8; }
+.answer {
+  margin-top: 0.5em; padding: 0.8em 1em;
+  background: #f0f4ff; border-left: 3px solid #2563eb;
+  border-radius: 0 4px 4px 0; font-size: 0.92em; line-height: 1.7; color: #1a1a1a;
+}
+.answer strong { color: #1d4ed8; }
+.answer code { background: #e8eeff; padding: 1px 5px; border-radius: 3px; font-size: 0.95em; color: #c0392b; }
+.section-desc { color: #888; font-size: 0.88em; margin: -0.3em 0 1em; }
+
+.check-row { display: flex; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #f0f0f0; }
+.check-row button { border: 1px solid #e0e0e0; background: #fff; border-radius: 4px; padding: 3px 10px; font-size: 12px; cursor: pointer; color: #555; }
+.check-row button:hover { background: #f5f5f5; }
+.btn-correct.active-correct { background: #d1fae5; border-color: #34d399; color: #065f46; font-weight: 700; }
+.btn-wrong.active-wrong     { background: #fee2e2; border-color: #f87171; color: #991b1b; font-weight: 700; }
+.q-block.marked-correct { border-left: 3px solid #34d399; }
+.q-block.marked-wrong   { border-left: 3px solid #f87171; }
+
+#score-bar { position: sticky; bottom: 0; background: #fff; border-top: 1px solid #e0e0e0; padding: 10px 0; margin-top: 32px; display: flex; align-items: center; gap: 10px; }
+#score-summary { font-weight: 700; font-size: 14px; color: #111; white-space: nowrap; }
+#score-line { font-size: 12px; color: #555; font-family: 'Consolas', monospace; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 4px 8px; flex: 1; white-space: nowrap; overflow-x: auto; cursor: text; user-select: all; }
+#copy-btn { border: 1px solid #2563eb; background: #fff; color: #2563eb; border-radius: 4px; padding: 4px 12px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+#copy-btn:hover { background: #eff6ff; }
+
+.answer-input {
+  width: 100%;
+  min-height: 80px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+  resize: vertical;
+  color: #1a1a1a;
+  background: #fafafa;
+}
+.answer-input:focus { outline: none; border-color: #2563eb; background: #fff; }
+.answer-input::placeholder { color: #bbb; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:," />
+</head>
+<body>
+<nav>
+  <h2>컴퓨터프로그래밍</h2>
+  <ul>
+    <li><a href="index.html">🏠 홈</a></li>
+    <li><a href="lec02.html"><span class="badge">L02</span>Java Basics I</a></li>
+    <li><a href="lec03.html"><span class="badge">L03</span>Java Basics II</a></li>
+    <li><a href="lec04.html"><span class="badge">L04</span>OOP</a></li>
+    <li><a href="lec05.html"><span class="badge">L05</span>Encapsulation</a></li>
+    <li><a href="lec06.html"><span class="badge">L06</span>Inheritance</a></li>
+    <li><a href="lec07.html"><span class="badge">L07</span>Polymorphism</a></li>
+    <li><a href="lec08.html"><span class="badge">L08</span>Collections</a></li>
+    <li><a href="lec09.html"><span class="badge">L09</span>Collections II</a></li>
+    <li><a href="lec10.html"><span class="badge">L10</span>I/O</a></li>
+    <li><a href="lec11.html"><span class="badge">L11</span>Exceptions</a></li>
+    <li><a href="lec12.html"><span class="badge">L12</span>Design Patterns</a></li>
+    <li><a href="lec13.html"><span class="badge">L13</span>C++ Basics</a></li>
+    <li><a href="lec14.html"><span class="badge">L14</span>OOP in C++</a></li>
+    <li><a href="exam.html"><span class="badge" style="background:#f38ba8">★</span>예상 문제 1회</a></li>
+    <li><a href="exam2.html"><span class="badge" style="background:#f38ba8">★</span>예상 문제 2회</a></li>
+    <li><a href="exam3.html"><span class="badge" style="background:#f38ba8">★</span>예상 문제 3회</a></li>
+    <li><a href="exam4.html" class="active"><span class="badge" style="background:#f38ba8">★</span>예상 문제 4회</a></li>
+  </ul>
+</nav>
+<main>
+  <h1>기말고사 예상 문제 4회 <small>30문제</small></h1>
+  <p class="subtitle">난이도 3회 유지 · 슬라이드/랩 범위 엄수 · <span style="color:#5b21b6;font-weight:600">보라</span> = 1·2·3회 약점 재출제 · 신규 시나리오(슬라이드 예제 미사용)</p>
+
+  <!-- ===== Section 1 — 객관식 ===== -->
+  <h2>Section 1 — 객관식</h2>
+  <p class="section-desc">10문제</p>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q1</span><span class="badge-easy">기초</span> 아래 코드의 출력은?</div>
+    <div class="q-body">
+      <pre><code><span class="kw">int</span> x = <span class="nu">7</span>;
+<span class="kw">double</span> y = x;          <span class="cm">// (A) widening</span>
+<span class="kw">int</span> z = (<span class="kw">int</span>) <span class="nu">3.9</span>;   <span class="cm">// (B) narrowing</span>
+System.out.println(y + <span class="st">" "</span> + z);</code></pre>
+      <ul class="choices">
+        <li data-n="①">7 3</li>
+        <li data-n="②">7.0 3</li>
+        <li data-n="③">7.0 4</li>
+        <li data-n="④">7 4</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② 7.0 3</strong><br>
+          (A) int → double은 <strong>widening</strong>(자동 형변환)이라 7이 7.0으로 저장된다.<br>
+          (B) double → int는 <strong>narrowing</strong>(명시적 캐스팅 필요)이며, 소수점 이하는 <strong>버림</strong>(반올림 아님)이라 3.9 → 3.<br>
+          출력: <code>7.0 3</code>.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q2</span><span class="badge-mid">중간</span> 아래 코드의 출력은?</div>
+    <div class="q-body">
+      <pre><code>String a = <span class="st">"hi"</span>;
+String b = <span class="st">"hi"</span>;
+String c = <span class="kw">new</span> String(<span class="st">"hi"</span>);
+System.out.print((a == b) + <span class="st">" "</span>);
+System.out.print((a == c) + <span class="st">" "</span>);
+System.out.print(a.<span class="fn">equals</span>(c));</code></pre>
+      <ul class="choices">
+        <li data-n="①">true true true</li>
+        <li data-n="②">true false true</li>
+        <li data-n="③">false false true</li>
+        <li data-n="④">true false false</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② true false true</strong><br>
+          리터럴 <code>"hi"</code>는 <strong>String Pool</strong>에 한 번만 만들어져 a와 b가 같은 객체를 가리킨다 → <code>a == b</code>는 true.<br>
+          <code>new String("hi")</code>는 힙에 <strong>새 객체</strong>를 만들므로 a와 주소가 다르다 → <code>a == c</code>는 false.<br>
+          <code>equals()</code>는 내용을 비교하므로 a.equals(c)는 true.<br>
+          == 은 참조(주소) 비교, equals는 내용 비교임을 구분할 것.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q3</span><span class="badge-mid">중간</span> 아래 코드의 출력은?</div>
+    <div class="q-body">
+      <pre><code><span class="kw">int</span> n = <span class="nu">2</span>;
+<span class="kw">switch</span> (n) {
+    <span class="kw">case</span> <span class="nu">1</span>: System.out.print(<span class="st">"A"</span>);
+    <span class="kw">case</span> <span class="nu">2</span>: System.out.print(<span class="st">"B"</span>);
+    <span class="kw">case</span> <span class="nu">3</span>: System.out.print(<span class="st">"C"</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="nu">4</span>: System.out.print(<span class="st">"D"</span>);
+}</code></pre>
+      <ul class="choices">
+        <li data-n="①">B</li>
+        <li data-n="②">BC</li>
+        <li data-n="③">BCD</li>
+        <li data-n="④">ABC</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② BC</strong><br>
+          n이 2이므로 <code>case 2</code>로 진입 → "B" 출력. <code>break</code>가 없으므로 아래로 <strong>fall-through</strong> → <code>case 3</code>의 "C"까지 출력하고 거기서 break.<br>
+          출력: <code>BC</code>. case에 break가 없으면 다음 case로 흘러내린다는 점이 핵심.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q4</span><span class="badge-mid">중간</span> 접근 제어자에 대한 설명으로 <strong>옳은</strong> 것은?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①"><code>protected</code> 멤버는 같은 패키지에서는 접근할 수 없고 자식 클래스에서만 접근할 수 있다</li>
+        <li data-n="②">아무 접근 제어자도 쓰지 않으면(default) 같은 패키지 안에서만 접근할 수 있다</li>
+        <li data-n="③"><code>private</code> 멤버는 같은 패키지의 다른 클래스에서 직접 접근할 수 있다</li>
+        <li data-n="④"><code>public</code> 멤버는 같은 클래스 안에서만 접근할 수 있다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② 옳음</strong><br>
+          접근 범위: <code>private</code>(같은 클래스) ⊂ <code>default</code>(같은 패키지) ⊂ <code>protected</code>(같은 패키지 + 다른 패키지의 자식) ⊂ <code>public</code>(어디서나).<br><br>
+          ① 틀림 — protected는 같은 패키지에서도 접근 가능하다(default 범위를 포함).<br>
+          ③ 틀림 — private은 오직 같은 클래스 안에서만 접근 가능하다.<br>
+          ④ 틀림 — public은 어디서나 접근 가능하다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q5</span><span class="badge-retry">재출제</span> 아래 코드의 출력은? <small>(static hiding vs instance overriding)</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Engine {
+    <span class="kw">static</span> String <span class="fn">spec</span>() { <span class="kw">return</span> <span class="st">"base"</span>; }
+    String <span class="fn">label</span>() { <span class="kw">return</span> <span class="st">"engine"</span>; }
+}
+<span class="kw">class</span> Turbo <span class="kw">extends</span> Engine {
+    <span class="kw">static</span> String <span class="fn">spec</span>() { <span class="kw">return</span> <span class="st">"turbo"</span>; }
+    <span class="op">@Override</span>
+    String <span class="fn">label</span>() { <span class="kw">return</span> <span class="st">"boosted"</span>; }
+}
+
+Engine e = <span class="kw">new</span> Turbo();
+System.out.println(e.<span class="fn">spec</span>() + <span class="st">" "</span> + e.<span class="fn">label</span>());</code></pre>
+      <ul class="choices">
+        <li data-n="①">base engine</li>
+        <li data-n="②">turbo boosted</li>
+        <li data-n="③">base boosted</li>
+        <li data-n="④">turbo engine</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>③ base boosted</strong><br>
+          <code>e.spec()</code> → static 메서드는 <strong>hiding</strong>(정적 바인딩): 참조 타입 Engine의 spec() → "base".<br>
+          <code>e.label()</code> → 인스턴스 메서드는 <strong>overriding</strong>(동적 바인딩): 실제 객체 Turbo의 label() → "boosted".<br>
+          static 메서드는 오버라이딩이 아니라 hiding이라 참조 타입으로 결정된다(Lec6 표).
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q6</span><span class="badge-mid">중간</span> 오버로딩(overloading)에 대한 설명으로 <strong>옳은</strong> 것은?</div>
+    <div class="q-body">
+      <pre><code><span class="kw">int</span>    <span class="fn">f</span>(<span class="kw">int</span> a) { <span class="kw">return</span> a; }
+<span class="kw">double</span> <span class="fn">f</span>(<span class="kw">int</span> a) { <span class="kw">return</span> a; }   <span class="cm">// (X)</span>
+<span class="kw">int</span>    <span class="fn">f</span>(<span class="kw">double</span> a) { <span class="kw">return</span> <span class="nu">0</span>; }</code></pre>
+      <ul class="choices">
+        <li data-n="①">(X)는 반환 타입이 다르므로 정상적인 오버로딩이다</li>
+        <li data-n="②">(X)는 첫 번째 f(int)와 시그니처가 같아 컴파일 에러다</li>
+        <li data-n="③">매개변수 타입이 달라도 메서드 이름이 같으면 오버로딩이 불가능하다</li>
+        <li data-n="④"><code>f(double a)</code>는 f(int a)와 이름이 같아 컴파일 에러다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② 옳음</strong><br>
+          오버로딩 시그니처는 <strong>메서드 이름 + 매개변수 목록</strong>으로 결정되며 <strong>반환 타입은 제외</strong>된다.<br>
+          (X) <code>double f(int a)</code>는 <code>int f(int a)</code>와 이름·매개변수가 모두 같아(반환 타입만 다름) 중복 정의이므로 컴파일 에러다.<br><br>
+          ③ 틀림 — 매개변수 타입이 다르면(f(double)) 정상 오버로딩이다.<br>
+          ④ 틀림 — f(double a)는 매개변수 타입이 달라 f(int a)와 공존 가능하다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q7</span><span class="badge-retry">재출제</span> 아래 Queue 코드의 출력은? <small>(add/poll/peek)</small></div>
+    <div class="q-body">
+      <pre><code>Queue&lt;String&gt; q = <span class="kw">new</span> LinkedList&lt;&gt;();
+q.<span class="fn">add</span>(<span class="st">"x"</span>);
+q.<span class="fn">add</span>(<span class="st">"y"</span>);
+q.<span class="fn">add</span>(<span class="st">"z"</span>);
+System.out.print(q.<span class="fn">poll</span>());
+System.out.print(q.<span class="fn">peek</span>());
+System.out.print(q.<span class="fn">poll</span>());
+System.out.print(q.<span class="fn">peek</span>());</code></pre>
+      <ul class="choices">
+        <li data-n="①">xyyz</li>
+        <li data-n="②">xxyy</li>
+        <li data-n="③">xyzz</li>
+        <li data-n="④">xyyzz</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>① xyyz</strong><br>
+          add 후 큐(FIFO): [x, y, z].<br>
+          poll → "x" 제거·반환, 큐 [y, z].<br>
+          peek → "y" 반환(제거 안 함), 큐 [y, z].<br>
+          poll → "y" 제거·반환, 큐 [z].<br>
+          peek → "z" 반환(제거 안 함), 큐 [z].<br>
+          출력: x y y z → <code>xyyz</code>. poll은 꺼내고, peek는 들여다보기만 한다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q8</span><span class="badge-hard">함정</span> 예외 분류에 대한 설명으로 <strong>옳은</strong> 것은?</div>
+    <div class="q-body">
+      <ul class="choices">
+        <li data-n="①"><code>IOException</code>은 Unchecked Exception이라 try-catch나 throws 없이도 컴파일된다</li>
+        <li data-n="②"><code>NullPointerException</code>은 Checked Exception이라 반드시 처리하거나 선언해야 한다</li>
+        <li data-n="③"><code>ArithmeticException</code>과 <code>ClassCastException</code>은 Unchecked Exception이다</li>
+        <li data-n="④"><code>FileNotFoundException</code>은 Unchecked Exception이다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>③ 옳음</strong><br>
+          <strong>Unchecked</strong>(RuntimeException 계열, 처리 강제 안 됨): NullPointerException, ArithmeticException, ClassCastException, IllegalArgumentException, IndexOutOfBoundsException.<br>
+          <strong>Checked</strong>(처리/선언 강제): IOException, FileNotFoundException, SQLException.<br><br>
+          ① 틀림 — IOException은 Checked라 처리 또는 throws 선언이 필수다.<br>
+          ② 틀림 — NullPointerException은 Unchecked다.<br>
+          ④ 틀림 — FileNotFoundException은 Checked다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q9</span><span class="badge-mid">중간</span> C++ 코드에 대한 설명으로 <strong>옳은</strong> 것은?</div>
+    <div class="q-body">
+      <pre><code><span class="kw">struct</span> A { <span class="kw">int</span> v; };
+<span class="kw">class</span>  B { <span class="kw">int</span> v; };
+
+A a; a.v = <span class="nu">1</span>;   <span class="cm">// (1)</span>
+B b; b.v = <span class="nu">1</span>;   <span class="cm">// (2)</span></code></pre>
+      <ul class="choices">
+        <li data-n="①">(1), (2) 모두 정상 컴파일된다</li>
+        <li data-n="②">(1)은 정상, (2)는 에러 — struct는 멤버가 기본 public, class는 기본 private이기 때문</li>
+        <li data-n="③">(1)은 에러, (2)는 정상 — class만 멤버 접근이 허용된다</li>
+        <li data-n="④">struct와 class는 완전히 동일하므로 둘 다 정상이다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② 옳음</strong><br>
+          C++에서 <code>struct</code>의 멤버 기본 접근 지정자는 <strong>public</strong>, <code>class</code>의 기본은 <strong>private</strong>이다.<br>
+          (1) A의 v는 public이라 외부에서 <code>a.v = 1</code> 접근 가능.<br>
+          (2) B의 v는 private이라 외부에서 <code>b.v</code> 접근 시 컴파일 에러.<br>
+          기본 접근 지정자가 다르다는 점이 struct와 class의 핵심 차이다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q10</span><span class="badge-mid">중간</span> 아래 C++ static 멤버 코드에 대한 설명으로 <strong>옳은</strong> 것은?</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Ticket {
+<span class="kw">public</span>:
+    <span class="kw">static int</span> count;
+    Ticket() { count++; }
+};
+<span class="kw">int</span> Ticket::count = <span class="nu">0</span>;   <span class="cm">// (외부 정의)</span>
+
+Ticket t1, t2, t3;
+cout &lt;&lt; Ticket::count;</code></pre>
+      <ul class="choices">
+        <li data-n="①">출력은 0이다 — static 멤버는 객체마다 따로 존재한다</li>
+        <li data-n="②">출력은 3이다 — static 멤버는 모든 객체가 공유한다</li>
+        <li data-n="③"><code>int Ticket::count = 0;</code> 줄은 불필요하며 없어도 된다</li>
+        <li data-n="④">static 멤버는 <code>t1.count</code>처럼 객체로만 접근할 수 있다</li>
+      </ul>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>② 출력은 3</strong><br>
+          static 멤버는 클래스당 하나만 존재하며 <strong>모든 객체가 공유</strong>한다. 생성자가 3번 호출되어 count가 0→1→2→3이 된다.<br>
+          static 멤버 변수는 클래스 외부에서 <code>int Ticket::count = 0;</code>으로 <strong>반드시 정의</strong>해야 한다(③ 틀림 — 없으면 링크 에러).<br>
+          <code>Ticket::count</code>처럼 클래스명으로 접근하는 것이 일반적이다(④ 틀림).
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== Section 2 — 코드 출력 예측 ===== -->
+  <h2>Section 2 — 코드 출력 예측</h2>
+  <p class="section-desc">8문제</p>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q11</span><span class="badge-retry">재출제</span> 아래 PriorityQueue 코드의 출력을 쓰시오. <small>(add/poll만, min-heap)</small></div>
+    <div class="q-body">
+      <pre><code>PriorityQueue&lt;Integer&gt; pq = <span class="kw">new</span> PriorityQueue&lt;&gt;();
+pq.<span class="fn">add</span>(<span class="nu">4</span>);
+pq.<span class="fn">add</span>(<span class="nu">1</span>);
+pq.<span class="fn">add</span>(<span class="nu">3</span>);
+pq.<span class="fn">add</span>(<span class="nu">2</span>);
+System.out.print(pq.<span class="fn">poll</span>());
+System.out.print(pq.<span class="fn">peek</span>());
+System.out.print(pq.<span class="fn">poll</span>());
+System.out.print(pq.<span class="fn">poll</span>());</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>1223</strong><br>
+          기본 PriorityQueue는 <strong>최소 힙(min-heap)</strong>이라 가장 작은 값부터 나온다.<br>
+          poll → 1(최솟값 제거), 남은 원소 {2,3,4}.<br>
+          peek → 2(현재 최솟값, 제거 안 함).<br>
+          poll → 2 제거, 남은 {3,4}.<br>
+          poll → 3 제거.<br>
+          출력: 1 2 2 3 → <code>1223</code>. 삽입 순서와 무관하게 우선순위(작은 값) 순으로 꺼내진다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q12</span><span class="badge-mid">중간</span> 아래 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code>List&lt;Integer&gt; nums = <span class="kw">new</span> ArrayList&lt;&gt;();
+nums.<span class="fn">add</span>(<span class="nu">10</span>);
+nums.<span class="fn">add</span>(<span class="nu">20</span>);
+nums.<span class="fn">add</span>(<span class="nu">30</span>);
+nums.<span class="fn">add</span>(<span class="nu">40</span>);
+
+Iterator&lt;Integer&gt; it = nums.<span class="fn">iterator</span>();
+<span class="kw">while</span> (it.<span class="fn">hasNext</span>()) {
+    <span class="kw">int</span> v = it.<span class="fn">next</span>();
+    <span class="kw">if</span> (v == <span class="nu">20</span>) it.<span class="fn">remove</span>();
+}
+System.out.println(nums);</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>[10, 30, 40]</strong><br>
+          Iterator로 순회하면서 <code>it.remove()</code>로 현재 원소(20)를 안전하게 제거한다.<br>
+          순회 중 리스트의 <code>nums.remove()</code>를 직접 호출하면 <strong>ConcurrentModificationException</strong>이 발생하지만, Iterator의 <code>remove()</code>는 안전하다.<br>
+          결과: 20이 빠진 [10, 30, 40].
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q13</span><span class="badge-retry">재출제</span> ★Lab 아래 코드의 출력을 쓰시오. <small>(Random 객체 생성 후 호출 / Lab3)</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">import</span> java.util.Random;
+
+Random r = <span class="kw">new</span> Random(<span class="nu">42</span>);   <span class="cm">// 시드 42 (재현 가능)</span>
+<span class="kw">int</span> a = r.<span class="fn">nextInt</span>(<span class="nu">10</span>);          <span class="cm">// 0~9</span>
+<span class="kw">int</span> b = r.<span class="fn">nextInt</span>(<span class="nu">10</span>);          <span class="cm">// 0~9</span>
+System.out.println(a &gt;= <span class="nu">0</span> &amp;&amp; a &lt;= <span class="nu">9</span>);
+System.out.println(b &gt;= <span class="nu">0</span> &amp;&amp; b &lt;= <span class="nu">9</span>);</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>true<br>true</strong><br>
+          <code>nextInt(10)</code>은 <strong>0 이상 10 미만</strong>(0~9)의 정수를 반환하므로 a, b 모두 0~9 범위 → 두 비교 모두 true.<br><br>
+          <strong>핵심:</strong> <code>nextInt</code>는 <strong>인스턴스 메서드</strong>라 반드시 <code>new Random(seed)</code>로 객체를 먼저 만든 뒤 <code>r.nextInt(10)</code>처럼 호출해야 한다. <code>Random.nextInt(10)</code>처럼 클래스명으로 직접 부르면 컴파일 에러(static 메서드가 아니기 때문).<br>
+          시드를 고정(42)하면 실행마다 같은 난수열이 나와 재현 가능하다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q14</span><span class="badge-mid">중간</span> 아래 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code>Set&lt;Integer&gt; set = <span class="kw">new</span> TreeSet&lt;&gt;();
+set.<span class="fn">add</span>(<span class="nu">5</span>);
+set.<span class="fn">add</span>(<span class="nu">1</span>);
+set.<span class="fn">add</span>(<span class="nu">3</span>);
+set.<span class="fn">add</span>(<span class="nu">1</span>);   <span class="cm">// 중복</span>
+set.<span class="fn">add</span>(<span class="nu">5</span>);   <span class="cm">// 중복</span>
+System.out.println(set);</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>[1, 3, 5]</strong><br>
+          Set은 <strong>중복을 허용하지 않으므로</strong> 두 번 add한 1과 5는 한 번만 저장된다.<br>
+          TreeSet은 원소를 <strong>자연 순서(오름차순)</strong>로 정렬해 보관한다 → [1, 3, 5].<br>
+          (HashSet이었다면 순서가 보장되지 않지만, TreeSet은 정렬 순서가 보장된다.)
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q15</span><span class="badge-mid">중간</span> 아래 코드의 출력을 쓰시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">int</span> total = <span class="nu">0</span>;
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="nu">1</span>; i &lt;= <span class="nu">10</span>; i++) {
+    <span class="kw">if</span> (i % <span class="nu">2</span> == <span class="nu">0</span>) <span class="kw">continue</span>;
+    <span class="kw">if</span> (i &gt; <span class="nu">7</span>) <span class="kw">break</span>;
+    total += i;
+}
+System.out.println(total);</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>16</strong><br>
+          <code>continue</code>로 짝수는 건너뛴다 → 홀수(1,3,5,7,9)만 후보.<br>
+          <code>i &gt; 7</code>이면 <code>break</code>로 반복 종료 → i=9에서 break(더하기 전).<br>
+          더해지는 값: 1 + 3 + 5 + 7 = <strong>16</strong>. (i=9는 break로 빠져 더해지지 않는다.)
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q16</span><span class="badge-mid">중간</span> 아래 코드의 출력을 쓰시오. <small>(this() 생성자 호출)</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Box {
+    <span class="kw">int</span> w, h;
+    Box() {
+        <span class="kw">this</span>(<span class="nu">1</span>, <span class="nu">1</span>);
+        System.out.println(<span class="st">"default"</span>);
+    }
+    Box(<span class="kw">int</span> w, <span class="kw">int</span> h) {
+        <span class="kw">this</span>.w = w; <span class="kw">this</span>.h = h;
+        System.out.println(<span class="st">"sized "</span> + w + <span class="st">"x"</span> + h);
+    }
+}
+<span class="kw">new</span> Box();</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>sized 1x1<br>default</strong><br>
+          <code>new Box()</code> → 기본 생성자 진입 → 첫 줄 <code>this(1, 1)</code>이 <strong>다른 생성자를 먼저 호출</strong> → "sized 1x1" 출력.<br>
+          그 후 기본 생성자 본문이 이어서 실행 → "default" 출력.<br>
+          <code>this(...)</code>는 같은 클래스의 다른 생성자를 호출하며, 반드시 생성자의 <strong>첫 번째 문장</strong>이어야 한다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q17</span><span class="badge-mid">중간</span> 아래 C++ 코드의 출력을 쓰시오. <small>(소멸자 역순 호출)</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Tag {
+<span class="kw">public</span>:
+    <span class="kw">int</span> id;
+    Tag(<span class="kw">int</span> i) : id(i) { cout &lt;&lt; <span class="st">"C"</span> &lt;&lt; id; }
+    ~Tag() { cout &lt;&lt; <span class="st">"D"</span> &lt;&lt; id; }
+};
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    Tag a(<span class="nu">1</span>);
+    Tag b(<span class="nu">2</span>);
+    <span class="kw">return</span> <span class="nu">0</span>;
+}</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>C1C2D2D1</strong><br>
+          생성: a(1) → "C1", b(2) → "C2".<br>
+          main 종료 시 지역 객체가 소멸되는데, <strong>생성의 역순</strong>으로 소멸자가 호출된다: 나중에 만든 b(2)부터 → "D2", 그다음 a(1) → "D1".<br>
+          출력: <code>C1C2D2D1</code>. 스택처럼 LIFO(나중에 생성된 것이 먼저 소멸).
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q18</span><span class="badge-mid">중간</span> 아래 C++ 코드의 출력을 쓰시오. <small>(복사 생성자 호출 시점)</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Node {
+<span class="kw">public</span>:
+    Node() {}
+    Node(<span class="kw">const</span> Node&amp;) { cout &lt;&lt; <span class="st">"copy "</span>; }
+};
+<span class="kw">void</span> <span class="fn">byRef</span>(Node&amp; n) {}
+<span class="kw">void</span> <span class="fn">byVal</span>(Node n) {}
+
+Node a;
+byRef(a);     <span class="cm">// (1)</span>
+byVal(a);     <span class="cm">// (2)</span>
+Node b = a;   <span class="cm">// (3)</span></code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer"><strong>copy copy </strong> (copy가 2번 출력)<br>
+          (1) <strong>레퍼런스 전달</strong> → 원본을 그대로 참조 → 복사 생성자 호출 안 됨.<br>
+          (2) <strong>값 전달</strong> → 인자를 복사 → 복사 생성자 호출(1회) → "copy ".<br>
+          (3) 같은 타입 객체로 <strong>초기화</strong>(<code>Node b = a</code>) → 복사 생성자 호출(1회) → "copy ".<br>
+          총 2번. 복사 생성자는 (초기화 T a=b · 값 전달 f(a) · 값 반환) 시점에 호출되며, 레퍼런스/포인터 전달은 복사하지 않는다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== Section 3 — 개념 서술 ===== -->
+  <h2>Section 3 — 개념 서술</h2>
+  <p class="section-desc">6문제</p>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q19</span><span class="badge-retry">재출제</span> ★Lab 아래 제네릭 메서드는 컴파일 에러가 난다. <code>&lt;T extends Comparable&lt;T&gt;&gt;</code> 같은 <strong>bounded type parameter</strong>가 왜 필요한지 설명하고, 이것이 와일드카드 <code>&lt;?&gt;</code>와 어떻게 다른지 서술하시오. <small>(Lab6)</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">static</span> &lt;T&gt; T <span class="fn">smaller</span>(T a, T b) {
+    <span class="kw">return</span> a.<span class="fn">compareTo</span>(b) &lt; <span class="nu">0</span> ? a : b;  <span class="cm">// 컴파일 에러</span>
+}</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>왜 에러인가:</strong> 제약 없는 <code>T</code>를 컴파일러는 Object로 취급한다. Object에는 <code>compareTo()</code>가 없어 호출이 컴파일 에러다.<br><br>
+          <strong>bounded type parameter:</strong> <code>&lt;T extends Comparable&lt;T&gt;&gt;</code>로 선언하면 T가 Comparable을 구현했음이 보장되어 <code>compareTo()</code>를 안전하게 호출할 수 있다. 즉 <strong>타입 변수 T 자체에 상한(upper bound)을 거는 문법</strong>이다.<br>
+          <pre style="margin:0.4em 0"><code>static &lt;T extends Comparable&lt;T&gt;&gt; T smaller(T a, T b) {
+    return a.compareTo(b) &lt; 0 ? a : b;
+}</code></pre>
+          <strong>와일드카드와의 차이:</strong> <code>&lt;? extends T&gt;</code>는 <strong>메서드 파라미터 타입(예: List&lt;? extends Number&gt;)</strong>에 쓰는 "알 수 없지만 T의 하위 타입" 표현이고, 반환·재사용할 이름이 없다. 반면 <code>&lt;T extends X&gt;</code>는 <strong>타입 변수 T를 선언</strong>해 메서드 전체에서 그 타입을 이름으로 재사용(인자·반환에 동일 T)할 수 있다는 점이 다르다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q20</span><span class="badge-retry">재출제</span> 아래 코드의 출력을 예측하고, static 메서드에서 인스턴스 변수에 접근하면 왜 컴파일 에러가 나는지 서술하시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Meter {
+    <span class="kw">int</span> reading = <span class="nu">5</span>;        <span class="cm">// 인스턴스 변수</span>
+    <span class="kw">static int</span> calls = <span class="nu">0</span>;   <span class="cm">// static 변수</span>
+
+    <span class="kw">static void</span> <span class="fn">report</span>() {
+        calls++;
+        System.out.println(reading);  <span class="cm">// 문제 줄</span>
+    }
+}</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>컴파일 에러 — 출력 없음.</strong> <code>System.out.println(reading)</code> 줄에서 컴파일이 실패한다.<br><br>
+          <strong>이유:</strong> static 메서드는 <strong>특정 객체에 속하지 않고</strong> 클래스에 속한다. 호출 시점에 어떤 인스턴스의 <code>reading</code>인지 정할 수 없으므로(인스턴스 변수는 객체마다 따로 존재) 접근이 금지된다. 반면 <code>calls</code>는 static이라 클래스당 하나뿐이므로 접근 가능하다.<br><br>
+          <strong>해결:</strong> 인스턴스 변수를 쓰려면 메서드를 인스턴스 메서드로 바꾸거나, static 메서드가 객체를 매개변수로 받아 <code>m.reading</code>처럼 접근해야 한다. "static에서는 static만 직접 접근 가능"이 원칙이다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q21</span><span class="badge-retry">재출제</span> 아래 커스텀 예외 코드는 의도와 다르게 동작한다. 무엇이 잘못되었는지 지적하고, 예외 메시지를 <code>getMessage()</code>로 받을 수 있게 올바르게 수정하시오. <small>(super(message))</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> InvalidAgeException <span class="kw">extends</span> Exception {
+    InvalidAgeException(String msg) {
+        System.out.println(msg);   <span class="cm">// 메시지를 그냥 출력만 함</span>
+    }
+}</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>문제점:</strong> 생성자에서 메시지를 <code>System.out.println</code>으로 <strong>출력만</strong> 하고 부모(Exception)에게 전달하지 않았다. 그 결과 예외 객체의 메시지 필드가 비어 있어, 호출자가 <code>catch (InvalidAgeException e)</code>에서 <code>e.getMessage()</code>를 부르면 <strong>null</strong>이 나온다.<br><br>
+          <strong>수정 — super(msg)로 메시지를 부모에 전달:</strong>
+          <pre style="margin:0.4em 0"><code>class InvalidAgeException extends Exception {
+    InvalidAgeException(String msg) {
+        super(msg);   // 부모 Exception에 메시지 전달
+    }
+}</code></pre>
+          이렇게 하면 <code>getMessage()</code>가 전달한 메시지를 반환한다. 커스텀 예외는 <code>extends Exception</code>(Checked) 또는 <code>extends RuntimeException</code>(Unchecked)로 만들고, 생성자에서 <strong>println이 아니라 super(message)</strong>로 메시지를 넘기는 것이 정석이다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q22</span><span class="badge-mid">중간</span> 아래 코드에서 catch 블록의 <strong>순서가 잘못되어</strong> 컴파일 에러가 난다. 이유를 설명하고 올바른 순서로 고치시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">try</span> {
+    process();
+} <span class="kw">catch</span> (Exception e) {
+    System.out.println(<span class="st">"general"</span>);
+} <span class="kw">catch</span> (IllegalArgumentException e) {   <span class="cm">// 도달 불가</span>
+    System.out.println(<span class="st">"arg"</span>);
+}</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>이유:</strong> catch는 위에서 아래로 순서대로 검사하는데, 첫 catch가 <strong>상위 타입 Exception</strong>이라 모든 예외를 먼저 잡아 버린다. 그러면 그 아래 <code>IllegalArgumentException</code> catch는 <strong>절대 도달할 수 없는(unreachable)</strong> 코드가 되어 컴파일 에러다.<br><br>
+          <strong>수정 — 더 구체적인(하위) 타입을 먼저:</strong>
+          <pre style="margin:0.4em 0"><code>try {
+    process();
+} catch (IllegalArgumentException e) {  // 구체적 타입 먼저
+    System.out.println("arg");
+} catch (Exception e) {                 // 일반 타입 나중에
+    System.out.println("general");
+}</code></pre>
+          예외 catch는 항상 <strong>구체적인 하위 타입 → 일반적인 상위 타입</strong> 순서로 작성해야 한다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q23</span><span class="badge-mid">중간</span> 아래 코드는 캡슐화를 지키지 못하고 있다. getter/setter와 <code>private</code>을 사용해 어떻게 개선할지 서술하고, 캡슐화의 이점을 설명하시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Account {
+    <span class="kw">public int</span> balance;   <span class="cm">// 외부에서 직접 수정 가능</span>
+}
+
+Account ac = <span class="kw">new</span> Account();
+ac.balance = <span class="op">-</span><span class="nu">5000</span>;   <span class="cm">// 음수 잔액도 막을 수 없음</span></code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>문제:</strong> <code>balance</code>가 public이라 외부에서 아무 값(음수 등)이나 직접 대입할 수 있어 잘못된 상태를 막을 수 없다.<br><br>
+          <strong>개선:</strong> 필드를 <code>private</code>으로 숨기고 getter/setter로 접근을 통제한다.
+          <pre style="margin:0.4em 0"><code>class Account {
+    private int balance;
+    public int getBalance() { return balance; }
+    public void setBalance(int b) {
+        if (b &lt; 0) throw new IllegalArgumentException("음수 불가");
+        balance = b;
+    }
+}</code></pre>
+          <strong>캡슐화 이점:</strong> ① setter에서 <strong>유효성 검사</strong>를 넣어 잘못된 값(음수)을 차단한다. ② 내부 표현을 바꿔도 외부 코드에 영향이 없다(정보 은닉). ③ 읽기 전용(getter만 제공) 등 접근 수준을 세밀하게 제어할 수 있다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q24</span><span class="badge-hard">응용</span> 아래 C++ 클래스는 얕은 복사(shallow copy) 문제를 가진다. 무엇이 위험한지 설명하고, 깊은 복사(deep copy)를 하는 복사 생성자를 어떻게 작성해야 하는지 서술하시오.</div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Buffer {
+<span class="kw">public</span>:
+    <span class="kw">int</span>* data;
+    <span class="kw">int</span> size;
+    Buffer(<span class="kw">int</span> n) : size(n) { data = <span class="kw">new int</span>[n]; }
+    ~Buffer() { <span class="kw">delete</span>[] data; }
+    <span class="cm">// 복사 생성자 없음 → 컴파일러가 얕은 복사 제공</span>
+};</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>얕은 복사의 위험:</strong> 컴파일러가 만든 기본 복사 생성자는 <code>data</code> 포인터 <strong>값(주소)만</strong> 복사한다. 그러면 원본과 복사본이 <strong>같은 배열을 가리키게</strong> 되어, 한쪽이 소멸하며 <code>delete[] data</code>를 하면 다른 쪽은 이미 해제된 메모리를 가리킨다. 결국 <strong>이중 해제(double free)</strong>나 dangling pointer로 크래시가 난다.<br><br>
+          <strong>깊은 복사 복사 생성자:</strong> 새 배열을 별도로 할당하고 원소를 하나씩 복사해 <strong>독립적인 메모리</strong>를 갖게 한다.
+          <pre style="margin:0.4em 0"><code>Buffer(const Buffer&amp; o) : size(o.size) {
+    data = new int[size];           // 새 배열 할당
+    for (int i = 0; i &lt; size; i++)
+        data[i] = o.data[i];        // 원소 값 복사
+}</code></pre>
+          포인터 멤버를 가진 클래스는 얕은 복사를 피하기 위해 깊은 복사 복사 생성자를 직접 정의해야 한다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== Section 4 — 코드 작성/수정 ===== -->
+  <h2>Section 4 — 코드 작성 / 수정</h2>
+  <p class="section-desc">6문제</p>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q25</span><span class="badge-retry">재출제</span> 아래 <code>Player</code> 리스트를 점수(score) <strong>내림차순</strong>으로 정렬하는 코드를, <code>implements Comparator&lt;Player&gt;</code>를 구현한 <strong>클래스 방식</strong>으로 작성하시오. <small>(람다 아님)</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">import</span> java.util.*;
+
+<span class="kw">class</span> Player {
+    String name; <span class="kw">int</span> score;
+    Player(String n, <span class="kw">int</span> s) { name = n; score = s; }
+}
+List&lt;Player&gt; ps = <span class="kw">new</span> ArrayList&lt;&gt;();
+ps.<span class="fn">add</span>(<span class="kw">new</span> Player(<span class="st">"Mia"</span>, <span class="nu">30</span>));
+ps.<span class="fn">add</span>(<span class="kw">new</span> Player(<span class="st">"Leo"</span>, <span class="nu">50</span>));
+ps.<span class="fn">add</span>(<span class="kw">new</span> Player(<span class="st">"Zoe"</span>, <span class="nu">40</span>));
+<span class="cm">// 점수 내림차순 정렬 코드 작성</span></code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <pre style="margin:0.4em 0"><code>class ScoreDescComp implements Comparator&lt;Player&gt; {
+    @Override
+    public int compare(Player a, Player b) {
+        return b.score - a.score;   // 내림차순
+    }
+}
+
+// 정렬 실행
+Collections.sort(ps, new ScoreDescComp());
+// 또는: ps.sort(new ScoreDescComp());</code></pre>
+          <strong>핵심 포인트:</strong><br>
+          ① Comparator는 슬라이드 방식대로 <code>implements Comparator&lt;Player&gt;</code> 클래스로 작성한다.<br>
+          ② <code>compare(a, b)</code> 반환 규칙: 음수 → a가 앞, 0 → 동일, 양수 → b가 앞.<br>
+          ③ 내림차순은 <code>b.score - a.score</code>(b가 크면 음수 → b가 앞).<br>
+          정렬 후: Leo(50) → Zoe(40) → Mia(30).
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q26</span><span class="badge-hard">응용</span> 아래 요구사항을 만족하는 Java 코드를 작성하시오.<br><small>요구사항: 인출 금액이 잔액보다 크면 <code>InsufficientFundsException</code>(커스텀 Checked Exception)을 던지는 <code>withdraw(int amount)</code> 메서드. 예외 메시지에 부족액을 포함. 호출자는 try-catch로 처리.</small></div>
+    <div class="q-body">
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <pre style="margin:0.4em 0"><code>class InsufficientFundsException extends Exception {
+    InsufficientFundsException(String msg) {
+        super(msg);   // println 아니라 super로 메시지 전달
+    }
+}
+
+class Wallet {
+    int balance = 1000;
+
+    void withdraw(int amount) throws InsufficientFundsException {
+        if (amount &gt; balance) {
+            throw new InsufficientFundsException(
+                "잔액 부족: 부족액 " + (amount - balance));
+        }
+        balance -= amount;
+    }
+}
+
+// 호출 예시
+Wallet w = new Wallet();
+try {
+    w.withdraw(1500);
+} catch (InsufficientFundsException e) {
+    System.out.println(e.getMessage());
+}</code></pre>
+          <strong>핵심:</strong><br>
+          ① <code>extends Exception</code> → Checked이므로 <code>withdraw</code>에 <code>throws</code> 선언 필수.<br>
+          ② 생성자에서 <strong>super(msg)</strong>로 메시지를 전달해야 <code>getMessage()</code>가 동작한다.<br>
+          ③ 호출자는 <code>catch (InsufficientFundsException e)</code>로 반드시 처리(안 하면 컴파일 에러).
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q27</span><span class="badge-hard">응용</span> ★Lab 아래 요구사항을 만족하는 Java 코드를 작성하시오.<br><small>요구사항: <code>Worker</code>를 상속한 타입만 받도록 <code>&lt;T extends Worker&gt;</code> bounded type parameter를 쓰는 제네릭 메서드 <code>introduce(T w)</code>. 메서드 안에서 Worker의 <code>getName()</code>을 호출해 출력. (Lab6)</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Worker {
+    String name;
+    Worker(String n) { name = n; }
+    String <span class="fn">getName</span>() { <span class="kw">return</span> name; }
+}
+<span class="kw">class</span> Engineer <span class="kw">extends</span> Worker {
+    Engineer(String n) { <span class="kw">super</span>(n); }
+}
+<span class="cm">// introduce 제네릭 메서드 작성</span></code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <pre style="margin:0.4em 0"><code>static &lt;T extends Worker&gt; void introduce(T w) {
+    System.out.println("I am " + w.getName());
+}
+
+// 사용
+introduce(new Engineer("Kim"));  // I am Kim</code></pre>
+          <strong>핵심:</strong><br>
+          ① <code>&lt;T extends Worker&gt;</code>는 T가 Worker 또는 그 하위 타입임을 보장한다(bounded type parameter).<br>
+          ② 그 덕분에 메서드 안에서 Worker의 <code>getName()</code>을 안전하게 호출할 수 있다(제약이 없으면 Object로 보여 호출 불가).<br>
+          ③ 와일드카드 <code>&lt;?&gt;</code>와 달리 T라는 이름으로 타입을 재사용할 수 있다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q28</span><span class="badge-hard">응용</span> 아래 요구사항을 만족하는 Java 코드를 작성하시오.<br><small>요구사항: 파일 <code>"in.txt"</code>를 <code>FileReader</code>로 한 글자씩 읽어 화면에 출력하는 메서드. <code>read()</code>가 <code>-1</code>을 반환하면(EOF) 종료. IOException은 throws로 선언.</small></div>
+    <div class="q-body">
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <pre style="margin:0.4em 0"><code>import java.io.FileReader;
+import java.io.IOException;
+
+static void printFile() throws IOException {
+    FileReader fr = new FileReader("in.txt");
+    int c;
+    while ((c = fr.read()) != -1) {   // EOF면 -1
+        System.out.print((char) c);
+    }
+    fr.close();
+}</code></pre>
+          <strong>핵심:</strong><br>
+          ① <code>FileReader.read()</code>는 한 글자를 <strong>int</strong>로 반환하며, 더 읽을 게 없으면 <strong>-1(EOF)</strong>을 반환한다.<br>
+          ② int를 <code>(char)</code>로 캐스팅해야 문자로 출력된다.<br>
+          ③ FileReader 생성과 read()는 <code>IOException</code>(Checked)을 던지므로 <code>throws IOException</code> 선언 또는 try-catch가 필요하다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q29</span><span class="badge-hard">응용</span> ★Lab 아래 C++ 코드는 다형성과 메모리 해제가 모두 의도대로 동작하지 않는다. 출력을 예측하고, <code>virtual</code>과 <strong>가상 소멸자</strong>를 어떻게 고쳐야 하는지 코드로 보이시오. <small>(Lab11)</small></div>
+    <div class="q-body">
+      <pre><code><span class="kw">class</span> Base {
+<span class="kw">public</span>:
+    <span class="kw">void</span> <span class="fn">hello</span>() { cout &lt;&lt; <span class="st">"base "</span>; }   <span class="cm">// virtual 아님</span>
+    ~Base() { cout &lt;&lt; <span class="st">"~base "</span>; }        <span class="cm">// virtual 아님</span>
+};
+<span class="kw">class</span> Derived : <span class="kw">public</span> Base {
+<span class="kw">public</span>:
+    <span class="kw">void</span> <span class="fn">hello</span>() { cout &lt;&lt; <span class="st">"derived "</span>; }
+    ~Derived() { cout &lt;&lt; <span class="st">"~derived "</span>; }
+};
+
+Base* p = <span class="kw">new</span> Derived();
+p-&gt;hello();
+<span class="kw">delete</span> p;</code></pre>
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <strong>현재 출력:</strong> <code>base ~base </code><br>
+          ① <code>hello()</code>가 virtual이 아니라 정적 바인딩 → 포인터 타입 Base의 hello() → "base ".<br>
+          ② 소멸자가 virtual이 아니라 <code>delete p</code> 시 Base 소멸자만 호출 → "~base " (Derived 소멸자 미호출 → 자원 누수 위험).<br><br>
+          <strong>수정:</strong> 기반 클래스 메서드와 소멸자에 <code>virtual</code>을 붙인다.
+          <pre style="margin:0.4em 0"><code>class Base {
+public:
+    virtual void hello() { cout &lt;&lt; "base "; }
+    virtual ~Base() { cout &lt;&lt; "~base "; }   // 가상 소멸자
+};
+class Derived : public Base {
+public:
+    void hello() override { cout &lt;&lt; "derived "; }
+    ~Derived() override { cout &lt;&lt; "~derived "; }
+};
+// 수정 후 출력: derived ~derived ~base </code></pre>
+          기반 클래스 포인터로 파생 객체를 다룰 때는 <strong>가상 소멸자</strong>가 있어야 delete 시 파생 → 기반 순으로 소멸자가 올바르게 호출된다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-num">Q30</span><span class="badge-hard">응용</span> ★Lab 아래 요구사항을 만족하는 C++ 코드를 작성하시오.<br><small>요구사항: <code>N x N</code> 정수 2차원 배열을 <code>int**</code>로 동적 할당하고, 모든 원소를 0으로 초기화한 뒤, 사용이 끝나면 올바르게 해제하는 코드. (Lab10)</small></div>
+    <div class="q-body">
+      <details><summary>정답 보기</summary>
+        <div class="answer">
+          <pre style="margin:0.4em 0"><code>int N = 3;
+
+// 1) 행 포인터 배열 할당
+int** m = new int*[N];
+for (int i = 0; i &lt; N; i++) {
+    m[i] = new int[N];          // 2) 각 행 할당
+    for (int j = 0; j &lt; N; j++)
+        m[i][j] = 0;            // 3) 0으로 초기화
+}
+
+// ... 사용 ...
+
+// 4) 해제: 각 행 먼저, 그다음 행 포인터 배열
+for (int i = 0; i &lt; N; i++)
+    delete[] m[i];
+delete[] m;</code></pre>
+          <strong>핵심:</strong><br>
+          ① <code>int** m = new int*[N]</code>로 행 포인터 배열을 만들고, 각 <code>m[i] = new int[N]</code>로 행을 할당한다.<br>
+          ② 해제는 할당의 <strong>역순</strong> — 각 행(<code>delete[] m[i]</code>)을 먼저 지우고 마지막에 <code>delete[] m</code>으로 포인터 배열을 해제한다.<br>
+          ③ <code>delete[] m</code> 하나만 하면 각 행의 메모리가 누수된다.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div id="score-bar">
+    <span id="score-summary">0 / 30 맞음</span>
+    <span id="score-line">채점을 시작하면 여기에 결과가 표시됩니다.</span>
+    <button id="copy-btn" onclick="copyScore()">복사</button>
+  </div>
+</main>
+
+<script>
+const TOTAL = 30;
+const state = {};
+
+const subjective = {};
+
+document.querySelectorAll('.q-block').forEach((block, i) => {
+  const num = `Q${i+1}`;
+  block.dataset.q = num;
+  const body = block.querySelector('.q-body');
+  const isSubjective = !body.querySelector('.choices');
+
+  if (isSubjective) {
+    const ta = document.createElement('textarea');
+    ta.className = 'answer-input';
+    ta.placeholder = '답안을 여기에 작성하세요...';
+    ta.dataset.q = num;
+    ta.addEventListener('input', updateScore);
+    body.insertBefore(ta, body.querySelector('details'));
+    subjective[num] = true;
+  }
+
+  const row = document.createElement('div');
+  row.className = 'check-row';
+  row.innerHTML =
+    `<button class="btn-correct" onclick="mark('${num}','correct')">✓ 맞음</button>` +
+    `<button class="btn-wrong"   onclick="mark('${num}','wrong')">✗ 틀림</button>` +
+    `<button class="btn-reset"   onclick="mark('${num}',null)">취소</button>`;
+  body.appendChild(row);
+});
+
+function mark(q, result) {
+  state[q] = result;
+  const block = document.querySelector(`[data-q="${q}"]`);
+  block.querySelector('.btn-correct').classList.toggle('active-correct', result === 'correct');
+  block.querySelector('.btn-wrong').classList.toggle('active-wrong',   result === 'wrong');
+  block.classList.toggle('marked-correct', result === 'correct');
+  block.classList.toggle('marked-wrong',   result === 'wrong');
+  updateScore();
+}
+
+function updateScore() {
+  const correct = Object.values(state).filter(v => v === 'correct').length;
+  const wrong   = Object.values(state).filter(v => v === 'wrong').length;
+  const done    = correct + wrong;
+  let line = '[기말 채점 4회] ';
+  for (let i = 1; i <= TOTAL; i++) {
+    const s = state[`Q${i}`];
+    line += `Q${i}` + (s === 'correct' ? '✓' : s === 'wrong' ? '✗' : '-') + ' ';
+  }
+  line += `| ${correct}/${TOTAL} (${done}문제 채점)`;
+  document.getElementById('score-line').textContent = line;
+  document.getElementById('score-summary').textContent = `${correct} / ${TOTAL} 맞음`;
+}
+
+function copyScore() {
+  let text = document.getElementById('score-line').textContent;
+
+  const subLines = [];
+  for (let i = 1; i <= TOTAL; i++) {
+    const num = `Q${i}`;
+    if (!subjective[num]) continue;
+    const ta = document.querySelector(`textarea[data-q="${num}"]`);
+    const ans = ta ? ta.value.trim() : '';
+    const mark = state[num] === 'correct' ? '✓' : state[num] === 'wrong' ? '✗' : '-';
+    subLines.push(`${num}(${mark}): ${ans || '(미작성)'}`);
+  }
+  if (subLines.length) text += '\n--- 주관식 답안 ---\n' + subLines.join('\n');
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '복사됨!';
+    setTimeout(() => btn.textContent = '복사', 1500);
+  });
+}
+</script>
+<script src="auto-nav.js" defer></script>
+</body>
+</html>

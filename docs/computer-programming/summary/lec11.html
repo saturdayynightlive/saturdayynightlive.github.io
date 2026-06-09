@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>L11 Exceptions</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:," />
+</head>
+<body>
+<nav>
+  <h2>컴퓨터프로그래밍</h2>
+  <ul>
+    <li><a href="index.html">🏠 홈</a></li>
+    <li><a href="lec02.html"><span class="badge">L02</span>Java Basics I</a></li>
+    <li><a href="lec03.html"><span class="badge">L03</span>Java Basics II</a></li>
+    <li><a href="lec04.html"><span class="badge">L04</span>OOP</a></li>
+    <li><a href="lec05.html"><span class="badge">L05</span>Encapsulation</a></li>
+    <li><a href="lec06.html"><span class="badge">L06</span>Inheritance</a></li>
+    <li><a href="lec07.html"><span class="badge">L07</span>Polymorphism</a></li>
+    <li><a href="lec08.html"><span class="badge">L08</span>Collections</a></li>
+    <li><a href="lec09.html"><span class="badge">L09</span>Collections II</a></li>
+    <li><a href="lec10.html"><span class="badge">L10</span>I/O</a></li>
+    <li><a href="lec11.html" class="active"><span class="badge">L11</span>Exceptions</a></li>
+    <li><a href="lec12.html"><span class="badge">L12</span>Design Patterns</a></li>
+    <li><a href="lec13.html"><span class="badge">L13</span>C++ Basics</a></li>
+    <li><a href="lec14.html"><span class="badge">L14</span>OOP in C++</a></li>
+  </ul>
+</nav>
+<main>
+  <h1>Exceptions <small>Lecture 11</small></h1>
+  <p class="subtitle">예외 계층 · try-catch-finally · throw · throws · 커스텀 예외</p>
+
+  <h2>예외 계층 구조</h2>
+  <div class="hier">Throwable
+├── Error               (JVM 심각 오류 — 잡지 말 것)
+│   ├── StackOverflowError
+│   ├── OutOfMemoryError
+│   └── VirtualMachineError
+└── Exception
+    ├── Checked Exception    (반드시 처리 필요)
+    │   ├── IOException
+    │   │   ├── FileNotFoundException
+    │   │   └── EOFException
+    │   ├── ClassNotFoundException
+    │   └── SQLException
+    └── RuntimeException     (Unchecked — 선택적 처리)
+        ├── NullPointerException
+        ├── ArrayIndexOutOfBoundsException
+        ├── ArithmeticException
+        ├── ClassCastException
+        └── IllegalArgumentException</div>
+
+  <h2>Checked vs Unchecked</h2>
+  <table class="cmp">
+    <tr><th>구분</th><th>Checked</th><th>Unchecked</th></tr>
+    <tr><td>상속</td><td>Exception</td><td>RuntimeException / Error</td></tr>
+    <tr><td>검사 시점</td><td>컴파일 타임</td><td>런타임</td></tr>
+    <tr><td>처리 의무</td><td>반드시 처리 (또는 throws 선언)</td><td>선택 사항</td></tr>
+    <tr><td>예시</td><td>IOException, SQLException</td><td>NPE, ArrayIndexOutOfBounds</td></tr>
+  </table>
+
+  <h2>try-catch-finally</h2>
+  <pre><code><span class="kw">try</span> {
+    <span class="cm">// 예외 발생 가능한 코드</span>
+} <span class="kw">catch</span> (FileNotFoundException e) {
+    e.<span class="fn">printStackTrace</span>();         <span class="cm">// 구체적인 예외 먼저!</span>
+} <span class="kw">catch</span> (Exception e) {          <span class="cm">// 더 일반적인 예외는 나중에</span>
+    e.<span class="fn">getMessage</span>();
+    e.<span class="fn">toString</span>();
+} <span class="kw">finally</span> {
+    <span class="cm">// 예외 여부와 관계없이 항상 실행</span>
+    <span class="kw">if</span> (file != <span class="kw">null</span>) file.<span class="fn">close</span>(); <span class="cm">// 리소스 해제</span>
+}</code></pre>
+  <div class="warn">catch는 위에서 아래로 순서대로 검사. 구체적인 예외를 <strong>반드시 위에</strong> 써야 한다. 일반 예외를 위에 쓰면 구체적 예외가 절대 잡히지 않는다.</div>
+
+  <h2>try-with-resources</h2>
+  <div class="def">
+    <strong>try-with-resources</strong>: <code>AutoCloseable</code> 인터페이스를 구현한 리소스를 자동으로 닫는 구문.<br>
+    블록이 끝나면 <code>close()</code>가 자동 호출됨.
+  </div>
+  <pre><code><span class="cm">// 기존 방식 (finally에서 수동 닫기)</span>
+BufferedReader br = <span class="kw">new</span> BufferedReader(<span class="kw">new</span> FileReader(path));
+<span class="kw">try</span> { <span class="kw">return</span> br.<span class="fn">readLine</span>(); } <span class="kw">finally</span> { <span class="kw">if</span> (br != <span class="kw">null</span>) br.<span class="fn">close</span>(); }
+
+<span class="cm">// try-with-resources (권장)</span>
+<span class="kw">try</span> (BufferedReader br = <span class="kw">new</span> BufferedReader(<span class="kw">new</span> FileReader(path))) {
+    <span class="kw">return</span> br.<span class="fn">readLine</span>();
+}  <span class="cm">// br.close() 자동 호출</span>
+
+<span class="cm">// 여러 리소스</span>
+<span class="kw">try</span> (
+    BufferedReader br = <span class="kw">new</span> BufferedReader(<span class="kw">new</span> FileReader(<span class="st">"in.txt"</span>));
+    BufferedWriter bw = <span class="kw">new</span> BufferedWriter(<span class="kw">new</span> FileWriter(<span class="st">"out.txt"</span>))
+) { bw.<span class="fn">write</span>(br.<span class="fn">readLine</span>()); }</code></pre>
+
+  <h2>throw vs throws</h2>
+  <table class="cmp">
+    <tr><th>구분</th><th>throw</th><th>throws</th></tr>
+    <tr><td>위치</td><td>메서드 본문 내</td><td>메서드 선언부</td></tr>
+    <tr><td>역할</td><td>예외 객체를 직접 발생시킴</td><td>이 메서드가 던질 수 있는 checked 예외를 선언</td></tr>
+    <tr><td>예</td><td><code>throw new IllegalArgumentException("msg");</code></td><td><code>void foo() throws IOException { }</code></td></tr>
+  </table>
+  <pre><code><span class="cm">// throw: 예외 직접 발생</span>
+<span class="kw">if</span> (l1.size() != l2.size()) {
+    <span class="kw">throw new</span> IllegalArgumentException(<span class="st">"Length mismatch"</span>);
+}
+
+<span class="cm">// throws: 호출자에게 처리 위임</span>
+<span class="kw">static void</span> <span class="fn">fun</span>() <span class="kw">throws</span> IllegalAccessException {
+    <span class="kw">throw new</span> IllegalAccessException(<span class="st">"demo"</span>);
+}</code></pre>
+
+  <h2>커스텀 예외 만들기</h2>
+  <pre><code><span class="cm">// Checked 예외: Exception 상속</span>
+<span class="kw">public class</span> IncorrectFileNameException <span class="kw">extends</span> Exception {
+    <span class="kw">public</span> IncorrectFileNameException(String msg) { <span class="kw">super</span>(msg); }
+}
+
+<span class="cm">// Unchecked 예외: RuntimeException 상속</span>
+<span class="kw">class</span> CapacityExceedException <span class="kw">extends</span> RuntimeException {
+    <span class="kw">public</span> CapacityExceedException(String msg) { <span class="kw">super</span>(msg); }
+}</code></pre>
+
+  <h2>상속에서의 예외</h2>
+  <div class="def">
+    오버라이딩 메서드는 원본 메서드와 <strong>같거나 더 좁은 범위의 예외</strong>만 선언 가능.<br>
+    (더 넓은 예외로 확장 불가)
+  </div>
+  <pre><code><span class="kw">class</span> Thrower      { <span class="kw">public void</span> <span class="fn">print</span>() <span class="kw">throws</span> IOException { } }
+<span class="kw">class</span> MoreThrower <span class="kw">extends</span> Thrower {
+    <span class="op">@Override</span>
+    <span class="kw">public void</span> <span class="fn">print</span>() <span class="kw">throws</span> IOException { }  <span class="cm">// OK</span>
+    <span class="cm">// throws Exception  ← ❌ 더 넓은 예외 불가</span>
+}</code></pre>
+
+  <h2>예외 처리 가이드라인</h2>
+  <table>
+    <tr><th>규칙</th><th>이유</th></tr>
+    <tr><td>구체적인 예외 사용</td><td>디버깅 용이 (NumberFormatException vs Exception)</td></tr>
+    <tr><td>구체적인 catch를 위에</td><td>일반 catch가 먼저 오면 구체적 catch 도달 불가</td></tr>
+    <tr><td>설명적인 메시지 추가</td><td>원인 파악 용이</td></tr>
+    <tr><td>Throwable 잡지 말 것</td><td>Error까지 잡히게 됨</td></tr>
+    <tr><td>로그 후 재던지기 금지</td><td>중복 로그 발생</td></tr>
+    <tr><td>빈 catch 블록 금지</td><td>오류를 숨겨 버그 추적 불가</td></tr>
+  </table>
+</main>
+<script src="auto-nav.js" defer></script>
+</body>
+</html>
