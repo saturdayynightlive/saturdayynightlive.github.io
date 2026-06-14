@@ -11,15 +11,21 @@
   <link rel="icon" href="data:," />
   <style>
     :root {
-      --paper: #fbfaf7;
-      --surface: #ffffff;
-      --ink: #20201d;
-      --muted: #66645d;
-      --line: #ded9ce;
-      --green: #315c4c;
-      --blue: #1f5f99;
-      --rust: #a65f2b;
-      --gold: #c59b40;
+      --canvas: #ffffff;
+      --ink: #000000;
+      --frame: #000000;
+      --dell-red: #e81c29;
+      --dell-yellow: #fcc20f;
+      --link-blue: #0000ee;
+      --purple-stripe: #6a26a4;
+      --tint-olive: #8e8a25;
+      --tint-sage: #b3bd95;
+      --tint-salmon: #d77a7a;
+      --tint-peach: #e6915d;
+      --tint-lime: #c0d4a7;
+      --tint-sky: #9ab6c8;
+      --tint-steel: #a5b8c0;
+      --tint-periwinkle: #8c9ae0;
     }
 
     * {
@@ -32,14 +38,17 @@
 
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--paper);
+      padding: 8px;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 14px;
+      background: var(--frame);
       color: var(--ink);
-      line-height: 1.65;
+      line-height: 1.4;
     }
 
     a {
-      color: inherit;
+      color: var(--link-blue);
+      text-decoration: underline;
     }
 
     .skip-link {
@@ -47,10 +56,11 @@
       left: 1rem;
       top: -4rem;
       z-index: 20;
-      background: var(--ink);
-      color: #fff;
-      padding: 0.5rem 0.75rem;
-      border-radius: 6px;
+      background: var(--dell-yellow);
+      color: var(--ink);
+      padding: 6px 10px;
+      border: 1px solid var(--frame);
+      border-radius: 0;
       text-decoration: none;
     }
 
@@ -62,24 +72,52 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(251, 250, 247, 0.94);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(12px);
+      max-width: 840px;
+      margin: 0 auto;
+      background: var(--frame);
+      border: 8px solid var(--frame);
+      border-bottom: 0;
     }
 
     .nav-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0.8rem 1.25rem;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       gap: 1rem;
+      background: var(--frame);
+      color: var(--canvas);
     }
 
     .brand {
+      color: var(--canvas);
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 16px;
       font-weight: 700;
       text-decoration: none;
       white-space: nowrap;
+    }
+
+    .brand-sticker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      background: var(--dell-yellow);
+      border: 1px solid var(--frame);
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8a6a00;
+      color: var(--ink);
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 8px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-sticker span {
+      background: var(--purple-stripe);
+      color: var(--canvas);
+      margin: 0 3px;
+      padding: 1px 3px;
     }
 
     .nav-links {
@@ -91,41 +129,63 @@
     }
 
     .nav-links a {
-      color: var(--muted);
-      font-size: 0.9rem;
+      color: var(--canvas);
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
       text-decoration: none;
-      padding: 0.35rem 0.55rem;
-      border-radius: 6px;
+      padding: 6px 8px;
+      border: 1px solid transparent;
+      border-radius: 0;
+      text-transform: uppercase;
     }
 
     .nav-links a:hover,
     .nav-links a:focus {
-      background: #eee8dc;
+      background: var(--canvas);
       color: var(--ink);
-      outline: none;
+      border-color: var(--frame);
+      outline: 1px dotted var(--canvas);
+      outline-offset: 2px;
     }
 
     main {
-      max-width: 1080px;
+      max-width: 840px;
       margin: 0 auto;
-      padding: 3rem 1.25rem 4rem;
+      padding: 16px;
+      background: var(--canvas);
+      border: 8px solid var(--frame);
+      border-top: 0;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 260px;
-      align-items: center;
-      gap: 3rem;
-      padding: 1.5rem 0 4rem;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      align-items: stretch;
+      gap: 12px;
+      padding: 0 0 32px;
+    }
+
+    .hero > div:first-child {
+      background: var(--dell-red);
+      border: 1px solid var(--frame);
+      color: var(--canvas);
+      padding: 16px;
     }
 
     .eyebrow {
-      color: var(--green);
-      font-size: 0.82rem;
+      display: inline-block;
+      margin: 0 0 10px;
+      background: var(--dell-yellow);
+      border: 1px solid var(--frame);
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8a6a00;
+      color: var(--ink);
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
       font-weight: 700;
-      margin: 0 0 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0;
+      padding: 4px 8px;
     }
 
     h1,
@@ -136,83 +196,97 @@
     }
 
     h1 {
-      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      font-family: "Arial Black", Helvetica, Arial, sans-serif;
+      font-size: 56px;
+      font-weight: 900;
       line-height: 1;
-      margin-bottom: 1rem;
+      margin-bottom: 12px;
     }
 
     h2 {
-      font-size: 1.65rem;
+      font-family: "Arial Black", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 900;
       line-height: 1.2;
-      margin-bottom: 0.75rem;
+      margin-bottom: 8px;
     }
 
     h3 {
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0;
+      text-transform: uppercase;
     }
 
     .lead {
       max-width: 660px;
-      color: #3b3a35;
-      font-size: 1.08rem;
-      margin-bottom: 1.5rem;
+      color: var(--canvas);
+      font-size: 14px;
+      margin-bottom: 16px;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.65rem;
-      margin-bottom: 1.5rem;
+      gap: 6px;
+      margin-bottom: 14px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--surface);
+      min-height: 30px;
+      border: 1px solid var(--frame);
+      border-radius: 0;
+      background: var(--canvas);
       color: var(--ink);
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
       font-weight: 700;
-      padding: 0.55rem 0.9rem;
+      padding: 6px 16px;
       text-decoration: none;
+      text-transform: uppercase;
     }
 
     .button.primary {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: #fff;
+      background: var(--frame);
+      border-color: var(--frame);
+      color: var(--canvas);
     }
 
     .button:hover,
     .button:focus {
-      transform: translateY(-1px);
-      outline: 2px solid rgba(31, 95, 153, 0.22);
+      outline: 1px dotted var(--canvas);
       outline-offset: 2px;
     }
 
     .facts {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.55rem;
+      gap: 6px;
       padding: 0;
       margin: 0;
       list-style: none;
     }
 
     .facts li {
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.58);
-      color: var(--muted);
-      font-size: 0.88rem;
-      padding: 0.35rem 0.65rem;
+      border: 1px solid var(--frame);
+      border-radius: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-size: 12px;
+      padding: 4px 8px;
     }
 
     .portrait-wrap {
       position: relative;
+      align-self: stretch;
+      background: var(--tint-sky);
+      border: 1px solid var(--frame);
+      padding: 10px;
     }
 
     .portrait {
@@ -220,35 +294,69 @@
       width: 100%;
       aspect-ratio: 395 / 512;
       object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      box-shadow: 0 24px 56px rgba(32, 32, 29, 0.12);
+      border-radius: 0;
+      border: 1px solid var(--frame);
+      filter: drop-shadow(3px 3px 0 var(--frame));
     }
 
     .section {
-      border-top: 1px solid var(--line);
-      padding: 3rem 0;
+      --section-tint: var(--tint-sage);
+      border-top: 8px solid var(--frame);
+      padding: 32px 0;
       scroll-margin-top: 82px;
+    }
+
+    .section:nth-of-type(2) {
+      --section-tint: var(--tint-olive);
+    }
+
+    .section:nth-of-type(3) {
+      --section-tint: var(--tint-sage);
+    }
+
+    .section:nth-of-type(4) {
+      --section-tint: var(--tint-salmon);
+    }
+
+    .section:nth-of-type(5) {
+      --section-tint: var(--tint-peach);
+    }
+
+    .section:nth-of-type(6) {
+      --section-tint: var(--tint-lime);
+    }
+
+    .section:nth-of-type(7) {
+      --section-tint: var(--tint-sky);
+    }
+
+    .section:nth-of-type(8) {
+      --section-tint: var(--tint-periwinkle);
     }
 
     .section-head {
       display: grid;
-      grid-template-columns: 210px minmax(0, 1fr);
-      gap: 2rem;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 12px;
       align-items: start;
-      margin-bottom: 1.4rem;
+      margin-bottom: 16px;
     }
 
     .section-kicker {
-      color: var(--rust);
-      font-size: 0.78rem;
-      font-weight: 800;
+      background: var(--section-tint);
+      border: 1px solid var(--frame);
+      color: var(--ink);
+      font-family: "Arial Black", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1;
+      padding: 16px 12px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0;
     }
 
     .section-head p {
-      color: var(--muted);
+      color: var(--ink);
       margin-bottom: 0;
       max-width: 720px;
     }
@@ -256,7 +364,7 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 10px;
     }
 
     .grid.two {
@@ -264,39 +372,70 @@
     }
 
     .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1rem;
+      background: var(--tint-sage);
+      border: 1px solid var(--frame);
+      border-radius: 0;
+      padding: 0;
     }
 
     .card p {
-      color: var(--muted);
-      font-size: 0.92rem;
+      color: var(--ink);
+      font-size: 14px;
       margin-bottom: 0;
+      padding: 12px 14px;
+    }
+
+    .card h3 {
+      background: var(--canvas);
+      border-bottom: 1px solid var(--frame);
+      padding: 6px 12px;
+    }
+
+    .card:nth-child(2n) {
+      background: var(--tint-peach);
+    }
+
+    .card:nth-child(3n) {
+      background: var(--tint-lime);
+    }
+
+    .card:nth-child(4n) {
+      background: var(--tint-sky);
+    }
+
+    .card:nth-child(5n) {
+      background: var(--tint-steel);
+    }
+
+    .card:nth-child(6n) {
+      background: var(--tint-periwinkle);
     }
 
     .tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin: 0.65rem 0 0.1rem;
+      gap: 4px;
+      margin: 0;
+      padding: 0 14px 12px;
     }
 
     .tag {
-      background: #f1ece2;
-      border-radius: 6px;
-      color: #4d4840;
-      font-size: 0.78rem;
+      background: var(--dell-yellow);
+      border: 1px solid var(--frame);
+      border-radius: 0;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8a6a00;
+      color: var(--ink);
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 11px;
       font-weight: 700;
-      padding: 0.2rem 0.45rem;
+      padding: 3px 6px;
     }
 
     .resume-list,
     .course-list,
     .contact-list {
       display: grid;
-      gap: 0.8rem;
+      gap: 8px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -305,47 +444,72 @@
     .resume-list li,
     .course-list li,
     .contact-list li {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 0.95rem 1rem;
+      background: var(--tint-sage);
+      border: 1px solid var(--frame);
+      border-radius: 0;
+      padding: 0;
+    }
+
+    .resume-list li:nth-child(2n),
+    .course-list li:nth-child(2n),
+    .contact-list li:nth-child(2n) {
+      background: var(--tint-peach);
     }
 
     .resume-list strong,
     .course-list strong,
     .contact-list strong {
       display: block;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0;
+      background: var(--canvas);
+      border-bottom: 1px solid var(--frame);
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      padding: 6px 12px;
+      text-transform: uppercase;
     }
 
     .resume-list span,
     .course-list span,
     .contact-list span {
-      color: var(--muted);
-      font-size: 0.92rem;
+      display: block;
+      color: var(--ink);
+      font-size: 14px;
+      padding: 12px 14px;
+      overflow-wrap: anywhere;
     }
 
     .course-list strong {
-      color: var(--blue);
+      color: var(--ink);
     }
 
     .note {
-      border-left: 4px solid var(--gold);
-      background: #fff8e8;
-      border-radius: 8px;
-      padding: 1rem;
-      color: #4f4224;
-      margin-top: 1rem;
+      border: 1px solid var(--frame);
+      background: var(--dell-yellow);
+      border-radius: 0;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #8a6a00;
+      color: var(--ink);
+      margin-top: 12px;
+      padding: 12px 14px;
     }
 
     .footer {
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.86rem;
-      padding-top: 1.5rem;
+      border-top: 8px solid var(--frame);
+      color: var(--ink);
+      font-size: 12px;
+      padding-top: 16px;
     }
 
     @media (max-width: 820px) {
+      body {
+        padding: 4px;
+      }
+
+      .nav,
+      main {
+        border-width: 4px;
+      }
+
       .nav-inner {
         align-items: flex-start;
         flex-direction: column;
@@ -364,11 +528,19 @@
       }
 
       .hero {
-        padding-top: 0.5rem;
+        padding-top: 0;
       }
 
       .portrait-wrap {
         max-width: 320px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .section-kicker {
+        font-size: 22px;
       }
 
     }
@@ -380,6 +552,7 @@
   <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
       <a class="brand" href="#top">Hwan Ji</a>
+      <span class="brand-sticker">Profile <span>1996</span> Online</span>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#currently">Currently</a>
@@ -636,20 +809,16 @@
 
       <ul class="course-list">
         <li>
-          <strong>2nd Year Fall</strong>
-          <span>자료구조, 확률의 개념 및 응용, 자료분석 및 실습.</span>
+          <strong>Computer Science Core</strong>
+          <span>Data Structures, System Programming, Operating Systems, Algorithms, Computer Architectures.</span>
         </li>
         <li>
-          <strong>3rd Year Spring</strong>
-          <span>알고리즘, 컴퓨터구조, 수리통계1, 회귀분석 및 실습.</span>
+          <strong>Probability and Statistics</strong>
+          <span>Concepts and Applications in Probability, Statistical Computing and Lab, Data Analysis and Lab, Mathematical Statistics 1, Mathematical Statistics 2, Bayesian Statistics and Lab.</span>
         </li>
         <li>
-          <strong>3rd Year Fall</strong>
-          <span>심층신경망의 수학적 기초, 수리통계2, 시스템프로그래밍.</span>
-        </li>
-        <li>
-          <strong>4th Year</strong>
-          <span>딥러닝의 기초, 운영체제, 로봇인공지능만들기, 베이즈통계 및 실습, 전산통계 및 실습.</span>
+          <strong>Deep Learning</strong>
+          <span>Mathematical Foundations of Deep Neural Networks, Basics of Deep Learning.</span>
         </li>
       </ul>
     </section>
@@ -687,9 +856,9 @@
         <div>
           <h2>How AI helped create this site.</h2>
           <p>
-            Tool: Codex. Prompt: "Read my CV and course roadmap, then update
-            index.html into a GitHub Pages personal website with profile photo, CV-derived projects,
-            planned courses, contact information, and an AI Usage section."
+            Tool: Codex. Prompt: "I have added DESIGN.md from getdesign's dell-1996 theme.
+            Read this file and make the webpage follow this theme while keeping my personal
+            information, CV content, projects, planned courses, and AI Usage section."
           </p>
         </div>
       </div>
@@ -701,7 +870,7 @@
     </section>
 
     <footer class="footer">
-      <p>Updated: June 9, 2026. Built as a static GitHub Pages site.</p>
+      <p>Updated: June 14, 2026. Built as a static GitHub Pages site.</p>
     </footer>
   </main>
 </body>
