@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Simply5x5 is an ad-free iOS 5x5 workout tracker by Hwan Ji, built with SwiftUI, Firebase AI Logic, HealthKit, and Swift Charts."
+  />
+  <link rel="canonical" href="https://saturdayynightlive.github.io/projects/simply5x5.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Simply5x5 | Hwan Ji" />
+  <meta
+    property="og:description"
+    content="An ad-free iOS 5x5 workout tracker with auto progression, deload, AI feedback, e1RM ranking, and a plate calculator."
+  />
+  <meta property="og:url" content="https://saturdayynightlive.github.io/projects/simply5x5.html" />
+  <meta property="og:image" content="https://saturdayynightlive.github.io/assets/profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Simply5x5 | Hwan Ji" />
+  <meta
+    name="twitter:description"
+    content="An ad-free iOS 5x5 workout tracker with auto progression, deload, AI feedback, e1RM ranking, and a plate calculator."
+  />
+  <meta name="twitter:image" content="https://saturdayynightlive.github.io/assets/profile.jpg" />
+  <title>Simply5x5 | Hwan Ji</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://latex.vercel.app/style.css" />
+  <style>
+    :root {
+      --rule: #222;
+      --muted: #555;
+    }
+
+    .site-header {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .site-header h1 {
+      margin-bottom: 0.25rem;
+    }
+
+    .author {
+      margin-top: 0;
+    }
+
+    .toc {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin: 1.5rem 0 2rem;
+      padding: 0.65rem 0;
+      text-align: center;
+    }
+
+    .toc a {
+      display: inline-block;
+      margin: 0.15rem 0.5rem;
+      white-space: nowrap;
+    }
+
+    .project-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .paper-table {
+      font-size: 0.95rem;
+      width: 100%;
+    }
+
+    .paper-table td,
+    .paper-table th {
+      vertical-align: top;
+    }
+
+    .no-break {
+      white-space: nowrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding-inline: 1rem;
+      }
+
+      .toc {
+        text-align: left;
+      }
+
+      .toc a {
+        margin-left: 0;
+        margin-right: 0.75rem;
+      }
+
+      .paper-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+<body class="text-justify">
+  <article>
+    <header class="site-header">
+      <h1>Simply5x5</h1>
+      <p class="author">
+        Hwan Ji<br />
+        iOS workout tracker<br />
+        Last updated: June 21, 2026
+      </p>
+      <p class="project-meta">
+        SwiftUI &middot; Firebase AI Logic (Gemini) &middot; HealthKit &middot; Swift Charts
+      </p>
+    </header>
+
+    <nav class="toc" aria-label="Project navigation">
+      <a href="../index.html">Home</a>
+      <a href="#overview">Overview</a>
+      <a href="#features">Features</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#metrics">Metrics</a>
+      <a href="https://apps.apple.com/us/app/simply5x5/id6752772279" target="_blank" rel="noopener">App Store</a>
+    </nav>
+
+    <div class="abstract" id="overview">
+      <h2>Overview</h2>
+      <p>
+        Simply5x5 is an ad-free iOS workout tracker for the 5x5 strength-training routine. I built
+        it as a solo project to keep the workout flow simple: record sets, adjust the next workout
+        automatically, review progress, and get concise feedback without advertising interruptions.
+      </p>
+      <p>
+        The app is available on the App Store and was selected for the 2026-1 Computer Programming
+        Extra Project showcase.
+      </p>
+      <p>
+        <a href="https://apps.apple.com/us/app/simply5x5/id6752772279" target="_blank" rel="noopener">
+          View on the App Store
+        </a>
+        &middot;
+        <a href="../Hwan_Ji_CV.pdf">Download CV</a>
+      </p>
+    </div>
+
+    <section id="features">
+      <h2>1. Features</h2>
+      <ul>
+        <li>Ad-free 5x5 workout tracking for the main barbell lifts.</li>
+        <li>Automatic progression and deload logic based on workout success or repeated failure.</li>
+        <li>AI feedback generated from workout-session data through Firebase AI Logic and Gemini.</li>
+        <li>e1RM-based strength ranking using estimated one-rep max values.</li>
+        <li>Plate calculator for quickly loading target barbell weights.</li>
+        <li>HealthKit integration for saving strength-training records to Apple Health.</li>
+        <li>Swift Charts views for reviewing training progress.</li>
+      </ul>
+    </section>
+
+    <section id="implementation">
+      <h2>2. Implementation Notes</h2>
+      <table class="paper-table borders-custom col-1-l col-2-l">
+        <tbody>
+          <tr class="border-bottom-thin">
+            <th class="no-break">Role</th>
+            <td>Solo developer: product planning, UI implementation, workout logic, data model, and integrations.</td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <th class="no-break">App layer</th>
+            <td>SwiftUI screens for onboarding, workout logging, history, rankings, charts, and auxiliary tools.</td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <th class="no-break">Progression</th>
+            <td>Successful sessions increase the next target weight; repeated failures trigger a deload.</td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <th class="no-break">AI feedback</th>
+            <td>Workout logs are summarized into a prompt and sent through Firebase AI Logic with Gemini.</td>
+          </tr>
+          <tr>
+            <th class="no-break">System APIs</th>
+            <td>HealthKit stores completed workouts, while Swift Charts presents lift trends over time.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="metrics">
+      <h2>3. Public Summary</h2>
+      <table class="paper-table borders-custom col-1-l col-2-l">
+        <tbody>
+          <tr class="border-bottom-thin">
+            <th class="no-break">Release</th>
+            <td>Released on the App Store.</td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <th class="no-break">Downloads</th>
+            <td>1.09K downloads as of June 2026.</td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <th class="no-break">Sessions</th>
+            <td>7.37K app sessions as of June 2026.</td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <th class="no-break">Recent activity</th>
+            <td>38 average daily active users over the last 30 days as of June 2026.</td>
+          </tr>
+          <tr>
+            <th class="no-break">Course context</th>
+            <td>Selected for the 2026-1 Computer Programming Extra Project showcase.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p>
+        <a href="../index.html">Hwan Ji</a>
+        &middot;
+        <a href="https://apps.apple.com/us/app/simply5x5/id6752772279" target="_blank" rel="noopener">
+          Simply5x5 on the App Store
+        </a>
+      </p>
+    </footer>
+  </article>
+</body>
+</html>

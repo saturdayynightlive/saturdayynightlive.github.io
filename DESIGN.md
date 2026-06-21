@@ -2,29 +2,29 @@
 
 ## Source of truth
 - Status: Active
-- Last refreshed: 2026-06-14
-- Primary product surfaces: Root personal homepage at `index.html`
-- Evidence reviewed: `index.html`, `Hwan_Ji_CV.pdf`, `DESIGN.md`, Lab12 GitHub Pages requirements, LaTeX.css documentation at `https://latex.vercel.app/`
+- Last refreshed: 2026-06-21
+- Primary product surfaces: Root personal homepage at `index.html`; project detail pages under `projects/`
+- Evidence reviewed: `index.html`, `projects/simply5x5.html`, `Hwan_Ji_CV.pdf`, `DESIGN.md`, LaTeX.css documentation at `https://latex.vercel.app/`
 
 ## Brand
 - Personality: Academic, plain, precise, and document-like.
-- Trust signals: CV download, university affiliation, project evidence, course plan, contact links.
+- Trust signals: CV download, university affiliation, project evidence, course plan, contact links, and App Store release links where relevant.
 - Avoid: Decorative operating-system chrome, fake counters, loud retro widgets, marketing-page composition, and heavy card layouts.
 
 ## Product goals
 - Goals: Present Hwan Ji as a Computer Science & Engineering undergraduate with interests in data-centered AI, statistics, and practical software systems.
 - Non-goals: Simulate a full application shell, add backend features, or rely on paid/external APIs.
-- Success signals: The page reads like a concise academic profile, satisfies Lab12 required content, and remains easy to scan on mobile.
+- Success signals: The page reads like a concise academic profile and remains easy to scan on mobile.
 
 ## Personas and jobs
-- Primary personas: Teaching assistants checking Lab12, peers, professors, research mentors, and collaborators.
-- User jobs: Confirm identity and affiliation, inspect interests/projects/CV, find contact information, and review planned courses.
+- Primary personas: Peers, professors, research mentors, recruiters, and collaborators.
+- User jobs: Confirm identity and affiliation, inspect interests/projects/CV, open representative project details, find contact information, and review planned courses.
 - Key contexts of use: Mobile and desktop browsers through GitHub Pages.
 
 ## Information architecture
-- Primary navigation: Abstract, About, Currently, Projects, Resume, Courses, Contact, AI Usage.
-- Core routes/screens: Single static root page plus linked PDF CV.
-- Content hierarchy: Title and author block, abstract with portrait, numbered sections, ordinary prose, and tables for resume/course summaries.
+- Primary navigation: Abstract, About, Currently, Projects, Resume, Courses, Contact.
+- Core routes/screens: Static root page, representative project detail pages, and linked PDF CV.
+- Content hierarchy: Title and author block, abstract with portrait, numbered sections, ordinary prose, and tables for resume, course, project, and metric summaries.
 
 ## Design principles
 - Principle 1: Prefer semantic HTML that LaTeX.css can typeset with minimal custom classes.
@@ -37,12 +37,12 @@
 - Spacing/layout rhythm: Narrow article measure, numbered sections, compact tables, simple lists.
 - Shape/radius/elevation: No rounded cards, no shadows, no synthetic depth.
 - Motion: None.
-- Imagery/iconography: Use the profile photo as the only primary visual asset.
+- Imagery/iconography: Use the profile photo as the primary share image and a minimal HJ favicon for browser chrome.
 
 ## Components
 - Existing components to reuse: LaTeX.css `author`, `abstract`, standard document typography, and table utility classes.
 - Components to avoid: LaTeX.css theorem/proof/definition boxes unless the page later contains actual mathematical or technical notes that need them.
-- New/changed components: Small local helpers for navigation, profile figure, project metadata, and responsive tables.
+- New/changed components: Small local helpers for navigation, profile figure, project metadata, responsive tables, favicon, and share-preview metadata.
 - Variants and states: Links use browser/LaTeX.css defaults; no JavaScript states.
 - Token/component ownership: LaTeX.css owns global document typography and base element styles. `index.html` owns small page-specific layout helpers.
 
@@ -62,7 +62,7 @@
 - Loading: Static HTML and CSS only.
 - Empty: Not applicable.
 - Error: If the external stylesheet fails, semantic HTML remains readable.
-- Success: Page loads with LaTeX.css styling and all required Lab12 content visible.
+- Success: Root and project pages load with LaTeX.css styling and the core public-profile/project content visible.
 - Disabled: Not applicable.
 - Offline/slow network: Core content remains readable without JavaScript; external CSS may load later.
 
@@ -76,7 +76,7 @@
 - Design-token constraints: Keep custom CSS narrow and page-specific.
 - Performance constraints: No build step, no JavaScript, no backend.
 - Compatibility constraints: Must work as a static GitHub Pages root page.
-- Test/screenshot expectations: Verify CSS request success, no console errors, no mobile horizontal overflow, and Lab12 required sections remain present.
+- Test/screenshot expectations: Verify CSS request success, no console errors, no mobile horizontal overflow, valid internal links, and core profile/project sections remain present.
 
 ## Open questions
 - [ ] Decide whether to pin LaTeX.css to a vendored local copy for offline durability.
