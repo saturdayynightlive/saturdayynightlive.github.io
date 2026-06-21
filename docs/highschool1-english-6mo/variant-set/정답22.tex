@@ -1,0 +1,113 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== XeLaTeX + Korean =====
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+% ===== Layout =====
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{booktabs}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+% ===== Header / Footer =====
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 — 지문 22 정답 및 해설}
+\fancyhead[R]{\sffamily 창의성과 폭넓은 경험}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+% ===== helpers =====
+\newcommand{\qno}[1]{\par\vspace{10pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 22] 정답 및 해설}
+\end{center}
+\vspace{8pt}
+
+% ===== 정답 표 =====
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{cccc}
+\toprule
+\textbf{문항} & \textbf{유형} & \textbf{정답} & \textbf{배점} \\
+\midrule
+1 & 빈칸추론 & ④ & 2점 \\
+2 & 어법 네모 & ① & 2점 \\
+3 & 서술형 — 해석 & (모범답안 참조) & 4점 \\
+4 & 내용 불일치 & ④ & 2점 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{10pt}
+
+% ===== Q1 해설 =====
+\qno{1}\textbf{[빈칸추론]} \textbf{정답: ④ a wide range of experiences}
+
+\par\vspace{4pt}
+\textbf{정답 근거:} ``On the contrary, \underline{\hspace{3cm}} is the key to creativity.''에 이어 ``If your experience is limited to a narrow range of topics, then the scope of your imagination will likewise be narrow, which would be harmful to creativity.''라고 하였다. 즉, 경험의 범위가 좁으면 창의성에 해롭다는 것이 핵심이므로, 빈칸에는 \textbf{폭넓은 경험(a wide range of experiences)}이 들어가야 한다.
+
+\par\vspace{4pt}
+\textbf{오답 소거:}
+\begin{itemize}[leftmargin=2em,itemsep=2pt]
+  \item ① deep focus on a single subject — 본문이 명시적으로 반박하는 개념(``narrow down your interest to one specific topic''의 반대). 매력적 오답이지만 정반대.
+  \item ② consistent daily practice — 본문에서 언급되지 않음.
+  \item ③ logical and systematic thinking — 본문 주제와 무관.
+  \item ⑤ collaboration with creative partners — 창의성과 연관성이 있어 보이나 본문에 근거 없음.
+\end{itemize}
+
+% ===== Q2 해설 =====
+\qno{2}\textbf{[어법 네모]} \textbf{정답: ① pop up / unexpected / likewise}
+
+\par\vspace{4pt}
+\textbf{(A) pop up:} ``could suddenly \underline{\hspace{1.5cm}} in your mind'' — 조동사 could 뒤에는 동사원형이 와야 하므로 \textbf{pop up}이 정답. \textit{popping up}은 현재분사로 조동사 뒤에 올 수 없다.
+
+\par\vspace{4pt}
+\textbf{(B) unexpected:} ``often take place at \underline{\hspace{1.5cm}} times'' — times(명사)를 수식하는 형용사가 필요하므로 \textbf{unexpected}가 정답. \textit{expectedly}는 부사로 명사를 수식할 수 없다.
+
+\par\vspace{4pt}
+\textbf{(C) likewise:} ``the scope of your imagination will \underline{\hspace{1.5cm}} be narrow'' — ``마찬가지로''의 의미로 동사구(be narrow)를 수식하는 부사 \textbf{likewise}가 정답. \textit{likely}는 ``~할 것 같은/같이''의 뜻으로 문맥상 의미가 다르다.
+
+% ===== Q3 해설 =====
+\qno{3}\textbf{[서술형 — 해석]} \textbf{모범답안}
+
+\par\vspace{6pt}
+\begin{pbox}
+\textit{If your experience is limited to a narrow range of topics, then the scope of your imagination will likewise be narrow, which would be harmful to creativity.}
+
+\vspace{6pt}
+$\Rightarrow$ 만약 당신의 경험이 좁은 범위의 주제들에 한정된다면, 당신의 상상력의 범위 또한 마찬가지로 좁아질 것이며, 이는 창의성에 해로울 것이다.
+\end{pbox}
+
+\par\vspace{6pt}
+\textbf{채점 포인트} (각 1점, 총 4점):
+\begin{itemize}[leftmargin=2em,itemsep=2pt]
+  \item \textbf{[1점]} 조건절 ``If your experience is limited to a narrow range of topics'' → ``만약 당신의 경험이 좁은 범위의 주제들에 한정된다면''
+  \item \textbf{[1점]} ``the scope of your imagination'' → ``당신의 상상력의 범위''
+  \item \textbf{[1점]} ``likewise'' → ``마찬가지로'' (또는 ``또한'')
+  \item \textbf{[1점]} 관계절 ``which would be harmful to creativity'' → ``이는 창의성에 해로울 것이다''
+\end{itemize}
+
+\vspace{8pt}
+\noindent{\sffamily\bfseries 4. 내용 불일치 - 정답: ④}
+\par 본문은 관심사를 한 주제로 좁히는 것이 아니라 폭넓은 경험이 창의성의 핵심이라고 말한다. 따라서 창의성을 위해 관심을 좁혀야 한다는 ④는 본문과 반대이다.
+
+\end{document}

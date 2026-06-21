@@ -1,0 +1,107 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{booktabs}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 --- 지문 36}
+\fancyhead[R]{\sffamily 빙하기와 농업의 시작}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+\newcommand{\qno}[1]{\par\vspace{8pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=,leftmargin=1.5em,itemsep=2pt,topsep=3pt,parsep=0pt}
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+\newcommand{\nemo}[1]{\fbox{\,#1\,}}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 36] 다음 글을 읽고 물음에 답하시오.}
+\end{center}
+\vspace{4pt}
+
+% ===== 주어진 단락 (Opening paragraph in pbox) =====
+\begin{pbox}
+During the Ice Age, not only was the planet much colder, with ice sheets covering much of what we call the northern hemisphere today, but, crucially, it was much drier.
+\end{pbox}
+
+\vspace{6pt}
+
+% ===== (A)(B)(C) 섹션 (pbox 바깥, 들여쓰기 + 볼드 라벨) =====
+\noindent\textbf{(A)}\quad In this type of climate, farming isn't an option: it's too risky to depend on any one piece of land to produce the energy you need. As the temperature rose and the ice caps melted, we experienced a sudden explosion of life.
+
+\vspace{6pt}
+
+\noindent\textbf{(B)}\quad In Ireland, we often associate the cold with the wet but if it is really cold, there is far less evaporation$^{*}$, fewer clouds, and less rain. Our world in the Ice Age was cold and dry, meaning it was difficult for plants to grow.
+
+\vspace{6pt}
+
+\noindent\textbf{(C)}\quad The world got warmer and wetter, and people started to live around places where they could make food grow most intensively. This didn't happen overnight; it probably took thousands of years, with hunter-gatherers foraging$^{**}$ and hunting, while doing a little side hustle$^{***}$ in farming.
+
+\vspace{4pt}
+\noindent\footnotesize{$^{*}$ evaporation: 증발 \quad $^{**}$ forage: 채집하다 \quad $^{***}$ side hustle: 부업}
+\normalsize
+
+\bigskip
+
+% ===================== Q1 =====================
+\qno{1}\instr{주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?}
+\begin{choices}
+\item ① (A) -- (C) -- (B)
+\item ② (B) -- (A) -- (C)
+\item ③ (B) -- (C) -- (A)
+\item ④ (C) -- (A) -- (B)
+\item ⑤ (C) -- (B) -- (A)
+\end{choices}
+
+\bigskip
+
+% ===================== Q2 =====================
+\qno{2}\instr{(B) 단락의 논리 전개로 가장 적절한 것은?}
+\begin{choices}
+\item ① Very low temperatures weaken the movement of moisture into the air, reducing cloud formation and rainfall.
+\item ② Low temperatures make Ireland unusually wet, so farming becomes possible despite poor soil.
+\item ③ A lack of clouds raises temperatures, causing ice sheets to melt and rainfall to increase.
+\item ④ Less rain is presented as the result of farming, not as a condition that limits plant growth.
+\item ⑤ Cold weather is described as useful because it keeps plants from using too much energy.
+\end{choices}
+
+\bigskip
+
+% ===================== Q3 (서술형) =====================
+\qno{3}\instr{[서술형] (C) 단락에서 농업이 갑자기 시작된 것이 아님을 나타내는 영어 표현을 찾아 쓰시오.}
+
+\vspace{6pt}
+\noindent $\Rightarrow$ \rule{10cm}{0.4pt}
+
+% ===================== Q4 =====================
+\qno{4}\instr{윗글의 제목으로 가장 적절한 것은?}
+\begin{choices}
+\item ① From Cold Dry Lands to the Conditions for Farming
+\item ② Why Ice Sheets Made Ireland Warmer and Wetter
+\item ③ The Sudden End of Hunting in the Northern Hemisphere
+\item ④ Farming as the Only Reliable Strategy During the Ice Age
+\item ⑤ How Clouds Prevented Humans from Gathering Food
+\end{choices}
+
+\end{document}

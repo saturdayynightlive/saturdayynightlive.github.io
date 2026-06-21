@@ -1,0 +1,109 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{booktabs}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 --- 지문 21}
+\fancyhead[R]{\sffamily [shop for words]}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+\newcommand{\qno}[1]{\par\vspace{8pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=,leftmargin=1.5em,itemsep=2pt,topsep=3pt,parsep=0pt}
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+\newcommand{\nemo}[1]{\fbox{\,#1\,}}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 21] 다음 글을 읽고 물음에 답하시오.}
+\end{center}
+\vspace{4pt}
+
+\begin{pbox}
+A classical ideal of truth and knowledge is the concept of a market for ideas: as thinking
+individuals, we encounter competing ideas, we evaluate them for their best \nemo{(A) fit / fitting}
+to reality, and then let the best and brightest facts \nemo{(B) form / to form} the basis of our
+beliefs. That would be the scientist's way, in theory at least. But in practice, most of the time
+we are in a market for \rule{3.5cm}{0.4pt}. We shop for words not because they contain ideas,
+but because they contain stories about ideas. Often we are not seeking statements as facts to help
+us figure out what we should believe. Usually we already know what we believe. What we seek are
+statements to justify those beliefs --- the lawyer's way. Language might be good for this function
+but we can use it to do \nemo{(C) good / better}.\ By treating language with greater respect, we
+can achieve more than simple self-defense.
+\end{pbox}
+
+\bigskip
+
+\qno{1}\instr{다음 빈칸에 들어갈 말로 가장 적절한 것은? [3점]}
+\begin{choices}
+\item ① inspirations
+\item ② innovations
+\item ③ rationalizations
+\item ④ contradictions
+\item ⑤ observations
+\end{choices}
+
+\bigskip
+
+\qno{2}\instr{(A), (B), (C)의 각 네모 안에서 어법에 맞는 표현으로 가장 적절한 것은?}
+
+\vspace{4pt}
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+\textbf{(A)} & \textbf{(B)} & \textbf{(C)} \\
+\midrule
+① fitting & form & better \\
+② fit & form & better \\
+③ fit & to form & better \\
+④ fitting & to form & good \\
+⑤ fit & form & good \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+
+\qno{3}\instr{[서술형] 다음 문장을 우리말로 해석하시오.}
+
+\vspace{4pt}
+\noindent\textit{By treating language with greater respect, we can achieve more than simple self-defense.}
+
+\vspace{8pt}
+\noindent $\Rightarrow$ \rule{\linewidth}{0.4pt}
+
+\vspace{6pt}
+\noindent \rule{\linewidth}{0.4pt}
+
+% ===================== Q4 =====================
+\qno{4}\instr{윗글의 제목으로 가장 적절한 것은?}
+\begin{choices}
+\item ① Why Scientific Facts Always Win in Public Debate
+\item ② Language as a Weapon for Defending What We Already Believe
+\item ③ The Marketplace Where Every Idea Is Judged Fairly
+\item ④ How Stories Prevent People from Forming Any Beliefs
+\item ⑤ The Decline of Language in Modern Scientific Research
+\end{choices}
+
+\end{document}

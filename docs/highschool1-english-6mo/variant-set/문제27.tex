@@ -1,0 +1,135 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+\usepackage[a4paper,top=14mm,bottom=16mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{booktabs}
+
+\setlength{\parindent}{1em}
+\linespread{1.04}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 — 지문 27}
+\fancyhead[R]{\sffamily [Junior Coding Camp 안내문]}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+\newcommand{\qno}[1]{\par\vspace{5pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{2pt}}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=,leftmargin=1.5em,itemsep=1pt,topsep=2pt,parsep=0pt}
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+\newcommand{\nemo}[1]{\fbox{\,#1\,}}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 27] 다음 글을 읽고 물음에 답하시오.}
+\end{center}
+\vspace{4pt}
+
+\begin{pbox}
+\begin{center}
+{\large\bfseries Junior Coding Camp}\\[4pt]
+{\itshape Explore the world of coding through easy, hands-on activities!}
+\end{center}
+
+\vspace{6pt}
+\textbf{Date \& Site}
+\begin{itemize}[leftmargin=1.8em,itemsep=1pt,topsep=2pt,parsep=0pt]
+  \item[\textbullet] Wednesday, July 29th, 2026
+  \item[\textbullet] Arendale Tech Center
+\end{itemize}
+
+\vspace{4pt}
+\textbf{Ages \& Level:} 10--13 years old, for beginners
+
+\vspace{4pt}
+\textbf{Schedule}
+
+\vspace{2pt}
+\begin{tabular}{@{\hspace{1em}}ll}
+\toprule
+\textbf{Time} & \textbf{Activity} \\
+\midrule
+9 a.m. -- 12 p.m. & Coding Basics \\
+1 p.m. -- 4 p.m.  & Game Design \\
+\bottomrule
+\end{tabular}
+
+\vspace{4pt}
+\textbf{Participation Fee:} \$100 per person (lunch provided)
+
+\vspace{4pt}
+\textbf{Registration}
+\begin{itemize}[leftmargin=1.8em,itemsep=1pt,topsep=2pt,parsep=0pt]
+  \item[\textbullet] Limited to 50 students
+  \item[\textbullet] On a first-come, first-served basis
+  \item[\textbullet] Register on site.
+\end{itemize}
+\end{pbox}
+
+\vspace{6pt}
+
+%% Q1 — 내용 불일치 (2점)
+\qno{1}\instr{윗글의 내용과 일치하지 않는 것은?}
+\begin{choices}
+  \item ① The event spans a single day at a technology facility.
+  \item ② Participation is restricted to those with no prior coding experience.
+  \item ③ Those who register early are given priority for spots.
+  \item ④ Participants are required to bring their own meals as no food is provided.
+  \item ⑤ The morning session focuses on foundational coding skills.
+\end{choices}
+
+\vspace{10pt}
+
+%% Q2 — 서술형 단답 (2점)
+\qno{2}\instr{[서술형] 다음 물음에 답하시오.}
+
+\noindent (1)\ 캠프에 참가하기 위한 연령 조건을 우리말로 쓰시오.
+
+\vspace{4pt}
+\noindent $\Rightarrow$ \rule{10cm}{0.4pt}
+
+\vspace{10pt}
+
+\noindent (2)\ 등록 방법(where to register)을 본문에서 찾아 영어로 쓰시오.
+
+\vspace{4pt}
+\noindent $\Rightarrow$ \rule{10cm}{0.4pt}
+
+% ===================== Q3 =====================
+\qno{3}\instr{오후 일정에 해당하는 활동으로 가장 적절한 것은?}
+\begin{choices}
+  \item ① Coding Basics
+  \item ② Game Design
+  \item ③ Lunch preparation
+  \item ④ Online registration
+  \item ⑤ Advanced robotics
+\end{choices}
+
+% ===================== Q4 =====================
+\qno{4}\instr{윗글에서 추론할 수 있는 내용으로 가장 적절한 것은?}
+\footnotesize
+\begin{tabular}{@{}p{0.48\linewidth}p{0.48\linewidth}@{}}
+① More than 50 students can join if they pay an additional fee. &
+② Students with advanced coding experience are the main target group. \\
+③ Applicants who register earlier have a better chance of being accepted. &
+④ The camp lasts for two consecutive days. \\
+⑤ Participants must find lunch outside the camp site. &
+\end{tabular}
+\normalsize
+
+\end{document}

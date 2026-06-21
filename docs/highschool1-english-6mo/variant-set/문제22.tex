@@ -1,0 +1,98 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== XeLaTeX + Korean =====
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+% ===== Layout =====
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+% ===== Header / Footer =====
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 — 지문 22}
+\fancyhead[R]{\sffamily 창의성과 폭넓은 경험}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+% ===== helpers =====
+\newcommand{\qno}[1]{\par\vspace{8pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=,leftmargin=1.5em,itemsep=2pt,topsep=3pt,parsep=0pt}
+
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+\newcommand{\nemo}[1]{\fbox{\,#1\,}}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 22] 다음 글을 읽고 물음에 답하시오.}
+\end{center}
+\vspace{4pt}
+
+% ===== 공통 지문 (빈칸 + 어법 네모 3개) =====
+\begin{pbox}
+\hspace{1em}Suppose you have been working on the solution to a challenging technological problem for many years. Let's also suppose that you have been paying attention to whatever else you have encountered that might be related to the problem. In that case, chances are that creative solutions to the problem could suddenly (A)\,\nemo{pop up / popping up} in your mind when you are relaxed. Such ``eureka moments'' (when great insights lead to discovery or invention) often take place at (B)\,\nemo{unexpected / expectedly} times. To enhance spontaneous creativity, therefore, one must pay attention to the things that could potentially lead to valuable outcomes. This does not mean that you must narrow down your interest to one specific topic. On the contrary, \rule{4cm}{0.4pt} is the key to creativity. If your experience is limited to a narrow range of topics, then the scope of your imagination will (C)\,\nemo{likewise / likely} be narrow, which would be harmful to creativity.
+
+\vspace{4pt}
+\noindent\footnotesize{* spontaneous: 자연 발생적인}
+\end{pbox}
+
+% ===================== Q1 빈칸추론 =====================
+\qno{1}\instr{다음 빈칸에 들어갈 말로 가장 적절한 것은?}
+\begin{choices}
+\item ① deep focus on a single subject
+\item ② consistent daily practice
+\item ③ logical and systematic thinking
+\item ④ a wide range of experiences
+\item ⑤ collaboration with creative partners
+\end{choices}
+
+% ===================== Q2 어법 네모 =====================
+\qno{2}\instr{(A), (B), (C)의 각 네모 안에서 어법에 맞는 표현으로 가장 적절한 것은?}
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{c c c c}
+ & (A) & (B) & (C) \\
+① & pop up & unexpected & likewise \\
+② & pop up & unexpected & likely \\
+③ & pop up & expectedly & likewise \\
+④ & popping up & unexpected & likewise \\
+⑤ & popping up & expectedly & likely \\
+\end{tabular}
+\end{center}
+
+% ===================== Q3 서술형 해석 =====================
+\qno{3}\instr{[서술형] 다음 문장을 우리말로 해석하시오.}
+\vspace{4pt}\par\noindent
+\hspace{1em}\textit{If your experience is limited to a narrow range of topics, then the scope of your imagination will likewise be narrow, which would be harmful to creativity.}
+\par\vspace{6pt}\noindent
+$\Rightarrow$ \rule{\linewidth}{0.4pt}
+\par\vspace{4pt}\noindent
+\rule{\linewidth}{0.4pt}
+
+% ===================== Q4 =====================
+\qno{4}\instr{윗글의 내용과 일치하지 \underline{않는} 것은?}
+\begin{choices}
+\item ① Creative ideas may arise when one is relaxed rather than actively forcing them.
+\item ② Paying attention to seemingly related experiences can support later insight.
+\item ③ Eureka moments can occur at times that are not deliberately planned.
+\item ④ Creativity is best promoted by limiting one's interest to one narrow topic.
+\item ⑤ A narrow range of experiences can restrict the scope of imagination.
+\end{choices}
+
+\end{document}

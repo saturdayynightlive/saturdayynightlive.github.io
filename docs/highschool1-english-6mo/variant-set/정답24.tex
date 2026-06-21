@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== XeLaTeX + Korean =====
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+% ===== Layout =====
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{booktabs}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+% ===== Header / Footer =====
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 — 지문 24 정답 및 해설}
+\fancyhead[R]{\sffamily 도파민과 SNS}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+% ===== helpers =====
+\newcommand{\qno}[1]{\par\vspace{10pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 24] 정답 및 해설 — 도파민과 SNS}
+\end{center}
+\vspace{6pt}
+
+% ===== 정답 표 =====
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{cccc}
+\toprule
+문항 & 유형 & 정답 & 배점 \\
+\midrule
+1 & 빈칸추론 & ② & 2점 \\
+2 & 어휘 (문맥상 부적절) & ③ & 2점 \\
+3 & 서술형 — 해석 & 모범답안 참조 & 4점 \\
+4 & 영어 제목 & ⑤ & 2점 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{8pt}
+
+% ===================== Q1 해설 =====================
+\qno{1}\instr{빈칸추론 — 정답: ②\, equilibrium}
+
+\noindent\textbf{정답 근거:} 빈칸 직후 ``or balance''라는 동격 표현이 등장하여 빈칸이 `균형'을 의미하는 단어임을 직접 알려 준다. 또한 지문 앞부분에서 뇌가 항상 `homeostasis(항상성)'를 추구하며 이것이 ``simply means balance''라고 설명하므로, 빈칸에는 균형·평형을 뜻하는 \textbf{equilibrium}이 가장 적절하다.
+
+\vspace{4pt}\noindent\textbf{오답 소거:}
+\begin{itemize}[leftmargin=2em,itemsep=1pt,topsep=2pt]
+  \item ① stimulation (자극) — 도파민 상승의 원인이지, 뇌가 달성하려는 상태가 아니다.
+  \item ③ acceleration (가속) — 지문의 논지(균형 회복)와 반대 방향이다.
+  \item ④ gratification (만족) — 도파민 상승 직후의 감각이나, 빈칸 뒤 ``or balance''와 의미가 맞지 않는다.
+  \item ⑤ withdrawal (금단/철수) — 도파민 감소 이후의 부작용 상태이며, 뇌가 능동적으로 달성하려는 상태가 아니다.
+\end{itemize}
+
+% ===================== Q2 해설 =====================
+\qno{2}\instr{어휘 — 정답: ③\, avoiding}
+
+\noindent\textbf{정답 근거:} 지문은 뇌와 몸이 항상 `homeostasis(항상성)', 즉 균형을 \textbf{추구(seek)}한다고 설명한다. 따라서 ③의 ``avoiding(회피하다)''은 문맥과 정반대이며, \textbf{seeking}으로 바꾸어야 올바르다.
+
+\vspace{4pt}\noindent\textbf{나머지 어휘 확인:}
+\begin{itemize}[leftmargin=2em,itemsep=1pt,topsep=2pt]
+  \item ① occurring — ``뇌에서 일어나고 있는'' 것을 묘사; 문맥상 적절.
+  \item ② incredibly — 도파민이 ``믿을 수 없이'' 빠르게 상승한다는 의미; 적절.
+  \item ④ baseline — 기준 수준 아래로 도파민이 떨어진다는 의미; 적절.
+  \item ⑤ rebalance — 균형을 다시 맞추기 위해 도파민이 하락한다는 의미; 적절.
+\end{itemize}
+
+% ===================== Q3 해설 =====================
+\qno{3}\instr{[서술형] 해석 — 모범답안 및 채점 포인트}
+
+\noindent\textbf{대상 문장:}\\
+\hspace{1em}\textit{the dopamine then has to quickly drop an equal amount below your baseline level in order to rebalance, making you feel even worse than before you started scrolling.}
+
+\vspace{6pt}\noindent\textbf{모범답안:}\\
+그러면 도파민은 재균형을 이루기 위해 당신의 기준 수준보다 동일한 양만큼 빠르게 떨어져야 하며, 이는 스크롤을 시작하기 전보다 더 나쁜 기분이 들게 만든다.
+
+\vspace{6pt}\noindent\textbf{채점 포인트 (각 1점, 총 4점):}
+\begin{enumerate}[leftmargin=2em,itemsep=2pt,topsep=2pt]
+  \item ``drop an equal amount below your baseline level'' → 기준 수준보다 동일한 양만큼 하락/떨어지다 (기준 수준·동일한 양 모두 포함 시 인정)
+  \item ``in order to rebalance'' → 재균형을 이루기/위해 (목적의 의미 전달 시 인정)
+  \item ``making you feel even worse'' → 더 나쁜 기분이 들게 만들다 (비교급 ``even worse'' 반영 시 인정)
+  \item ``than before you started scrolling'' → 스크롤을 시작하기 전보다 (비교 대상 명시 시 인정)
+\end{enumerate}
+
+\vspace{8pt}
+\noindent{\sffamily\bfseries 4. 제목 - 정답: ⑤}
+\par 글은 SNS 스크롤로 도파민이 빠르게 상승한 뒤, 항상성을 회복하기 위해 기준치 아래로 급락하면서 더 나쁜 기분이 생긴다는 과정을 설명한다. 따라서 ⑤가 가장 적절하다.
+
+\end{document}

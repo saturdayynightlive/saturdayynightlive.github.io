@@ -1,0 +1,93 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== XeLaTeX + Korean =====
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+% ===== Layout =====
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+% ===== Header / Footer =====
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 — 지문 30}
+\fancyhead[R]{\sffamily viewfinder}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+% ===== helpers =====
+\newcommand{\qno}[1]{\par\vspace{8pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=,leftmargin=1.5em,itemsep=2pt,topsep=3pt,parsep=0pt}
+
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+\newcommand{\nemo}[1]{\fbox{\,#1\,}}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 30] 다음 글을 읽고 물음에 답하시오.}
+\end{center}
+\vspace{4pt}
+
+% ===== 공통 지문 =====
+% ① entirety, ② refine, ③ support,
+% ④ dimensions (적절), ⑤ filter out (적절)
+% blank: "distracted" → \rule{3cm}{0.4pt}
+\begin{pbox}
+A viewfinder is a piece of card with a hole cut through it in the middle, which can be used to isolate a part of a picture or object. It allows us to concentrate on one small part or area without being \rule{3cm}{0.4pt} by the \underline{①entirety} of what can be seen. It is a useful tool that can help children \underline{②refine} or organise their observation and drawing. It can \underline{③support} hesitant children by giving a boundary to what they are looking at and it can support children who find it hard to keep track of where and what they are looking at, by bringing them back to the same area each time they look and look back. When you are making viewfinders for use with the children you are supporting, take into consideration the \underline{④dimensions} of the card. You need enough card around the hole to \underline{⑤filter out} the rest of the visual information from the child's field of vision, but it should not be too big and unwieldy.
+
+\vspace{4pt}
+\noindent * unwieldy: 다루기 힘든
+\end{pbox}
+
+% ===================== Q1 =====================
+\qno{1}\instr{밑줄 친 ①$\sim$⑤ 중에서 문맥상 낱말의 쓰임이 적절하지 않은 것은?}
+\begin{choices}
+\item ① ①\quad ② ②\quad ③ ③\quad ④ ④\quad ⑤ ⑤
+\end{choices}
+
+% ===================== Q2 =====================
+\qno{2}\instr{다음 빈칸에 들어갈 말로 가장 적절한 것은?}
+\begin{choices}
+\item ① amused
+\item ② inspired
+\item ③ informed
+\item ④ overwhelmed
+\item ⑤ reassured
+\end{choices}
+
+% ===================== Q3 (서술형) =====================
+\qno{3}\instr{[서술형] 다음 문장을 우리말로 해석하시오.}
+\vspace{2pt}\par\noindent
+\hspace{1em}\textit{You need enough card around the hole to \underline{filter out} the rest of the visual information from the child's field of vision, but it should not be too big and unwieldy.}
+\par\vspace{6pt}\noindent
+$\Rightarrow$ \rule{\linewidth}{0.4pt}
+\par\vspace{4pt}\noindent
+\rule{\linewidth}{0.4pt}
+
+% ===================== Q4 =====================
+\qno{4}\instr{윗글의 주제로 가장 적절한 것은?}
+\begin{choices}
+\item ① how viewfinders help children focus and organize visual observation
+\item ② why children should draw only large objects with complex shapes
+\item ③ the disadvantages of using boundaries in children's artwork
+\item ④ how to replace direct observation with memory-based drawing
+\item ⑤ why teachers should avoid supporting hesitant children
+\end{choices}
+
+\end{document}

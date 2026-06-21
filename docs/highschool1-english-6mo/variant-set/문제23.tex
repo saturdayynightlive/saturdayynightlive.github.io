@@ -1,0 +1,103 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== XeLaTeX + Korean =====
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+% ===== Layout =====
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+% ===== Header / Footer =====
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 — 지문 23}
+\fancyhead[R]{\sffamily 죄책감과 수치심}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+% ===== helpers =====
+\newcommand{\qno}[1]{\par\vspace{8pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=,leftmargin=1.5em,itemsep=2pt,topsep=3pt,parsep=0pt}
+
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+\newcommand{\nemo}[1]{\fbox{\,#1\,}}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 23] 다음 글을 읽고 물음에 답하시오.}
+\end{center}
+\vspace{4pt}
+
+% ===== 공통 지문 (빈칸 삽입: destructive → blank) =====
+\begin{pbox}
+Shame is about who we are, and guilt is about our behaviors. We feel guilty when we hold up something we've done or failed to do against the kind of person we want to be. It's an uncomfortable feeling, but one that's helpful. When we apologize for something we've done, make amends\textsuperscript{*} to others, or change a behavior that we don't feel good about, guilt is most often the motivator. Guilt is just as powerful as shame, but its effect is often positive while shame often is \rule{3cm}{0.4pt}. When we see people apologize, make amends, or replace negative behaviors with more positive ones, guilt is often the motivator, not shame. In fact, in my research, I found that shame corrodes\textsuperscript{**} the part of us that believes we can change and do better.
+
+\vspace{4pt}
+\noindent\small{* amends: 보상, 배상 \quad ** corrode: 좀먹다, 약화시키다}
+\end{pbox}
+
+% ===================== Q1 =====================
+\qno{1}\instr{다음 빈칸에 들어갈 말로 가장 적절한 것은?}
+\begin{choices}
+\item ① motivating
+\item ② constructive
+\item ③ corrosive
+\item ④ unconscious
+\item ⑤ inevitable
+\end{choices}
+
+% ===================== Q2 =====================
+\qno{2}\instr{윗글의 제목으로 가장 적절한 것은?}
+\begin{choices}
+\item ① Shame: The Stronger Motivator for Changing Behavior
+\item ② How Guilt and Shame Work Together to Build Character
+\item ③ Guilt Drives Positive Change; Shame Tears Us Down
+\item ④ The Role of Apology in Overcoming Guilt and Shame
+\item ⑤ Why We Should Embrace Both Guilt and Shame Equally
+\end{choices}
+
+% ===================== Q3 =====================
+\qno{3}\instr{다음은 윗글을 요약한 것이다. 빈칸 (A), (B)에 들어갈 말로 가장 적절한 것은?}
+
+\vspace{4pt}
+\noindent\hspace{1em}\textit{Unlike shame, which (A)\,\rule{2.8cm}{0.4pt}\, our belief in self-improvement, guilt tends to (B)\,\rule{2.8cm}{0.4pt}\, positive behavioral change by pushing us to apologize and make amends.}
+\vspace{6pt}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{c >{\centering\arraybackslash}p{3.5cm} >{\centering\arraybackslash}p{3.5cm}}
+ & (A) & (B) \\
+① & reinforces & suppress \\
+② & reinforces & encourage \\
+③ & undermines & drive \\
+④ & undermines & prevent \\
+⑤ & challenges & delay \\
+\end{tabular}
+\end{center}
+
+% ===================== Q4 =====================
+\qno{4}\instr{[서술형] 다음 문장을 우리말로 해석하시오.}
+\vspace{2pt}\par\noindent
+\hspace{1em}\textit{In fact, in my research, I found that shame corrodes the part of us that believes we can change and do better.}
+\par\vspace{6pt}\noindent
+$\Rightarrow$ \rule{\linewidth}{0.4pt}
+\par\vspace{4pt}\noindent
+\rule{\linewidth}{0.4pt}
+
+\end{document}

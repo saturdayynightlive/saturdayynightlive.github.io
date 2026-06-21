@@ -1,0 +1,115 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== XeLaTeX + Korean =====
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+% ===== Layout =====
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{booktabs}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+% ===== Header / Footer =====
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 — 지문 37}
+\fancyhead[R]{\sffamily 작업기억과 장기기억}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+% ===== helpers =====
+\newcommand{\qno}[1]{\par\vspace{8pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=,leftmargin=1.5em,itemsep=2pt,topsep=3pt,parsep=0pt}
+
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+\newcommand{\nemo}[1]{\fbox{\,#1\,}}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 37] 다음 글을 읽고 물음에 답하시오.}
+\end{center}
+\vspace{4pt}
+
+% ===== 공통 지문: Opening + (A)(B)(C) =====
+\begin{pbox}
+\hspace{1em}The big difference between working and long-term memory is that we are explicitly aware of the information in working memory, but we are not able to directly access the information in our long-term memory.
+
+\vspace{6pt}
+\noindent\textbf{(A)}
+
+\hspace{1em}But remember it has a limit of seven items or chunks. Each actor would be an item. Try and hold all the actors you know in your \rule{4cm}{0.4pt}. You might try to visualize a large group of them. But you still would only be aware of a few actors at any one time.
+
+\vspace{6pt}
+\noindent\textbf{(B)}
+
+\hspace{1em}However, if I asked you to list all the actors, you would use your working memory to retrieve* them one by one and reel** them off. Your working memory can access your long-term memory and bring those memories to awareness.
+
+\vspace{6pt}
+\noindent\textbf{(C)}
+
+\hspace{1em}We access long-term memory by bringing the information into working memory. For example, right now you are not aware of all the actors you have ever seen. They are stored in your long-term memory outside your consciousness.
+
+\vspace{6pt}
+\noindent\footnotesize{* retrieve: 생각해 내다\quad ** reel off: 술술 말하다}
+\end{pbox}
+
+% ===================== Q1 글 순서 배열 [3점] =====================
+\qno{1}\instr{주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은? [3점]}
+\begin{choices}
+\item ① (A) -- (C) -- (B)
+\item ② (B) -- (A) -- (C)
+\item ③ (B) -- (C) -- (A)
+\item ④ (C) -- (A) -- (B)
+\item ⑤ (C) -- (B) -- (A)
+\end{choices}
+
+% ===================== Q2 빈칸추론 =====================
+\qno{2}\instr{다음 빈칸에 들어갈 말로 가장 적절한 것은?}
+\begin{choices}
+\item ① permanent long-term storage
+\item ② visual imagination only
+\item ③ conscious working memory
+\item ④ subconscious recall system
+\item ⑤ emotional memory network
+\end{choices}
+
+% ===================== Q3 서술형 해석 =====================
+\qno{3}\instr{[서술형] 다음 문장을 우리말로 해석하시오.}
+\vspace{4pt}\par\noindent
+\hspace{1em}\textit{Your working memory can access your long-term memory and bring those memories to awareness.}
+\par\vspace{6pt}\noindent
+$\Rightarrow$ \rule{\linewidth}{0.4pt}
+\par\vspace{4pt}\noindent
+\rule{\linewidth}{0.4pt}
+
+% ===================== Q4 =====================
+\qno{4}\instr{다음은 윗글을 요약한 것이다. 빈칸 (A), (B)에 들어갈 말로 가장 적절한 것은?}
+\noindent\hspace{1em}\textit{Long-term memories are not directly conscious; they become available only when working memory (A)\,\rule{2.8cm}{0.4pt}\, them, though working memory can hold only a (B)\,\rule{2.8cm}{0.4pt}\, amount at once.}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{c c c}
+ & (A) & (B) \\
+① & retrieves & limited \\
+② & deletes & fixed \\
+③ & ignores & limitless \\
+④ & stores & permanent \\
+⑤ & disguises & random \\
+\end{tabular}
+\end{center}
+
+\end{document}

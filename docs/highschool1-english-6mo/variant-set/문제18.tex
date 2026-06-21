@@ -1,0 +1,103 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== XeLaTeX + Korean =====
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+% ===== Layout =====
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+% ===== Header / Footer =====
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 — 지문 18}
+\fancyhead[R]{\sffamily 도서 기부 행사 안내문}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+% ===== helpers =====
+\newcommand{\qno}[1]{\par\vspace{8pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=,leftmargin=1.5em,itemsep=2pt,topsep=3pt,parsep=0pt}
+
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+\newcommand{\nemo}[1]{\fbox{\,#1\,}}
+\newcommand{\ansline}{\par\vspace{2pt}\noindent\rule{\linewidth}{0.4pt}\par\vspace{8pt}\noindent\rule{\linewidth}{0.4pt}}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 18] 다음 글을 읽고 물음에 답하시오.}
+\end{center}
+\vspace{4pt}
+
+% ===== 공통 지문 (원본 단어 유지 + 어법 네모) =====
+\begin{pbox}
+Dear Residents,\par
+\hspace{1em}I am Trixie Mitchell, the director of the Riverside Community Center. I am pleased (A)\,\nemo{to invite / inviting} you to a book donation drive. We are collecting used books (B)\,\nemo{to support / supported} our reading programs for children and teenagers. By donating books, you can help young readers discover the joy of reading. Any books in good condition (C)\,\nemo{is / are} gladly accepted, including novels, poetry, and non-fiction books. You can bring your books to our community center during our operating hours. We would be grateful if you could join this meaningful event.\par
+Sincerely,\par
+Trixie Mitchell
+\end{pbox}
+
+% ===================== Q1 =====================
+\qno{1}\instr{윗글의 목적으로 가장 적절한 것은?}
+\begin{choices}
+\item ① to announce the extended operating hours of the community center
+\item ② to ask residents to donate used books for reading programs
+\item ③ to recruit volunteers who will teach children how to read
+\item ④ to promote a charity sale of secondhand books at low prices
+\item ⑤ to invite residents to the grand opening of a new public library
+\end{choices}
+
+% ===================== Q2 =====================
+\qno{2}\instr{윗글의 (A), (B), (C)의 각 네모 안에서 어법에 맞는 표현으로 가장 적절한 것은?}
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{c c c c}
+ & (A) & (B) & (C) \\
+① & to invite & to support & is \\
+② & to invite & to support & are \\
+③ & to invite & supported & are \\
+④ & inviting & to support & is \\
+⑤ & inviting & supported & are \\
+\end{tabular}
+\end{center}
+
+% ===================== Q3 =====================
+\qno{3}\instr{윗글의 내용과 일치하지 \underline{않는} 것은?}
+\begin{choices}
+\item ① The writer is responsible for running the Riverside Community Center.
+\item ② The donation campaign aims to benefit young readers' reading habits.
+\item ③ Worn-out or damaged books are unlikely to be welcomed.
+\item ④ Factual books such as biographies fall outside what is being collected.
+\item ⑤ Donors are expected to drop off their books when the center is open.
+\end{choices}
+
+% ===================== Q4 (서술형) =====================
+\qno{4}\instr{[서술형] 윗글을 읽고 다음 물음에 답하시오.}
+\vspace{2pt}\par\noindent
+(1) 윗글의 문장 ``\textit{Any books in good condition are gladly accepted}''를, \underline{We를 주어로 하는 능동태} 문장으로 바꿔 쓰시오.
+\par\vspace{4pt}\noindent
+$\Rightarrow$ \rule{11cm}{0.4pt}
+\vspace{10pt}\par\noindent
+(2) 다음 문장을 우리말로 자연스럽게 해석하시오.
+\par\vspace{2pt}\noindent
+\hspace{1em}\textit{We would be grateful if you could join this meaningful event.}
+\par\vspace{4pt}\noindent
+$\Rightarrow$ \rule{\linewidth}{0.4pt}
+
+\end{document}

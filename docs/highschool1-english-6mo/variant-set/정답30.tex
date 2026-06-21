@@ -1,0 +1,113 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== XeLaTeX + Korean =====
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmainhangulfont{AppleMyungjo}
+\setsanshangulfont{Apple SD Gothic Neo}
+
+% ===== Layout =====
+\usepackage[a4paper,top=18mm,bottom=18mm,left=20mm,right=20mm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{booktabs}
+
+\setlength{\parindent}{1em}
+\linespread{1.18}
+
+% ===== Header / Footer =====
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\fancyhead[L]{\sffamily\bfseries 2026 고1 영어 변형 — 지문 30 정답 및 해설}
+\fancyhead[R]{\sffamily viewfinder}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\framebox[16mm][c]{\thepage}}
+
+% ===== helpers =====
+\newcommand{\qno}[1]{\par\vspace{10pt}\noindent{\sffamily\bfseries #1.}\ }
+\newcommand{\instr}[1]{{\sffamily #1}\par\vspace{3pt}}
+\newlist{choices}{enumerate}{1}
+\setlist[choices]{label=,leftmargin=1.5em,itemsep=2pt,topsep=3pt,parsep=0pt}
+
+\newmdenv[linewidth=0.6pt,roundcorner=3pt,innertopmargin=7pt,innerbottommargin=7pt,
+          innerleftmargin=9pt,innerrightmargin=9pt,skipabove=5pt,skipbelow=5pt]{pbox}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{15}{17}\selectfont\sffamily\bfseries [지문 30] 정답 및 해설}
+\end{center}
+\vspace{6pt}
+
+% ===== 정답 표 =====
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+문항 & 유형 & 정답 & 배점 \\
+\midrule
+1 & 어휘 부적절 & ② & 2점 \\
+2 & 빈칸추론    & ④ & 2점 \\
+3 & 서술형(해석) & 모범답안 참조 & 2점 \\
+4 & 영어 주제 & ① & 2점 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{8pt}
+
+% ===================== Q1 해설 =====================
+\qno{1}\instr{어휘 부적절 — 정답: ②}
+
+\textbf{정답 근거:} 뷰파인더는 아이들이 관찰과 그림에서 주의를 \textbf{집중(focus/organise)}하도록 돕는 도구이다. 문맥상 ② \textit{refine}(다듬다, 정제하다)은 품질을 세련되게 만드는 행위를 뜻하므로, 주의를 \textit{관리하고 집중시킨다}는 의미에 부합하지 않는다. \textit{direct}, \textit{guide}, \textit{organise} 등이 적절하다.
+
+\textbf{오답 소거:}
+\begin{itemize}[leftmargin=2em,itemsep=1pt,topsep=2pt]
+  \item ① \textit{entirety} — '전체'를 의미하며, 하나의 작은 부분에 집중하기 위해 전체에 의해 산만해지지 않는다는 문맥에 적합하다.
+  \item ③ \textit{support} — 뷰파인더가 주저하는 아이들을 '지원한다'는 의미로 적절하다.
+  \item ④ \textit{dimensions} — 카드의 '크기/치수'를 고려하라는 문맥에 적합하다.
+  \item ⑤ \textit{filter out} — 나머지 시각 정보를 '걸러내다'는 의미로 적절하다.
+\end{itemize}
+
+% ===================== Q2 해설 =====================
+\qno{2}\instr{빈칸추론 — 정답: ④ overwhelmed}
+
+\textbf{정답 근거:} 빈칸이 포함된 문장: ``It allows us to concentrate on one small part or area without being \rule{2cm}{0.4pt} by the entirety of what can be seen.'' 뷰파인더의 목적은 전체 시야에 압도(overwhelmed)되지 않고 한 부분에 집중하게 하는 것이다. \textit{overwhelmed}(압도된)가 ``전체에 의해 주의가 흐트러지다''의 의미를 가장 잘 표현한다.
+
+\textbf{오답 소거:}
+\begin{itemize}[leftmargin=2em,itemsep=1pt,topsep=2pt]
+  \item ① \textit{amused} — 즐거움과 관련된 단어로, 시각 정보 과부하와 무관하다.
+  \item ② \textit{inspired} — 영감을 받는다는 뜻으로, 집중을 방해하는 맥락에 맞지 않는다.
+  \item ③ \textit{informed} — '더 많은 것을 봄으로써 정보를 얻는다'는 의미로 오독을 유도하나, 뷰파인더의 기능(시각 제한)과 반대이다.
+  \item ⑤ \textit{reassured} — 안심한다는 뜻으로, 맥락에 맞지 않는다.
+\end{itemize}
+
+% ===================== Q3 해설 =====================
+\qno{3}\instr{서술형(해석) — 모범답안}
+
+\textbf{대상 문장:}
+\begin{pbox}
+\textit{You need enough card around the hole to filter out the rest of the visual information from the child's field of vision, but it should not be too big and unwieldy.}
+\end{pbox}
+
+\vspace{4pt}
+\textbf{모범답안:}\\
+구멍 주변에 아이의 시야에서 나머지 시각 정보를 걸러내기에 충분한 카드가 필요하지만, 그것이 너무 크고 다루기 힘들어서는 안 된다.
+
+\vspace{6pt}
+\textbf{채점 포인트:}
+\begin{itemize}[leftmargin=2em,itemsep=1pt,topsep=2pt]
+  \item \textit{enough card around the hole} → 구멍 주변에 충분한 카드 (1점)
+  \item \textit{filter out the rest of the visual information} → 나머지 시각 정보를 걸러내다/차단하다 (0.5점)
+  \item \textit{field of vision} → 시야 (0.25점)
+  \item \textit{too big and unwieldy} → 너무 크고 다루기 힘들다 (0.25점)
+\end{itemize}
+
+\vspace{8pt}
+\qno{4}\instr{주제 - 정답: ①}
+\par 지문은 뷰파인더가 아이들이 전체 시각 정보에 압도되지 않고 작은 영역에 집중하며 관찰과 그림을 조직하도록 돕는다고 설명한다. 따라서 ①이 글의 주제이다.
+
+\end{document}
