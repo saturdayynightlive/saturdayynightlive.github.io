@@ -116,7 +116,7 @@
       <p class="author">
         Hwan Ji<br />
         iOS workout tracker<br />
-        Last updated: June 21, 2026
+        Last updated: June 24, 2026
       </p>
       <p class="project-meta">
         SwiftUI &middot; Firebase AI Logic (Gemini) &middot; HealthKit &middot; Swift Charts
@@ -125,76 +125,62 @@
 
     <nav class="toc" aria-label="Project navigation">
       <a href="../index.html">Home</a>
-      <a href="#overview">Overview</a>
       <a href="#features">Features</a>
-      <a href="#implementation">Implementation</a>
+      <a href="#details">Details</a>
       <a href="#metrics">Metrics</a>
       <a href="https://apps.apple.com/us/app/simply5x5/id6752772279" target="_blank" rel="noopener">App Store</a>
     </nav>
 
-    <div class="abstract" id="overview">
-      <h2>Overview</h2>
-      <p>
-        Simply5x5 is an ad-free iOS workout tracker for the 5x5 strength-training routine. I built
-        it as a solo project to keep the workout flow simple: record sets, adjust the next workout
-        automatically, review progress, and get concise feedback without advertising interruptions.
-      </p>
-      <p>
-        The app is available on the App Store and was selected for the 2026-1 Computer Programming
-        Extra Project showcase.
-      </p>
+    <section id="features">
+      <h2>Features</h2>
+      <ul>
+        <li>Ad-free 5x5 workout tracker.</li>
+        <li>Automatic progression and deload.</li>
+        <li>AI feedback through Firebase AI Logic and Gemini.</li>
+        <li>e1RM strength ranking.</li>
+        <li>Plate calculator for quickly loading target barbell weights.</li>
+        <li>HealthKit integration.</li>
+        <li>Swift Charts progress views.</li>
+      </ul>
       <p>
         <a href="https://apps.apple.com/us/app/simply5x5/id6752772279" target="_blank" rel="noopener">
-          View on the App Store
+          App Store
         </a>
         &middot;
         <a href="../Hwan_Ji_CV.pdf">CV</a>
       </p>
-    </div>
-
-    <section id="features">
-      <h2>1. Features</h2>
-      <ul>
-        <li>Ad-free 5x5 workout tracking for the main barbell lifts.</li>
-        <li>Automatic progression and deload logic based on workout success or repeated failure.</li>
-        <li>AI feedback generated from workout-session data through Firebase AI Logic and Gemini.</li>
-        <li>e1RM-based strength ranking using estimated one-rep max values.</li>
-        <li>Plate calculator for quickly loading target barbell weights.</li>
-        <li>HealthKit integration for saving strength-training records to Apple Health.</li>
-        <li>Swift Charts views for reviewing training progress.</li>
-      </ul>
     </section>
 
-    <section id="implementation">
-      <h2>2. Implementation Notes</h2>
+    <section id="details">
+      <h2>Details</h2>
       <table class="paper-table borders-custom col-1-l col-2-l">
         <tbody>
           <tr class="border-bottom-thin">
             <th class="no-break">Role</th>
-            <td>Solo developer: product planning, UI implementation, workout logic, data model, and integrations.</td>
+            <td>Solo developer.</td>
           </tr>
           <tr class="border-bottom-thin">
-            <th class="no-break">App layer</th>
-            <td>SwiftUI screens for onboarding, workout logging, history, rankings, charts, and auxiliary tools.</td>
+            <th class="no-break">Stack</th>
+            <td>SwiftUI, Firebase AI Logic (Gemini), HealthKit, Swift Charts.</td>
           </tr>
           <tr class="border-bottom-thin">
             <th class="no-break">Progression</th>
-            <td>Successful sessions increase the next target weight; repeated failures trigger a deload.</td>
+            <td>Automatic progression and deload.</td>
           </tr>
           <tr class="border-bottom-thin">
             <th class="no-break">AI feedback</th>
-            <td>Workout logs are summarized into a prompt and sent through Firebase AI Logic with Gemini.</td>
+            <td>Firebase AI Logic with Gemini.</td>
           </tr>
           <tr>
             <th class="no-break">System APIs</th>
-            <td>HealthKit stores completed workouts, while Swift Charts presents lift trends over time.</td>
+            <td>HealthKit and Swift Charts.</td>
           </tr>
         </tbody>
       </table>
     </section>
 
     <section id="metrics">
-      <h2>3. Public Summary</h2>
+      <h2>Metrics</h2>
       <table class="paper-table borders-custom col-1-l col-2-l">
         <tbody>
           <tr class="border-bottom-thin">
