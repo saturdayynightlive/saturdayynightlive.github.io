@@ -12,6 +12,14 @@ Lab12 Vibe Coding with GitHub Pages.pdf
 # OMC state
 .omc/
 
+# App Store Connect report scratch files
+reports/
+tmp/
+*.csv.gz
+*.txt.gz
+__pycache__/
+*.pyc
+
 # LaTeX build artifacts
 *.aux
 *.log
