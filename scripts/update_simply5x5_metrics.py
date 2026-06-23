@@ -110,6 +110,18 @@ def number_from_cell(value: str | None) -> float:
     return float(cleaned)
 
 
+def parse_metric_value(value: str) -> float:
+    cleaned = value.strip().replace(",", "")
+    if not cleaned:
+        raise ValueError("metric value cannot be empty")
+    suffix = cleaned[-1:].lower()
+    multiplier = 1.0
+    if suffix in {"k", "m"}:
+        cleaned = cleaned[:-1]
+        multiplier = 1_000.0 if suffix == "k" else 1_000_000.0
+    return float(cleaned) * multiplier
+
+
 def pick_column(row: dict[str, str], candidates: list[str]) -> str | None:
     by_normalized = {normalized(key): key for key in row}
     for candidate in candidates:
@@ -416,19 +428,65 @@ def fetch_from_app_store(state: dict[str, Any], as_of: dt.date) -> dict[str, Any
     return state
 
 
+def apply_manual_metrics(
+    state: dict[str, Any],
+    *,
+    downloads_total: str,
+    sessions_total: str,
+    active_average_30d: str,
+    as_of: dt.date,
+) -> dict[str, Any]:
+    missing = [
+        name
+        for name, value in {
+            "--set-downloads": downloads_total,
+            "--set-sessions": sessions_total,
+            "--set-active-average": active_average_30d,
+        }.items()
+        if not value.strip()
+    ]
+    if missing:
+        raise RuntimeError(f"Manual updates require all metric values: {', '.join(missing)}")
+
+    state["downloads_total"] = int(round(parse_metric_value(downloads_total)))
+    state["sessions_total"] = int(round(parse_metric_value(sessions_total)))
+    state["active_average_30d"] = int(round(parse_metric_value(active_average_30d)))
+    state["as_of"] = as_of.isoformat()
+    state["processed_through"] = {
+        "downloads": as_of.isoformat(),
+        "sessions": as_of.isoformat(),
+        "active_devices": as_of.isoformat(),
+    }
+    return state
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data-file", default=str(DATA_FILE))
     parser.add_argument("--as-of-date", default="")
     parser.add_argument("--metrics-json", default="", help="Use a prepared metrics JSON instead of the API.")
+    parser.add_argument("--set-downloads", default="", help="Set total downloads manually, e.g. 1090 or 1.09K.")
+    parser.add_argument("--set-sessions", default="", help="Set total app sessions manually, e.g. 7370 or 7.37K.")
+    parser.add_argument("--set-active-average", default="", help="Set 30-day average active users manually.")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
     data_path = Path(args.data_file)
     state = read_json(Path(args.metrics_json)) if args.metrics_json else read_json(data_path)
     as_of = parse_date(args.as_of_date) if args.as_of_date else default_as_of()
+    has_manual_metrics = any(
+        [args.set_downloads.strip(), args.set_sessions.strip(), args.set_active_average.strip()]
+    )
 
-    if not args.metrics_json:
+    if has_manual_metrics:
+        state = apply_manual_metrics(
+            state,
+            downloads_total=args.set_downloads,
+            sessions_total=args.set_sessions,
+            active_average_30d=args.set_active_average,
+            as_of=as_of,
+        )
+    elif not args.metrics_json:
         state = fetch_from_app_store(state, as_of)
 
     if args.dry_run:

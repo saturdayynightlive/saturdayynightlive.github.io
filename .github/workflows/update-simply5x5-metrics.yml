@@ -4,6 +4,23 @@ on:
   schedule:
     - cron: "17 2 1 * *"
   workflow_dispatch:
+    inputs:
+      downloads_total:
+        description: "Manual total downloads, e.g. 1090 or 1.09K. Leave blank to use App Store Connect API."
+        required: false
+        type: string
+      sessions_total:
+        description: "Manual total app sessions, e.g. 7370 or 7.37K. Leave blank to use App Store Connect API."
+        required: false
+        type: string
+      active_average_30d:
+        description: "Manual average daily active users over the last 30 days. Leave blank to use API."
+        required: false
+        type: string
+      as_of_date:
+        description: "Manual metric date in YYYY-MM-DD. Optional."
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -30,7 +47,24 @@ jobs:
           ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
           SIMPLY5X5_APP_ID: ${{ secrets.SIMPLY5X5_APP_ID }}
           ASC_CREATE_ANALYTICS_REQUEST: ${{ vars.ASC_CREATE_ANALYTICS_REQUEST || 'false' }}
-        run: python scripts/update_simply5x5_metrics.py
+          MANUAL_DOWNLOADS_TOTAL: ${{ github.event.inputs.downloads_total }}
+          MANUAL_SESSIONS_TOTAL: ${{ github.event.inputs.sessions_total }}
+          MANUAL_ACTIVE_AVERAGE_30D: ${{ github.event.inputs.active_average_30d }}
+          MANUAL_AS_OF_DATE: ${{ github.event.inputs.as_of_date }}
+        run: |
+          if [ -n "$MANUAL_DOWNLOADS_TOTAL$MANUAL_SESSIONS_TOTAL$MANUAL_ACTIVE_AVERAGE_30D" ]; then
+            args=(
+              --set-downloads "$MANUAL_DOWNLOADS_TOTAL"
+              --set-sessions "$MANUAL_SESSIONS_TOTAL"
+              --set-active-average "$MANUAL_ACTIVE_AVERAGE_30D"
+            )
+            if [ -n "$MANUAL_AS_OF_DATE" ]; then
+              args+=(--as-of-date "$MANUAL_AS_OF_DATE")
+            fi
+            python scripts/update_simply5x5_metrics.py "${args[@]}"
+          else
+            python scripts/update_simply5x5_metrics.py
+          fi
 
       - name: Validate generated files
         run: |
@@ -86,7 +120,7 @@ jobs:
             -m "Rejected: Committing raw App Store Connect reports | only aggregate public metrics belong in the site repository." \
             -m "Confidence: medium" \
             -m "Scope-risk: narrow" \
-            -m "Directive: Keep App Store Connect credentials in GitHub Secrets and do not commit raw reports." \
+            -m "Directive: Keep App Store Connect credentials in GitHub Secrets when API refresh is used; manual dispatch inputs are acceptable when account access is unavailable." \
             -m "Tested: scripts/update_simply5x5_metrics.py; git diff --check; static link validation." \
             -m "Not-tested: Manual App Store Connect dashboard comparison."
           git push
