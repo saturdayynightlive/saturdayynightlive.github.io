@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="2026 summer reading roadmap for VLA, meta-learning, in-context learning, and physical AI papers."
+  />
+  <link rel="canonical" href="https://saturdayynightlive.github.io/docs/papers/2026-S/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="2026-S Paper Reading Notes | Hwan Ji" />
+  <meta
+    property="og:description"
+    content="A compact reading roadmap for VLA, ICL, meta-learning, and physical AI papers."
+  />
+  <meta property="og:url" content="https://saturdayynightlive.github.io/docs/papers/2026-S/" />
+  <meta property="og:image" content="https://saturdayynightlive.github.io/assets/profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2026-S Paper Reading Notes | Hwan Ji" />
+  <meta
+    name="twitter:description"
+    content="A compact reading roadmap for VLA, ICL, meta-learning, and physical AI papers."
+  />
+  <meta name="twitter:image" content="https://saturdayynightlive.github.io/assets/profile.jpg" />
+  <title>2026-S Paper Reading Notes | Hwan Ji</title>
+  <link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://latex.vercel.app/style.css" />
+  <style>
+    :root {
+      --rule: #222;
+      --muted: #555;
+    }
+
+    .site-header {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .site-header h1 {
+      margin-bottom: 0.25rem;
+    }
+
+    .author {
+      margin-top: 0;
+    }
+
+    .toc {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin: 1.5rem 0 2rem;
+      padding: 0.65rem 0;
+      text-align: center;
+    }
+
+    .toc a {
+      display: inline-block;
+      margin: 0.15rem 0.45rem;
+      white-space: nowrap;
+    }
+
+    .paper-table {
+      font-size: 0.95rem;
+      width: 100%;
+    }
+
+    .paper-table td,
+    .paper-table th {
+      vertical-align: top;
+    }
+
+    .no-break {
+      white-space: nowrap;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding-inline: 1rem;
+      }
+
+      .toc {
+        text-align: left;
+      }
+
+      .toc a {
+        margin-left: 0;
+        margin-right: 0.75rem;
+      }
+
+      .paper-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+<body class="text-justify">
+  <article>
+    <header class="site-header">
+      <h1>2026-S Paper Reading Notes</h1>
+      <p class="author">
+        VLA, In-Context Learning, Meta-Learning, Physical AI<br />
+        Sidecar notes for summer reading<br />
+        Last updated: June 23, 2026
+      </p>
+    </header>
+
+    <nav class="toc" aria-label="Paper notes navigation">
+      <a href="../../../index.html">Home</a>
+      <a href="#main-order">Main Order</a>
+      <a href="#supporting">Supporting Branches</a>
+      <a href="#how-to-use">How to Use</a>
+    </nav>
+
+    <div class="abstract" id="overview">
+      <h2>Abstract</h2>
+      <p>
+        이 페이지는 방학 동안 읽을 VLA, meta-learning, in-context learning, physical AI 논문들의
+        읽기 순서와 sidecar annotation을 모아두는 곳이다. 원본 PDF는 복사하지 않고, 각 문서는
+        PDF 옆에 띄워두고 page, section, figure, table, equation 기준으로 따라가게 만든다.
+      </p>
+      <p>
+        첫 full annotation은 Decision Transformer가 아니라
+        <a href="what-can-transformers-learn-in-context/">What Can Transformers Learn In-Context?</a>
+        로 둔다. 이 논문이 먼저 필요한 이유는 "Transformer가 context 안에서 실제로 어떤
+        학습 알고리즘을 흉내낼 수 있는가"를 가장 깨끗한 toy setting에서 보여주기 때문이다.
+        그 다음 Decision Transformer를 읽으면 trajectory를 prompt처럼 다루는 관점이 훨씬 잘 붙는다.
+      </p>
+    </div>
+
+    <section id="main-order">
+      <h2>1. Main Reading Order</h2>
+      <table class="paper-table borders-custom col-1-l col-2-l">
+        <thead>
+          <tr class="border-bottom-thick">
+            <th class="no-break">Order</th>
+            <th>Paper</th>
+            <th>Why here</th>
+            <th class="no-break">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-bottom-thin">
+            <td class="no-break">1</td>
+            <td><code>2022_what_can_transformers_learn_in_context.pdf</code></td>
+            <td>ICL을 "prompt 안에서 함수/알고리즘을 배우는 문제"로 정리한다.</td>
+            <td><a href="what-can-transformers-learn-in-context/">Full note</a></td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <td class="no-break">2</td>
+            <td><code>2021_decision_transformer.pdf</code></td>
+            <td>sequence modeling 관점을 offline RL trajectory에 적용한다.</td>
+            <td><span class="status">Next target</span></td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <td class="no-break">3</td>
+            <td><code>2023_diffusion_policy.pdf</code></td>
+            <td>action generation을 conditional denoising으로 바꾸는 흐름을 잡는다.</td>
+            <td><span class="status">Pending</span></td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <td class="no-break">4</td>
+            <td><code>2023_rt2_vision_language_action.pdf</code></td>
+            <td>web-scale VLM 표현을 robot action으로 옮기는 VLA 전환점이다.</td>
+            <td><span class="status">Pending</span></td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <td class="no-break">5</td>
+            <td><code>2024_openvla.pdf</code></td>
+            <td>open VLA model, dataset mixture, training recipe를 본다.</td>
+            <td><span class="status">Pending</span></td>
+          </tr>
+          <tr>
+            <td class="no-break">6</td>
+            <td><code>2024_pi0_vla_flow_model.pdf</code></td>
+            <td>VLA에서 flow/action modeling이 어떻게 최신 형태로 정리되는지 본다.</td>
+            <td><span class="status">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="supporting">
+      <h2>2. Supporting Branches</h2>
+      <p>
+        아래 논문들은 메인 VLA 루트를 읽다가 배경이 부족할 때 끼워 넣는다. 전부 처음부터
+        정독하면 흐름이 흩어지기 쉬우므로, index 역할은 "필요할 때 돌아올 위치"를 정해두는 것이다.
+      </p>
+      <table class="paper-table borders-custom col-1-l col-2-l">
+        <thead>
+          <tr class="border-bottom-thick">
+            <th>Branch</th>
+            <th>Papers</th>
+            <th>Use when</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-bottom-thin">
+            <td class="no-break">Meta-learning</td>
+            <td>
+              <code>2016_matching_networks.pdf</code>,
+              <code>2017_maml_model_agnostic_meta_learning.pdf</code>,
+              <code>2017_prototypical_networks.pdf</code>,
+              <code>2018_reptile_first_order_meta_learning.pdf</code>
+            </td>
+            <td>ICL을 "학습하는 법을 학습한다"는 관점과 비교하고 싶을 때.</td>
+          </tr>
+          <tr class="border-bottom-thin">
+            <td class="no-break">ICL theory</td>
+            <td>
+              <code>2021_transformers_can_do_bayesian_inference.pdf</code>,
+              <code>2022_transformers_learn_in_context_by_gradient_descent.pdf</code>,
+              <code>2020_language_models_are_few_shot_learners.pdf</code>
+            </td>
+            <td>Transformer가 prompt 안에서 Bayesian inference나 gradient descent처럼 보이는 이유를 더 파고들 때.</td>
+          </tr>
+          <tr>
+            <td class="no-break">Robot foundation models</td>
+            <td>
+              <code>2022_rt1_robotics_transformer.pdf</code>,
+              <code>2022_saycan_do_as_i_can_not_as_i_say.pdf</code>,
+              <code>2023_open_x_embodiment.pdf</code>,
+              <code>2023_palme_embodied_multimodal_language_model.pdf</code>,
+              <code>2024_octo_open_source_generalist_robot_policy.pdf</code>,
+              <code>2025_groot_n1_humanoid_foundation_model.pdf</code>
+            </td>
+            <td>RT-2, OpenVLA, pi0를 읽다가 data mixture, embodiment, generalist policy 맥락이 필요할 때.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="how-to-use">
+      <h2>3. How to Use</h2>
+      <ol>
+        <li>로컬 PDF 폴더에서 해당 PDF를 왼쪽에 열고, 이 사이트의 companion note를 오른쪽에 둔다.</li>
+        <li>먼저 note의 "읽는 이유"와 "배경지식"만 보고 PDF 본문으로 들어간다.</li>
+        <li>본문에서는 page guide를 따라가되, figure/table 해설은 해당 그림을 실제로 볼 때만 읽는다.</li>
+        <li>마지막에는 "비판적으로 볼 점"과 "다음 논문 연결"만 다시 훑고 다음 paper로 넘어간다.</li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>
+        <a href="../../../index.html">Hwan Ji</a>
+        &middot;
+        Typeset with <a href="https://latex.vercel.app/" target="_blank" rel="noopener">LaTeX.css</a>.
+      </p>
+    </footer>
+  </article>
+</body>
+</html>
