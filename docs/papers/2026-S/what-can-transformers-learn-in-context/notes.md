@@ -1,8 +1,8 @@
-# What Can Transformers Learn In-Context? - sidecar notes
+# What Can Transformers Learn In-Context? - reading notes
 
-원본 PDF: `2022_what_can_transformers_learn_in_context.pdf`
+PDF 파일명: `2022_what_can_transformers_learn_in_context.pdf`
 
-읽는 위치: 2026-S paper pack의 첫 번째 companion note
+읽는 위치: 2026-S paper pack의 첫 번째 읽기 노트
 
 다음 목표: `2021_decision_transformer.pdf`
 
