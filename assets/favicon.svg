@@ -1,14 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hwan Ji">
-  <rect width="64" height="64" fill="#f7f4ed"/>
-  <rect x="9" y="7" width="46" height="50" fill="#fffdf7" stroke="#111" stroke-width="2"/>
-  <path d="M16 16h32M16 48h32" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="square"/>
-  <text
-    x="32"
-    y="39"
-    fill="#111"
-    font-family="Georgia, 'Times New Roman', Times, serif"
-    font-size="24"
-    font-weight="600"
-    text-anchor="middle"
-  >HJ</text>
+  <rect width="64" height="64" rx="8" fill="#111"/>
+  <rect x="5" y="5" width="54" height="54" rx="5" fill="#fffff8"/>
+  <path d="M15 14h11v3h-3v13h18V17h-3v-3h11v3h-3v30h3v3H38v-3h3V34H23v13h3v3H15v-3h3V17h-3z" fill="#111"/>
+  <path d="M15 56h34" stroke="#111" stroke-width="2" stroke-linecap="square"/>
 </svg>
