@@ -14,7 +14,7 @@
 ## Product goals
 - Goals: Present Hwan Ji as a Computer Science & Engineering undergraduate with interests in data-centered AI, statistics, and practical software systems.
 - Non-goals: Simulate a full application shell, add backend features, or rely on paid/external APIs.
-- Success signals: The page reads like a concise academic profile, keeps prose minimal, and remains easy to scan on mobile.
+- Success signals: The page reads like a concise academic profile, keeps non-project prose minimal, and remains easy to scan on mobile.
 
 ## Personas and jobs
 - Primary personas: Peers, professors, research mentors, recruiters, and collaborators.
@@ -24,13 +24,13 @@
 ## Information architecture
 - Primary navigation: About, Projects, Coursework, Contact.
 - Core routes/screens: Static root page, representative project detail pages, and linked PDF CV.
-- Content hierarchy: Title and author block, short fact list with portrait, unnumbered sections, representative projects, and compact coursework table.
+- Content hierarchy: Title and author block, short fact list with portrait, unnumbered sections, representative projects with concise explanations, and compact coursework table.
 
 ## Design principles
 - Principle 1: Prefer semantic HTML that LaTeX.css can typeset with minimal custom classes.
 - Principle 2: Keep the page closer to a paper handout than a dashboard.
 - Principle 3: Keep the homepage lighter than the CV; detailed honors, teaching, and full credentials belong in the PDF.
-- Principle 4: Prefer factual labels, lists, and tables over explanatory prose.
+- Principle 4: Keep non-project sections factual and compact; project entries should still explain what the work is.
 - Tradeoffs: Less playful than the DOS98 experiment, but better aligned with a durable academic personal site.
 
 ## Visual language
@@ -71,7 +71,7 @@
 ## Content voice
 - Tone: Concise, academic, and factual.
 - Terminology: Use concrete roles, project evidence, and course names.
-- Microcopy rules: Avoid joke UI text, fake system labels, visual instructions, and generic explanatory paragraphs.
+- Microcopy rules: Avoid joke UI text, fake system labels, visual instructions, and generic explanatory paragraphs outside project descriptions.
 
 ## Implementation constraints
 - Framework/styling system: Single static `index.html` on GitHub Pages using LaTeX.css from `https://latex.vercel.app/style.css`.
