@@ -2,47 +2,45 @@
 
 ## Source of truth
 - Status: Active
-- Last refreshed: 2026-06-24
+- Last refreshed: 2026-06-21
 - Primary product surfaces: Root personal homepage at `index.html`; project detail pages under `projects/`
 - Evidence reviewed: `index.html`, `projects/simply5x5.html`, `Hwan_Ji_CV.pdf`, `DESIGN.md`, LaTeX.css documentation at `https://latex.vercel.app/`
 
 ## Brand
 - Personality: Academic, plain, precise, and document-like.
-- Trust signals: CV link, university affiliation, project evidence, course plan, contact links, and App Store release links where relevant.
+- Trust signals: CV download, university affiliation, project evidence, course plan, contact links, and App Store release links where relevant.
 - Avoid: Decorative operating-system chrome, fake counters, loud retro widgets, marketing-page composition, and heavy card layouts.
 
 ## Product goals
 - Goals: Present Hwan Ji as a Computer Science & Engineering undergraduate with interests in data-centered AI, statistics, and practical software systems.
 - Non-goals: Simulate a full application shell, add backend features, or rely on paid/external APIs.
-- Success signals: The page reads like a concise academic profile, keeps non-project prose minimal, and remains easy to scan on mobile.
+- Success signals: The page reads like a concise academic profile and remains easy to scan on mobile.
 
 ## Personas and jobs
 - Primary personas: Peers, professors, research mentors, recruiters, and collaborators.
-- User jobs: Confirm identity and affiliation, inspect interests/projects/CV, open representative project details, find contact information, and review coursework.
+- User jobs: Confirm identity and affiliation, inspect interests/projects/CV, open representative project details, find contact information, and review planned courses.
 - Key contexts of use: Mobile and desktop browsers through GitHub Pages.
 
 ## Information architecture
-- Primary navigation: About, Projects, Coursework, Contact.
+- Primary navigation: Abstract, About, Currently, Projects, Resume, Courses, Contact.
 - Core routes/screens: Static root page, representative project detail pages, and linked PDF CV.
-- Content hierarchy: Title and author block, short fact list with portrait, unnumbered sections, representative projects with concise explanations, and compact coursework table.
+- Content hierarchy: Title and author block, abstract with portrait, numbered sections, ordinary prose, and tables for resume, course, project, and metric summaries.
 
 ## Design principles
 - Principle 1: Prefer semantic HTML that LaTeX.css can typeset with minimal custom classes.
 - Principle 2: Keep the page closer to a paper handout than a dashboard.
-- Principle 3: Keep the homepage lighter than the CV; detailed honors, teaching, and full credentials belong in the PDF.
-- Principle 4: Keep non-project sections factual and compact; project entries should still explain what the work is.
 - Tradeoffs: Less playful than the DOS98 experiment, but better aligned with a durable academic personal site.
 
 ## Visual language
 - Color: Mostly LaTeX.css defaults; use black text, white paper, and restrained rules.
 - Typography: LaTeX.css Latin Modern defaults; avoid custom webfont stacks unless readability requires it.
-- Spacing/layout rhythm: Narrow article measure, unnumbered sections, compact tables, simple lists.
+- Spacing/layout rhythm: Narrow article measure, numbered sections, compact tables, simple lists.
 - Shape/radius/elevation: No rounded cards, no shadows, no synthetic depth.
 - Motion: None.
 - Imagery/iconography: Use the profile photo as the primary share image; keep browser chrome unbranded.
 
 ## Components
-- Existing components to reuse: LaTeX.css `author`, standard document typography, and table utility classes.
+- Existing components to reuse: LaTeX.css `author`, `abstract`, standard document typography, and table utility classes.
 - Components to avoid: LaTeX.css theorem/proof/definition boxes unless the page later contains actual mathematical or technical notes that need them.
 - New/changed components: Small local helpers for navigation, profile figure, project metadata, responsive tables, and share-preview metadata.
 - Variants and states: Links use browser/LaTeX.css defaults; no JavaScript states.
@@ -69,9 +67,9 @@
 - Offline/slow network: Core content remains readable without JavaScript; external CSS may load later.
 
 ## Content voice
-- Tone: Concise, academic, and factual.
+- Tone: Concise, academic, first-person where appropriate.
 - Terminology: Use concrete roles, project evidence, and course names.
-- Microcopy rules: Avoid joke UI text, fake system labels, visual instructions, and generic explanatory paragraphs outside project descriptions.
+- Microcopy rules: Avoid joke UI text, fake system labels, and visual instructions inside the app.
 
 ## Implementation constraints
 - Framework/styling system: Single static `index.html` on GitHub Pages using LaTeX.css from `https://latex.vercel.app/style.css`.
