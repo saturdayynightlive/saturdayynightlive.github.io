@@ -130,9 +130,6 @@ def inject_page_helpers(page: Path) -> None:
     viewport = '<meta name="viewport" content="width=device-width, initial-scale=1.0" />'
     if 'name="viewport"' not in text and "</head>" in text:
         text = text.replace("</head>", f"{viewport}\n</head>")
-    favicon = '<link rel="icon" href="data:," />'
-    if favicon not in text and "</head>" in text:
-        text = text.replace("</head>", f"{favicon}\n</head>")
     marker = '<script src="auto-nav.js" defer></script>'
     if marker not in text and "</body>" in text:
         text = text.replace("</body>", f"{marker}\n</body>")
@@ -344,7 +341,6 @@ def write_course_index() -> None:
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" href="data:," />
   <title>Study Notes</title>
   <style>
     *, *::before, *::after {{ box-sizing: border-box; }}

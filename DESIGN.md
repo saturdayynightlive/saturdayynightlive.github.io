@@ -37,12 +37,12 @@
 - Spacing/layout rhythm: Narrow article measure, numbered sections, compact tables, simple lists.
 - Shape/radius/elevation: No rounded cards, no shadows, no synthetic depth.
 - Motion: None.
-- Imagery/iconography: Use the profile photo as the primary share image and a minimal HJ favicon for browser chrome.
+- Imagery/iconography: Use the profile photo as the primary share image; keep browser chrome unbranded.
 
 ## Components
 - Existing components to reuse: LaTeX.css `author`, `abstract`, standard document typography, and table utility classes.
 - Components to avoid: LaTeX.css theorem/proof/definition boxes unless the page later contains actual mathematical or technical notes that need them.
-- New/changed components: Small local helpers for navigation, profile figure, project metadata, responsive tables, favicon, and share-preview metadata.
+- New/changed components: Small local helpers for navigation, profile figure, project metadata, responsive tables, and share-preview metadata.
 - Variants and states: Links use browser/LaTeX.css defaults; no JavaScript states.
 - Token/component ownership: LaTeX.css owns global document typography and base element styles. `index.html` owns small page-specific layout helpers.
 
