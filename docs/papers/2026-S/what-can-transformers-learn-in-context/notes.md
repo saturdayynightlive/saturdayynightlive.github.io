@@ -2,11 +2,11 @@
 
 원본 PDF: `2022_what_can_transformers_learn_in_context.pdf`
 
-읽는 위치: 2026-S paper pack의 1번 full annotation
+읽는 위치: 2026-S paper pack의 첫 번째 companion note
 
 다음 목표: `2021_decision_transformer.pdf`
 
-## 왜 이 논문을 먼저 읽는가
+## 왜 이 논문부터 시작하는가
 
 Decision Transformer, RT-2, OpenVLA, pi0를 읽다 보면 계속 같은 질문이 나온다.
 
