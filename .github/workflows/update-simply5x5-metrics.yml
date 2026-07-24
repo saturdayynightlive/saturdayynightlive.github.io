@@ -6,19 +6,19 @@ on:
   workflow_dispatch:
     inputs:
       downloads_total:
-        description: "Manual total downloads, e.g. 1090 or 1.09K. Leave blank to use App Store Connect API."
+        description: "Manual total downloads, e.g. 1090 or 1.09K. Leave blank to keep current value."
         required: false
         type: string
       sessions_total:
-        description: "Manual total app sessions, e.g. 7370 or 7.37K. Leave blank to use App Store Connect API."
+        description: "Manual total app sessions, e.g. 7370 or 7.37K. Leave blank to keep current value."
         required: false
         type: string
       active_average_30d:
-        description: "Manual average daily active users over the last 30 days. Leave blank to use API."
+        description: "Manual average daily active users over the last 30 days. Leave blank to keep current value."
         required: false
         type: string
       as_of_date:
-        description: "Manual metric date in YYYY-MM-DD. Optional."
+        description: "Manual metric date in YYYY-MM-DD. Defaults to the workflow run date."
         required: false
         type: string
 

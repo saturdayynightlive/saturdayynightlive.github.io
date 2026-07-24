@@ -436,27 +436,17 @@ def apply_manual_metrics(
     active_average_30d: str,
     as_of: dt.date,
 ) -> dict[str, Any]:
-    missing = [
-        name
-        for name, value in {
-            "--set-downloads": downloads_total,
-            "--set-sessions": sessions_total,
-            "--set-active-average": active_average_30d,
-        }.items()
-        if not value.strip()
-    ]
-    if missing:
-        raise RuntimeError(f"Manual updates require all metric values: {', '.join(missing)}")
-
-    state["downloads_total"] = int(round(parse_metric_value(downloads_total)))
-    state["sessions_total"] = int(round(parse_metric_value(sessions_total)))
-    state["active_average_30d"] = int(round(parse_metric_value(active_average_30d)))
+    processed = state.setdefault("processed_through", {})
+    if downloads_total.strip():
+        state["downloads_total"] = int(round(parse_metric_value(downloads_total)))
+        processed["downloads"] = as_of.isoformat()
+    if sessions_total.strip():
+        state["sessions_total"] = int(round(parse_metric_value(sessions_total)))
+        processed["sessions"] = as_of.isoformat()
+    if active_average_30d.strip():
+        state["active_average_30d"] = int(round(parse_metric_value(active_average_30d)))
+        processed["active_devices"] = as_of.isoformat()
     state["as_of"] = as_of.isoformat()
-    state["processed_through"] = {
-        "downloads": as_of.isoformat(),
-        "sessions": as_of.isoformat(),
-        "active_devices": as_of.isoformat(),
-    }
     return state
 
 
@@ -473,10 +463,15 @@ def main() -> int:
 
     data_path = Path(args.data_file)
     state = read_json(Path(args.metrics_json)) if args.metrics_json else read_json(data_path)
-    as_of = parse_date(args.as_of_date) if args.as_of_date else default_as_of()
     has_manual_metrics = any(
         [args.set_downloads.strip(), args.set_sessions.strip(), args.set_active_average.strip()]
     )
+    if args.as_of_date:
+        as_of = parse_date(args.as_of_date)
+    elif has_manual_metrics:
+        as_of = dt.datetime.now(dt.UTC).date()
+    else:
+        as_of = default_as_of()
 
     if has_manual_metrics:
         state = apply_manual_metrics(

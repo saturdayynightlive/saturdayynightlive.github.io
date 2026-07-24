@@ -1,12 +1,12 @@
 {
   "app": "Simply5x5",
-  "as_of": "2026-06-24",
-  "downloads_total": 1150,
-  "sessions_total": 7920,
+  "as_of": "2026-07-24",
+  "downloads_total": 1300,
+  "sessions_total": 9350,
   "active_average_30d": 76,
   "processed_through": {
-    "downloads": "2026-06-24",
-    "sessions": "2026-06-24",
+    "downloads": "2026-07-24",
+    "sessions": "2026-07-24",
     "active_devices": "2026-06-24"
   },
   "active_devices_daily": []
