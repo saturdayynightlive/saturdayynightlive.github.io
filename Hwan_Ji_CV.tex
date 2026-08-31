@@ -13,12 +13,20 @@
 \usepackage{xcolor}
 \usepackage{lmodern}
 \usepackage{needspace}
+\usepackage{fancyhdr}
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
 \definecolor{muted}{RGB}{100,100,100}
+\setlength{\headheight}{13pt}
+
+\fancypagestyle{continuation}{%
+  \fancyhf{}%
+  \fancyhead[R]{\footnotesize\color{muted}Hwan Ji \quad CV \quad \thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
 
 % ── Section header ──────────────────────────────────────────
 \newcommand{\cvsec}[1]{%
@@ -41,7 +49,7 @@
   \begin{tabular}{@{}p{\datecol}@{\hspace{0.3cm}}p{\maincol}@{}}
     {\footnotesize\color{muted}\raggedright #1} &
     \begin{minipage}[t]{\maincol}#2\end{minipage}
-  \end{tabular}\\[0.3em]%
+  \end{tabular}\par\vspace{0.3em}%
 }
 
 % ── Inline skill row ────────────────────────────────────────
@@ -49,7 +57,7 @@
   \noindent
   \begin{tabular}[t]{@{}p{\datecol}@{\hspace{0.3cm}}p{\maincol}@{}}
     {\raisebox{1.5pt}{\footnotesize\color{muted}\strut #1}} & {\small\strut #2}
-  \end{tabular}\\[0.2em]%
+  \end{tabular}\par\vspace{0.2em}%
 }
 
 % ============================================================
@@ -73,7 +81,7 @@
 \cvsec{Education}
 
 \cvrow{Mar.~2025\,--\,Feb.~2029}{%
-  \textbf{Seoul National University}, Seoul, S.Korea\\[0.1em]
+  \textbf{Seoul National University}, Seoul, South Korea\\[0.1em]
   {\small B.S.\ in Computer Science \& Engineering}\\
   {\small College of Liberal Studies}%
 }
@@ -90,29 +98,31 @@
   \textbf{\href{https://apps.apple.com/us/app/simply5x5/id6752772279}{Simply5x5}} --- iOS Workout Tracker\\[0.1em]
   {\small SwiftUI $\cdot$ Firebase AI Logic (Gemini) $\cdot$ HealthKit $\cdot$ Swift Charts}\\[0.2em]
   \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
-    \item[\small$\bullet$] {\small Released an ad-free 5x5 workout tracker on the App Store with auto progression/deload, AI feedback, e1RM strength ranking, and a plate calculator.}
-    \item[\small$\bullet$] {\small Reached 1.42K downloads, 11.9K app sessions, and 67 average daily active users over the last 30 days as of Aug.~2026; selected for the 2026-1 Computer Programming Extra Project showcase.}
+    \item[\small$\bullet$] {\small Released an ad-free 5x5 workout tracker on the App Store with automatic progression and deloads, AI feedback, e1RM strength ranking, and a plate calculator.}
+    \item[\small$\bullet$] {\small Recorded 1.42K downloads and 11.9K app sessions, averaging 67 daily active users over the 30 days ending Aug.~2026; selected for the 2026-1 Computer Programming Extra Project showcase.}
   \end{itemize}%
 }
 
 \cvrow{2022}{%
-  \textbf{Optimal Transit Route Distribution via Machine Learning}\\[0.1em]
+  \textbf{Predicting Tram Route Placement with Logistic Regression}\\[0.1em]
   {\small R $\cdot$ Python (matplotlib) $\cdot$ Logistic Regression}\\[0.2em]
   \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
-    \item[\small$\bullet$] {\small Explored correlations between municipal indicators (population, income, bus stops) and tram/subway route placement in Daejeon; built a logistic regression model to predict optimal station distribution.}
-    \item[\small$\bullet$] {\small Led all technical work: collected and cleaned public CSV data, trained and evaluated logistic regression models in R, and used Python with matplotlib on Google Colab for correlation analysis and 3D visualization.}
+    \item[\small$\bullet$] {\small Modeled whether a proposed tram route would pass through each administrative district in Daejeon using population, income, bus-stop count, and existing subway coverage.}
+    \item[\small$\bullet$] {\small Led all technical work: collected and cleaned public CSV data, fit logistic regression models in R, examined in-sample predictions using confusion matrices, and used Python with matplotlib on Google Colab for correlation analysis and 3D visualization.}
   \end{itemize}%
 }
 
 % ── Teaching & Mentoring ────────────────────────────────────
+\newpage
+\thispagestyle{continuation}
 \cvsec{Teaching \& Mentoring}
 
 \cvrow{Sep.~2026\,--\,present}{%
   \textbf{Undergraduate Course Tutor (Tutor B)}\\
   {\small Computing Basics: Introduction to Computing, Seoul National University}
   \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
-    \item[\small$\bullet$] {\small Provide one-on-one support during lectures and programming labs, helping students diagnose errors, debug code, and complete exercises through Elice.}
-    \item[\small$\bullet$] {\small Answer student questions through the course chat, provide feedback on final-project proposals and presentations, and proctor coding assessments.}
+    \item[\small$\bullet$] {\small Selected to provide one-on-one support during lectures and programming labs, helping students diagnose errors, debug code, and complete exercises on the Elice coding platform.}
+    \item[\small$\bullet$] {\small Responsibilities include answering questions through the course chat, providing feedback on final-project proposals and presentations, and proctoring coding assessments.}
   \end{itemize}%
 }
 
@@ -140,10 +150,10 @@
 \noindent{\small
   \textbf{Shilla Cultural Scholarship Foundation} --- Merit-based full tuition for 3 years
   (Mar.~2026).\\
-  \textbf{SNU Merit-Based Scholarship} --- KRW 1,199,200, Seoul National University
+  \textbf{SNU Tuition Scholarship} --- Selective tuition exemption of KRW 1,199,200
   (Feb.~2026).\\
-  \textbf{SNU Development Fund Scholarship} --- KRW 2,442,000, Seoul National University
-  (Aug.~2025).\\
+  \textbf{Donggok Lee Yong-hee Scholarship} --- Full-tuition scholarship funded by the
+  SNU Development Fund (Aug.~2025).\\
   \textbf{Gwanak-gu Mayor's Commendation} --- Awarded for service as an outstanding mentor in
   SAM (SNU Active Mentoring) (Aug.~2025).%
 }
