@@ -5,313 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Hwan Ji is a Computer Science & Engineering undergraduate at Seoul National University interested in data-centered AI, statistical modeling, and practical software systems."
+    content="Hwan Ji is a Computer Science & Engineering undergraduate at Seoul National University interested in machine learning and AI."
   />
   <link rel="canonical" href="https://saturdayynightlive.github.io/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Hwan Ji" />
   <meta
     property="og:description"
-    content="Personal website of Hwan Ji, a Computer Science & Engineering undergraduate at Seoul National University."
+    content="Computer Science & Engineering undergraduate at Seoul National University."
   />
   <meta property="og:url" content="https://saturdayynightlive.github.io/" />
-  <meta property="og:image" content="https://saturdayynightlive.github.io/assets/profile.jpg" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Hwan Ji" />
-  <meta
-    name="twitter:description"
-    content="Personal website of Hwan Ji, a Computer Science & Engineering undergraduate at Seoul National University."
-  />
-  <meta name="twitter:image" content="https://saturdayynightlive.github.io/assets/profile.jpg" />
   <title>Hwan Ji</title>
-  <link rel="stylesheet" href="https://latex.vercel.app/style.css" />
   <style>
     :root {
-      --rule: #222;
-      --muted: #555;
+      color-scheme: light;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #171717;
+      background: #ffffff;
     }
 
-    html {
-      scroll-behavior: auto;
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      counter-reset: sidenote-counter;
+      margin: 0;
     }
 
-    .site-header {
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .site-header h1 {
-      margin-bottom: 0.25rem;
-    }
-
-    .author {
-      margin-top: 0;
-    }
-
-    .toc {
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      margin: 1.5rem 0 2rem;
-      padding: 0.65rem 0;
-      text-align: center;
-    }
-
-    .toc a {
-      display: inline-block;
-      margin: 0.15rem 0.5rem;
-      white-space: nowrap;
-    }
-
-    .profile-figure {
-      float: right;
-      margin: 0 0 1rem 1.5rem;
-      max-width: 11rem;
-      text-align: center;
-    }
-
-    .profile-figure img {
-      border: 1px solid var(--rule);
-      display: block;
-      height: auto;
+    main {
+      width: min(100% - 40px, 680px);
       margin: 0 auto;
-      width: 100%;
+      padding: 18vh 0 12vh;
     }
 
-    .link-row {
-      margin: 1rem 0;
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.15;
+      letter-spacing: 0;
     }
 
-    .link-row a {
-      display: inline-block;
-      margin-right: 0.75rem;
-      white-space: nowrap;
+    .intro {
+      max-width: 580px;
+      margin: 18px 0 0;
+      color: #444;
+      font-size: 1.05rem;
+      line-height: 1.7;
     }
 
-    .fact-list {
-      margin-top: 0.75rem;
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-top: 28px;
     }
 
-    .compact-list li {
-      margin-bottom: 0.45rem;
+    a {
+      color: inherit;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
     }
 
-    .project-meta {
-      color: var(--muted);
+    a:hover {
+      color: #555;
+    }
+
+    section {
+      margin-top: 72px;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      color: #777;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .work {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid #dedede;
+    }
+
+    .work li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: baseline;
+      padding: 18px 0;
+      border-bottom: 1px solid #dedede;
+    }
+
+    .work strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .work span {
+      color: #666;
       font-size: 0.92rem;
-      margin-top: -0.35rem;
+      line-height: 1.5;
     }
 
-    .paper-table {
-      font-size: 0.95rem;
-      width: 100%;
-    }
-
-    .paper-table td,
-    .paper-table th {
-      vertical-align: top;
-    }
-
-    .no-break {
+    .work-links {
+      display: flex;
+      gap: 14px;
       white-space: nowrap;
-    }
-
-    footer {
-      border-top: 1px solid var(--rule);
-      color: var(--muted);
       font-size: 0.9rem;
-      margin-top: 2rem;
-      padding-top: 1rem;
-      text-align: center;
     }
 
-    @media (max-width: 700px) {
-      body {
-        padding-inline: 1rem;
+    @media (max-width: 560px) {
+      main {
+        padding-top: 12vh;
       }
 
-      .profile-figure {
-        float: none;
-        margin: 0 auto 1rem;
-        max-width: 12rem;
-      }
-
-      .toc {
-        text-align: left;
-      }
-
-      .toc a {
-        margin-left: 0;
-        margin-right: 0.75rem;
-      }
-
-      .paper-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+      .work li {
+        grid-template-columns: 1fr;
+        gap: 10px;
       }
     }
   </style>
 </head>
-<body class="text-justify">
-  <article>
-    <header class="site-header" id="top">
+<body>
+  <main>
+    <header>
       <h1>Hwan Ji</h1>
-      <p class="author">
-        Seoul National University<br />
-        Computer Science &amp; Engineering<br />
-        Last updated: June 24, 2026
+      <p class="intro">
+        Computer Science &amp; Engineering undergraduate at Seoul National University.
+        Interested in machine learning and AI.
       </p>
-    </header>
-
-    <nav class="toc" aria-label="Main navigation">
-      <a href="#abstract">Abstract</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="abstract" id="abstract">
-      <h2>Abstract</h2>
-      <figure class="profile-figure">
-        <img src="assets/profile.jpg" alt="Portrait of Hwan Ji" />
-        <figcaption>Hwan Ji</figcaption>
-      </figure>
-      <p>
-        I am an undergraduate student in Computer Science &amp; Engineering at Seoul National
-        University, with a growing statistics background and an interest in data-centered AI. I like
-        building practical systems, turning messy data into testable models, and using careful
-        engineering to make research ideas easier to evaluate.
-      </p>
-      <p class="link-row">
-        <a href="Hwan_Ji_CV.pdf">CV</a>
+      <nav aria-label="Profile links">
         <a href="mailto:saturdayynightlive@snu.ac.kr">Email</a>
         <a href="https://github.com/saturdayynightlive" target="_blank" rel="noopener">GitHub</a>
-      </p>
-      <ul class="fact-list compact-list">
-        <li>B.S. student in Computer Science &amp; Engineering.</li>
-        <li>College of Liberal Studies, Seoul National University.</li>
-        <li>Statistics minor planned from September 2026.</li>
-        <li>Based in Seoul, Republic of Korea.</li>
-      </ul>
-    </div>
+        <a href="Hwan_Ji_CV.pdf">CV</a>
+      </nav>
+    </header>
 
-    <section id="about">
-      <h2>1. About</h2>
-      <p>
-        I am interested in data-centered AI: systems where modeling choices, data quality,
-        evaluation, and practical deployment constraints all matter. My recent work has ranged from
-        a student workflow system to transit-route modeling, so I am drawn to AI that is measurable,
-        useful, and grounded in the situation it is built for.
-      </p>
-      <p>
-        I am building a stronger base in systems, statistics, and machine learning while looking for
-        research problems where careful engineering can make experimental ideas easier to test.
-      </p>
-      <p>
-        I am especially interested in work that treats data collection, modeling, evaluation, and
-        user feedback as connected parts of the same system.
-      </p>
-    </section>
-
-    <section id="projects">
-      <h2>2. Projects and Activities</h2>
-      <ol class="compact-list">
+    <section aria-labelledby="selected-work">
+      <h2 id="selected-work">Selected work</h2>
+      <ul class="work">
         <li>
-          <h3>Simply5x5</h3>
-          <p class="project-meta">
-            Role: Solo Developer; App Store release; SwiftUI, Firebase AI Logic (Gemini),
-            HealthKit, Swift Charts.
-          </p>
-          <p>
-            Built and released an ad-free 5x5 workout tracker with auto progression/deload, AI
-            feedback, e1RM strength ranking, and a plate calculator. As of
-            <span data-metric="simply5x5-as-of">July 2026</span>, the app has
-            <span data-metric="simply5x5-downloads">1.3K</span> downloads and
-            <span data-metric="simply5x5-sessions">9.35K</span> app sessions; the latest recorded
-            30-day average active-user figure is
-            <span data-metric="simply5x5-active-average">76</span>.
-          </p>
-          <p>
-            <a href="projects/simply5x5.html">Project page</a>
-            &middot;
-            <a href="https://apps.apple.com/us/app/simply5x5/id6752772279" target="_blank" rel="noopener">
-              App Store
-            </a>
-          </p>
+          <div>
+            <strong>Simply5x5</strong>
+            <span>iOS workout tracker built with SwiftUI.</span>
+          </div>
+          <div class="work-links">
+            <a href="projects/simply5x5.html">Details</a>
+            <a href="https://apps.apple.com/us/app/simply5x5/id6752772279" target="_blank" rel="noopener">App Store</a>
+          </div>
         </li>
         <li>
-          <h3>Evening Self-Study Request System</h3>
-          <p class="project-meta">Role: Backend; pilot completed; Node.js, Swift, MySQL.</p>
-          <p>
-            Built the backend and helped turn a paper-based high-school movement request workflow
-            into a pilot digital system. The iPad client matched the school's device environment, so
-            access did not depend on students bringing personal devices.
-          </p>
-        </li>
-        <li>
-          <h3>Green City Planner</h3>
-          <p class="project-meta">Role: Technical Lead; visionOS; 3D UI prototype.</p>
-          <p>
-            Led the technical implementation for an interactive 3D urban-design prototype during a
-            high school research program, including asset preparation, scene layout, and environmental
-            scoring logic.
-          </p>
-        </li>
-        <li>
-          <h3>Transit Route Distribution via Machine Learning</h3>
-          <p class="project-meta">Role: Technical Lead; R; visualization; logistic regression.</p>
-          <p>
-            Owned the technical work end-to-end: data collection, preprocessing, visualization, and
-            logistic regression modeling to study station distribution patterns in Daejeon.
-          </p>
-        </li>
-        <li>
-          <h3>Undergraduate Mentor</h3>
-          <p class="project-meta">Freshman Seminar; teaching; mentoring.</p>
-          <p>
-            Supported first-year students in the Freshman Seminar "A Journey to Safe Research" by
-            guiding class activities, individual academic questions, and discussions on research
-            safety.
-          </p>
-        </li>
-        <li>
-          <h3>SAM Student Mentor</h3>
-          <p class="project-meta">Student mentoring; mathematics; science; Gwanak-gu Mayor's Commendation.</p>
-          <p>
-            Mentored local middle school students in mathematics and science through SNU Active
-            Mentoring, creating individualized study plans and goal-setting sessions.
-          </p>
-        </li>
-      </ol>
-    </section>
-
-    <section id="contact">
-      <h2>3. Contact</h2>
-      <ul class="compact-list">
-        <li>Email: <a href="mailto:saturdayynightlive@snu.ac.kr">saturdayynightlive@snu.ac.kr</a>.</li>
-        <li>
-          GitHub:
-          <a href="https://github.com/saturdayynightlive" target="_blank" rel="noopener">
-            github.com/saturdayynightlive
-          </a>.
-        </li>
-        <li>
-          Website:
-          <a href="https://saturdayynightlive.github.io">saturdayynightlive.github.io</a>.
+          <div>
+            <strong>Study notes</strong>
+            <span>Course summaries and paper notes.</span>
+          </div>
+          <div class="work-links">
+            <a href="docs/">Browse</a>
+          </div>
         </li>
       </ul>
     </section>
-
-    <footer>
-      <p>
-        Static GitHub Pages site. Typeset with
-        <a href="https://latex.vercel.app/" target="_blank" rel="noopener">LaTeX.css</a>.
-      </p>
-    </footer>
-  </article>
+  </main>
 </body>
 </html>
