@@ -1,174 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Hwan Ji is a Computer Science & Engineering undergraduate at Seoul National University interested in machine learning and AI."
-  />
-  <link rel="canonical" href="https://saturdayynightlive.github.io/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Hwan Ji" />
-  <meta
-    property="og:description"
-    content="Computer Science & Engineering undergraduate at Seoul National University."
-  />
-  <meta property="og:url" content="https://saturdayynightlive.github.io/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hwan Ji</title>
-  <style>
-    :root {
-      color-scheme: light;
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #171717;
-      background: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-    }
-
-    main {
-      width: min(100% - 40px, 680px);
-      margin: 0 auto;
-      padding: 18vh 0 12vh;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      line-height: 1.15;
-      letter-spacing: 0;
-    }
-
-    .intro {
-      max-width: 580px;
-      margin: 18px 0 0;
-      color: #444;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 20px;
-      margin-top: 28px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
-    }
-
-    a:hover {
-      color: #555;
-    }
-
-    section {
-      margin-top: 72px;
-    }
-
-    h2 {
-      margin: 0 0 8px;
-      color: #777;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    .work {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      border-top: 1px solid #dedede;
-    }
-
-    .work li {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 16px;
-      align-items: baseline;
-      padding: 18px 0;
-      border-bottom: 1px solid #dedede;
-    }
-
-    .work strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1rem;
-    }
-
-    .work span {
-      color: #666;
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
-
-    .work-links {
-      display: flex;
-      gap: 14px;
-      white-space: nowrap;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 560px) {
-      main {
-        padding-top: 12vh;
-      }
-
-      .work li {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-    }
-  </style>
+  <meta name="description" content="Hwan Ji, Computer Science and Engineering undergraduate at Seoul National University. Interested in machine learning and AI.">
+  <link rel="canonical" href="https://saturdayynightlive.github.io/">
+  <meta property="og:title" content="Hwan Ji">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Computer Science and Engineering at Seoul National University.">
+  <meta property="og:image" content="https://saturdayynightlive.github.io/assets/profile.jpg">
+  <meta property="og:url" content="https://saturdayynightlive.github.io/">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
   <main>
-    <header>
-      <h1>Hwan Ji</h1>
-      <p class="intro">
-        Computer Science &amp; Engineering undergraduate at Seoul National University.
-        Interested in machine learning and AI.
-      </p>
-      <nav aria-label="Profile links">
-        <a href="mailto:saturdayynightlive@snu.ac.kr">Email</a>
-        <a href="https://github.com/saturdayynightlive" target="_blank" rel="noopener">GitHub</a>
-        <a href="Hwan_Ji_CV.pdf">CV</a>
-      </nav>
+    <header class="profile">
+      <div>
+        <h1>Hwan Ji</h1>
+        <p>I'm an undergraduate studying Computer Science &amp; Engineering at Seoul National University, in the College of Liberal Studies.</p>
+        <p>I'm broadly interested in machine learning and AI. I am currently an AI intern at IntelliSys, working on retrieval-augmented generation for legal documents.</p>
+        <nav aria-label="Contact and profile">
+          <a href="mailto:saturdayynightlive@snu.ac.kr">Email</a>
+          <a href="https://github.com/saturdayynightlive">GitHub</a>
+          <a href="Hwan_Ji_CV.pdf">CV (PDF)</a>
+        </nav>
+      </div>
+      <img class="portrait" src="assets/profile.jpg" width="395" height="512" alt="Hwan Ji">
     </header>
 
-    <section aria-labelledby="selected-work">
-      <h2 id="selected-work">Selected work</h2>
-      <ul class="work">
-        <li>
-          <div>
-            <strong>Simply5x5</strong>
-            <span>iOS workout tracker built with SwiftUI.</span>
-          </div>
-          <div class="work-links">
-            <a href="projects/simply5x5.html">Details</a>
-            <a href="https://apps.apple.com/us/app/simply5x5/id6752772279" target="_blank" rel="noopener">App Store</a>
-          </div>
-        </li>
-        <li>
-          <div>
-            <strong>Study notes</strong>
-            <span>Course summaries and paper notes.</span>
-          </div>
-          <div class="work-links">
-            <a href="docs/">Browse</a>
-          </div>
-        </li>
-      </ul>
+    <section aria-labelledby="experience">
+      <h2 id="experience">Experience</h2>
+      <article class="entry">
+        <div class="entry-heading"><h3>AI Intern <span>· IntelliSys</span></h3><span class="date">Sep. 2026–present</span></div>
+        <p>Developing a legal-document RAG prototype with article-aware retrieval, reference expansion, and LLM reranking. Comparing retrieval strategies and reviewing the supporting evidence in generated answers.</p>
+      </article>
+      <article class="entry">
+        <div class="entry-heading"><h3>Undergraduate Course Tutor <span>· SNU</span></h3><span class="date">Sep. 2026–present</span></div>
+        <p>Basic Computing: First Adventures in Computing</p>
+      </article>
+      <article class="entry">
+        <div class="entry-heading"><h3>Undergraduate Mentor <span>· SNU</span></h3><span class="date">Mar.–Jun. 2026</span></div>
+        <p>Freshman Seminar: A Journey to Safe Research</p>
+      </article>
     </section>
+
+    <section aria-labelledby="projects">
+      <h2 id="projects">Selected Projects</h2>
+      <article class="entry">
+        <div class="entry-heading"><h3><a href="projects/simply5x5.html">Simply5x5</a></h3><span class="date">2025–present</span></div>
+        <p>An iOS strength-training app I built and released on the App Store. Includes workout tracking, automatic progression, and HealthKit integration.</p>
+        <p class="links"><a href="projects/simply5x5.html">Project</a><a href="https://apps.apple.com/us/app/simply5x5/id6752772279">App Store</a></p>
+      </article>
+      <article class="entry">
+        <div class="entry-heading"><h3>Tram Route Modeling</h3><span class="date">2022</span></div>
+        <p>High-school project using logistic regression to model proposed tram-route coverage in Daejeon. Collected and analyzed public data using R and Python.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="notes">
+      <h2 id="notes">Notes</h2>
+      <p><a href="docs/">Course summaries</a> and <a href="docs/papers/">paper reading notes</a>.</p>
+    </section>
+    <footer>Updated September 28, 2026</footer>
   </main>
 </body>
 </html>

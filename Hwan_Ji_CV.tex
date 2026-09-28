@@ -30,6 +30,7 @@
 
 % ── Section header ──────────────────────────────────────────
 \newcommand{\cvsec}[1]{%
+  \par
   \Needspace{5\baselineskip}%
   \vspace{0.55em}%
   \noindent{\small\bfseries\MakeUppercase{#1}}%
@@ -48,7 +49,7 @@
   \noindent
   \begin{tabular}{@{}p{\datecol}@{\hspace{0.3cm}}p{\maincol}@{}}
     {\footnotesize\color{muted}\raggedright #1} &
-    \begin{minipage}[t]{\maincol}#2\end{minipage}
+    \begin{minipage}[t]{\maincol}\raggedright #2\end{minipage}
   \end{tabular}\par\vspace{0.3em}%
 }
 
@@ -75,7 +76,7 @@
     \href{https://github.com/saturdayynightlive}{github.com/saturdayynightlive}
     $\;\cdot\;$
     \href{https://saturdayynightlive.github.io}{saturdayynightlive.github.io}\\[0.15em]
-    {\footnotesize\color{muted}Updated: September 4, 2026}
+    {\footnotesize\color{muted}Updated: September 28, 2026}
   }
 \end{center}
 
@@ -84,20 +85,25 @@
 
 \cvrow{Mar.~2025\,--\,Feb.~2029}{%
   \textbf{Seoul National University}, Seoul, South Korea\\[0.1em]
-  {\small B.S.\ in Computer Science \& Engineering}\\
+  {\small B.S.\ in Computer Science \& Engineering (expected Feb.~2029)}\\
   {\small College of Liberal Studies}%
 }
 
 % ── Research Interests ──────────────────────────────────────
 \cvsec{Research Interests}
 
-\noindent{\small Interested broadly in machine learning and its real-world applications, particularly empirical evaluation and iterative improvement of AI systems.}
+\noindent{\small Broadly interested in machine learning and artificial intelligence.}
 
 % ── Experience ──────────────────────────────────────────────
 \cvsec{Experience}
 
 \cvrow{Sep.~2026\,--\,present}{%
-  \textbf{Incoming AI Intern}, IntelliSys, Seoul, South Korea%
+  \textbf{AI Intern}, IntelliSys, Seoul, South Korea
+  \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=2pt]
+    \item {\small Developing a Python RAG prototype for Korean R\&D regulations, with PDF extraction, article-aware chunking, embedding-based retrieval, and source citations.}
+    \item {\small Implemented query decomposition, validated one-hop forward and reverse article references, and LLM reranking; retained effective-date metadata to distinguish current and future provisions.}
+    \item {\small Compared retrieval and reranking strategies using saved test cases and manual evidence review, tracking evidence coverage, latency, and token usage.}
+  \end{itemize}%
 }
 
 % ── Projects ────────────────────────────────────────────────
@@ -142,14 +148,12 @@
 % ── Relevant Coursework ─────────────────────────────────────
 \cvsec{Relevant Coursework}
 
-\noindent{\small
-  Statistics\;(A$^{+}$),\enspace
-  Statistics Lab.\;(A$^{+}$),\enspace
-  Discrete Mathematics,\enspace
-  Computing Core: Data-Centered AI\;(A$^{+}$),\enspace
-  Computer Programming\;(A$^{+}$),\enspace
-  Logic Design\;(A$^{+}$)%
-}
+{\small\raggedright\textbf{Completed:}
+  Statistics (A$^{+}$); Statistics Lab. (A$^{+}$); Discrete Mathematics;
+  Computing Core: Data-Centered AI (A$^{+}$); Computer Programming (A$^{+}$);
+  Logic Design (A$^{+}$).\par}
+\par\vspace{0.35em}
+\noindent{\small\textbf{In progress (Fall 2026):} Data Structures; Computer Architecture; Engineering Mathematics 2 (Probability and Computing); Deep Learning.}
 
 % ── Honors & Awards ─────────────────────────────────────────
 \cvsec{Honors \& Awards}
@@ -169,7 +173,7 @@
 \cvsec{Skills}
 
 \skillrow{Programming}{Python,\enspace C,\enspace C\texttt{++},\enspace Java,\enspace Swift,\enspace R}
-\skillrow{Tools}{Git,\enspace Linux,\enspace PyTorch}
+\skillrow{Tools}{Git,\enspace Linux,\enspace PyTorch,\enspace NumPy,\enspace OpenAI API,\enspace PyMuPDF}
 \skillrow{Languages}{Korean\,(Native),\enspace English\,(Fluent --- TEPS\;444)}
 
 \end{document}

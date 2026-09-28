@@ -27,7 +27,7 @@ from typing import Any
 
 API_BASE = "https://api.appstoreconnect.apple.com"
 DATA_FILE = Path("data/simply5x5_metrics.json")
-HTML_FILES = [Path("index.html"), Path("projects/simply5x5.html")]
+HTML_FILES = [Path("projects/simply5x5.html")]
 
 
 def env(name: str, default: str = "") -> str:
