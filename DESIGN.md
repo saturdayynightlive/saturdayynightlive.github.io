@@ -1,10 +1,10 @@
 # Design
 
-Updated: 2026-09-28
+Updated: 2026-10-03
 
 ## Scope
 The personal homepage and Simply5x5 project page use a conventional academic
-profile layout. Study notes under docs/ keep their own document layouts.
+profile layout.
 
 ## Content
 - Name, SNU affiliation, short ML/AI interests, and contact/CV links.
