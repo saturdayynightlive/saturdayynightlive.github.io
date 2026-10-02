@@ -56,8 +56,8 @@
 % ── Inline skill row ────────────────────────────────────────
 \newcommand{\skillrow}[2]{%
   \noindent
-  \begin{tabular}[t]{@{}p{\datecol}@{\hspace{0.3cm}}p{\maincol}@{}}
-    {\raisebox{1.5pt}{\footnotesize\color{muted}\strut #1}} & {\small\strut #2}
+    \begin{tabular}[t]{@{}p{\datecol}@{\hspace{0.3cm}}p{\maincol}@{}}
+    {\raisebox{1.5pt}{\footnotesize\color{muted}\strut #1}} & {\small\raggedright\strut #2}
   \end{tabular}\par\vspace{0.2em}%
 }
 
@@ -88,11 +88,6 @@
   {\small B.S.\ in Computer Science \& Engineering (expected Feb.~2029)}\\
   {\small College of Liberal Studies}%
 }
-
-% ── Research Interests ──────────────────────────────────────
-\cvsec{Research Interests}
-
-\noindent{\small Broadly interested in machine learning and artificial intelligence.}
 
 % ── Experience ──────────────────────────────────────────────
 \cvsec{Experience}
@@ -159,7 +154,7 @@
 \cvsec{Honors \& Awards}
 
 \noindent{\small
-  \textbf{Shilla Cultural Scholarship Foundation} --- KRW 17,988,000 over 3 years (Mar.~2026).\\
+  \textbf{Shilla Cultural Scholarship Foundation} --- KRW 1,798,800 (Mar.~2026); three-year award.\\
   \textbf{SNU Tuition Scholarship} --- KRW 1,199,200 (Feb.~2026).\\
   \textbf{Donggok Lee Yong-hee Scholarship} --- KRW 2,442,000 (Aug.~2025).\\
   \textbf{Gwanak-gu Mayor's Commendation} --- Awarded for service as an outstanding mentor in
@@ -170,7 +165,8 @@
 \cvsec{Skills}
 
 \skillrow{Programming}{Python,\enspace C,\enspace C\texttt{++},\enspace Java,\enspace Swift,\enspace R}
-\skillrow{Tools}{Git,\enspace Linux,\enspace PyTorch,\enspace NumPy,\enspace OpenAI API,\enspace PyMuPDF}
+\skillrow{Tools}{Git, Linux, NumPy, OpenAI API, PyMuPDF}
+\skillrow{ML}{PyTorch (learning)}
 \skillrow{Languages}{Korean\,(Native),\enspace English\,(Fluent --- TEPS\;444)}
 
 \end{document}
