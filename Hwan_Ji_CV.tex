@@ -1,172 +1,75 @@
-% ============================================================
-%  Hwan Ji — Academic CV
-%  Compile: pdflatex Hwan_Ji_CV.tex   (or upload to Overleaf)
-% ============================================================
-\documentclass[10pt, a4paper]{article}
-
+\documentclass[10pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[top=1.35cm, bottom=1.35cm, left=2.2cm, right=2.2cm]{geometry}
-\usepackage{microtype}
-\usepackage{enumitem}
+\usepackage[margin=1.55cm]{geometry}
+\usepackage{lmodern,microtype,enumitem,xcolor,needspace}
 \usepackage[hidelinks]{hyperref}
-\usepackage{xcolor}
-\usepackage{lmodern}
-\usepackage{needspace}
-\usepackage{fancyhdr}
-
+\hypersetup{pdftitle={Hwan Ji - Curriculum Vitae},pdfauthor={Hwan Ji}}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-
-\definecolor{muted}{RGB}{100,100,100}
-\setlength{\headheight}{13pt}
-
-\fancypagestyle{continuation}{%
-  \fancyhf{}%
-  \fancyhead[R]{\footnotesize\color{muted}Hwan Ji \quad CV \quad \thepage}%
-  \renewcommand{\headrulewidth}{0pt}%
-}
-
-% ── Section header ──────────────────────────────────────────
-\newcommand{\cvsec}[1]{%
-  \par
-  \Needspace{5\baselineskip}%
-  \vspace{0.55em}%
-  \noindent{\small\bfseries\MakeUppercase{#1}}%
-  \vspace{0.15em}\newline%
-  \noindent\rule{\linewidth}{0.4pt}%
-  \vspace{0.25em}%
-}
-
-% ── Column widths ───────────────────────────────────────────
-\newlength{\datecol}  \setlength{\datecol}{2.9cm}
-\newlength{\maincol}  \setlength{\maincol}{\dimexpr\linewidth-\datecol-0.3cm}
-
-% ── Two-column entry (minipage prevents column bleed) ───────
-%    #1 date  #2 content (use \\ freely inside)
-\newcommand{\cvrow}[2]{%
-  \noindent
-  \begin{tabular}{@{}p{\datecol}@{\hspace{0.3cm}}p{\maincol}@{}}
-    {\footnotesize\color{muted}\raggedright #1} &
-    \begin{minipage}[t]{\maincol}\raggedright #2\end{minipage}
-  \end{tabular}\par\vspace{0.3em}%
-}
-
-% ── Inline skill row ────────────────────────────────────────
-\newcommand{\skillrow}[2]{%
-  \noindent
-    \begin{tabular}[t]{@{}p{\datecol}@{\hspace{0.3cm}}p{\maincol}@{}}
-    {\raisebox{1.5pt}{\footnotesize\color{muted}\strut #1}} & {\small\raggedright\strut #2}
-  \end{tabular}\par\vspace{0.2em}%
-}
-
-% ============================================================
+\setlist[itemize]{leftmargin=1.2em,nosep,topsep=3pt,itemsep=2pt}
+\definecolor{muted}{gray}{0.35}
+\newcommand{\cvsection}[1]{\par\addvspace{9pt}\Needspace{5\baselineskip}
+  {\large\bfseries #1}\par\vspace{2pt}\hrule\vspace{5pt}}
+\newcommand{\entry}[2]{\par\noindent\textbf{#1}\hfill{\small\color{muted}#2}\par}
 \begin{document}
-\thispagestyle{empty}
-\pagestyle{continuation}
-
-% ── Header ──────────────────────────────────────────────────
 \begin{center}
-  {\Large\textbf{Hwan Ji}}\\[0.35em]
-  {\small
-    Seoul National University $\cdot$ Seoul, Republic of Korea\\[0.15em]
-    \href{mailto:saturdayynightlive@snu.ac.kr}{saturdayynightlive@snu.ac.kr}
-    $\;\cdot\;$
-    \href{https://github.com/saturdayynightlive}{github.com/saturdayynightlive}
-    $\;\cdot\;$
-    \href{https://saturdayynightlive.github.io}{saturdayynightlive.github.io}\\[0.15em]
-    {\footnotesize\color{muted}Updated: October 3, 2026}
-  }
+{\LARGE\bfseries Hwan Ji}\\[5pt]
+\href{mailto:saturdayynightlive@snu.ac.kr}{saturdayynightlive@snu.ac.kr}
+\enspace$\cdot$\enspace
+\href{https://github.com/saturdayynightlive}{github.com/saturdayynightlive}
+\enspace$\cdot$\enspace
+\href{https://saturdayynightlive.github.io}{saturdayynightlive.github.io}
 \end{center}
+\vspace{-5pt}
 
-% ── Education ───────────────────────────────────────────────
-\cvsec{Education}
+\cvsection{Education}
+\entry{Seoul National University}{Mar. 2025 -- Expected Feb. 2029}
+B.S. in Computer Science \& Engineering; College of Liberal Studies \hfill Seoul, South Korea
 
-\cvrow{Mar.~2025\,--\,Feb.~2029}{%
-  \textbf{Seoul National University}, Seoul, South Korea\\[0.1em]
-  {\small B.S.\ in Computer Science \& Engineering (expected Feb.~2029)}\\
-  {\small College of Liberal Studies}%
-}
+\cvsection{Experience}
+\entry{AI Intern \textnormal{--- IntelliSys, Seoul}}{Sep. 2026 -- Present}
+\begin{itemize}
+\item Developing \textbf{SR\&D Chat}, a retrieval-augmented generation (RAG) assistant to help SNU researchers and staff find and verify guidance in Korean R\&D regulations.
+\item Built document-processing and retrieval workflows for HWP, HWPX, and PDF sources, covering \textbf{90} main documents and \textbf{664} attachments in a local corpus.
+\item Linked related articles and appendices for retrieval, accounting for regulation versions and effective dates; connected answers to supporting source documents.
+\item Designed evaluation sets across development stages from source regulations and functional requirements, with reference answers and rubrics for retrieval relevance, answer completeness, citations, and multi-turn behavior.
+\end{itemize}
 
-% ── Experience ──────────────────────────────────────────────
-\cvsec{Experience}
+\cvsection{Projects}
+\entry{\href{https://apps.apple.com/us/app/simply5x5/id6752772279}{Simply5x5} \textnormal{--- iOS Workout Tracker}}{Sep. 2025 -- Present}
+{\small\color{muted}SwiftUI, Firebase AI Logic (Gemini), HealthKit}
+\begin{itemize}
+\item Built and released an iOS strength-training app on the App Store, implementing automatic progression, deloads, Gemini feedback, and HealthKit workout logging.
+\item Recorded \textbf{1.42K downloads} as of Aug. 2026 and an average of \textbf{67 daily active users} over the preceding 30 days.
+\item Selected for SNU's Spring 2026 Computer Programming Extra Project showcase.
+\end{itemize}
+\vspace{5pt}
+\entry{Tram Route Modeling \textnormal{--- High-School Project}}{2022}
+Modeled proposed tram-route coverage in Daejeon using logistic regression in R; collected and cleaned demographic and transit data and visualized relationships in Python.
 
-\cvrow{Sep.~2026\,--\,present}{%
-  \textbf{AI Intern}, IntelliSys, Seoul, South Korea
-  \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=2pt]
-    \item {\small Developing SR\&D Chat (working title), a retrieval-augmented generation (RAG) assistant to help SNU staff, faculty, and researchers find and verify guidance in Korean R\&D regulations.}
-    \item {\small Built document-processing and search workflows to retrieve cross-referenced articles and appendices, account for regulation versions, and link answers to source documents.}
-    \item {\small Created an evaluation set and review process to measure search relevance and verify answers against source documents.}
-  \end{itemize}%
-}
+\cvsection{Technical Skills}
+\textbf{Languages:} Python, Swift, C, C++, Java, R\\
+\textbf{Tools \& libraries:} Git, Linux, NumPy, OpenAI API, PyMuPDF\\
+\textbf{Languages spoken:} Korean (native); English (TEPS 444)
 
-% ── Projects ────────────────────────────────────────────────
-\cvsec{Projects}
+\cvsection{Teaching}
+\entry{Teaching Assistant \textnormal{--- Basic Computing: First Adventures in Computing, SNU}}{Sep. 2026 -- Present}
+Tutor students one-on-one in programming and debugging; give feedback on project proposals and presentations.
+\vspace{5pt}
+\entry{Teaching Assistant \textnormal{--- Freshman Seminar, SNU}}{Mar. -- Jun. 2026}
+Guided first-year students through discussions and collaborative assignments on research safety.
 
-\cvrow{Sep.~2025\,--\,present}{%
-  \textbf{\href{https://apps.apple.com/us/app/simply5x5/id6752772279}{Simply5x5}} --- iOS Workout Tracker\\[0.1em]
-  {\small SwiftUI $\cdot$ Firebase AI Logic (Gemini) $\cdot$ HealthKit $\cdot$ Swift Charts}\\[0.2em]
-  \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
-    \item[\small$\bullet$] {\small Released an ad-free 5x5 workout tracker on the App Store with automatic progression and deloads, AI feedback, e1RM strength ranking, and a plate calculator.}
-    \item[\small$\bullet$] {\small Recorded 1.42K downloads and 11.9K app sessions, averaging 67 daily active users over the 30 days ending Aug.~2026; selected for the 2026-1 Computer Programming Extra Project showcase.}
-  \end{itemize}%
-}
+\cvsection{Selected Coursework}
+\textbf{Completed:} Computer Programming (A+), Computing Core: Data-Centered AI (A+), Statistics (A+), Logic Design (A+), Discrete Mathematics.\\
+\textbf{In progress, Fall 2026:} Data Structures, Computer Architecture, Deep Learning, Engineering Mathematics 2 (Probability and Computing).
 
-\cvrow{2022}{%
-  \textbf{Predicting Tram Route Placement with Logistic Regression}\\[0.1em]
-  {\small R $\cdot$ Python (matplotlib) $\cdot$ Logistic Regression}\\[0.2em]
-  \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
-    \item[\small$\bullet$] {\small Modeled whether a proposed tram route would pass through each administrative district in Daejeon using population, income, bus-stop count, and existing subway coverage.}
-    \item[\small$\bullet$] {\small Led all technical work: collected and cleaned public CSV data, fit logistic regression models in R, examined in-sample predictions using confusion matrices, and used Python with matplotlib on Google Colab for correlation analysis and 3D visualization.}
-  \end{itemize}%
-}
+\cvsection{Honors \& Awards}
+\textbf{Shilla Cultural Scholarship Foundation} --- Three-year scholarship, 2026.\\
+\textbf{SNU Tuition Scholarship} (2026); \textbf{Donggok Lee Yong-hee Scholarship} (2025).\\
+\textbf{Gwanak-gu Mayor's Commendation} --- Outstanding SAM (SNU Active Mentoring) mentor, 2025.
 
-% ── Teaching Experience ─────────────────────────────────────
-\cvsec{Teaching Experience}
-
-\cvrow{Sep.~2026\,--\,present}{%
-  \textbf{Teaching Assistant}\\
-  {\small Basic Computing: First Adventures in Computing, Seoul National University}
-  \begin{itemize}[nosep, leftmargin=1em, topsep=3pt, itemsep=1pt]
-    \item[\small$\bullet$] {\small Selected to provide one-on-one support during lectures and programming labs, helping students diagnose errors, debug code, and complete exercises on the Elice coding platform.}
-    \item[\small$\bullet$] {\small Responsibilities include answering questions through the course chat, providing feedback on final-project proposals and presentations, and proctoring coding assessments.}
-  \end{itemize}%
-}
-
-\cvrow{Mar.\,--\,Jun.~2026}{%
-  \textbf{Teaching Assistant}\\
-  {\small Freshman Seminar: ``A Journey to Safe Research'', Seoul National University}\\
-  {\small Supported seminar activities and guided first-year students through discussions and collaborative assignments on safe research practices.}%
-}
-
-% ── Relevant Coursework ─────────────────────────────────────
-\cvsec{Relevant Coursework}
-
-{\small\raggedright\textbf{Completed:}
-  Statistics (A$^{+}$); Statistics Lab. (A$^{+}$); Discrete Mathematics;
-  Computing Core: Data-Centered AI (A$^{+}$); Computer Programming (A$^{+}$);
-  Logic Design (A$^{+}$).\par}
-\par\vspace{0.35em}
-\noindent{\small\textbf{In progress (Fall 2026):} Data Structures; Computer Architecture; Engineering Mathematics 2 (Probability and Computing); Deep Learning.}
-
-% ── Honors & Awards ─────────────────────────────────────────
-\cvsec{Honors \& Awards}
-
-\noindent{\small
-  \textbf{Shilla Cultural Scholarship Foundation} --- KRW 1,798,800 (Mar.~2026); three-year award.\\
-  \textbf{SNU Tuition Scholarship} --- KRW 1,199,200 (Feb.~2026).\\
-  \textbf{Donggok Lee Yong-hee Scholarship} --- KRW 2,442,000 (Aug.~2025).\\
-  \textbf{Gwanak-gu Mayor's Commendation} --- Awarded for service as an outstanding mentor in
-  SAM (SNU Active Mentoring) (Aug.~2025).%
-}
-
-% ── Skills ──────────────────────────────────────────────────
-\cvsec{Skills}
-
-\skillrow{Programming}{Python,\enspace C,\enspace C\texttt{++},\enspace Java,\enspace Swift,\enspace R}
-\skillrow{Tools}{Git, Linux, NumPy, OpenAI API, PyMuPDF}
-\skillrow{ML}{PyTorch (learning)}
-\skillrow{Languages}{Korean\,(Native),\enspace English\,(Fluent --- TEPS\;444)}
-
+\vfill
+{\scriptsize\color{muted}Updated October 19, 2026}
 \end{document}
