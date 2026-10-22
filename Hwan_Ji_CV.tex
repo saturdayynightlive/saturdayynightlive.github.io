@@ -32,8 +32,9 @@ B.S. in Computer Science \& Engineering; College of Liberal Studies \hfill Seoul
 \entry{AI Intern \textnormal{--- IntelliSys, Seoul}}{Sep. 2026 -- Present}
 Developing \textbf{SR\&D Chat}, a RAG assistant for SNU researchers and staff working with Korean R\&D regulations.
 \begin{itemize}
-\item \textbf{Document processing:} Built Python pipelines to extract and structure HWP, HWPX, and PDF regulations, using PyMuPDF for PDFs and format-specific tools for HWP/HWPX; preserved tables and source references.
-\item \textbf{Retrieval:} Implemented retrieval accounting for regulation versions, effective dates, and conversation context; integrated the OpenAI API for query resolution and answer generation with source citations.
+\item \textbf{Document processing:} Extracted and structured regulations and attachments, preserving tables and source references for retrieval and answer verification.
+\item \textbf{Retrieval:} Built retrieval and cited-answer workflows accounting for regulation versions, effective dates, and references between articles and appendices.
+\item \textbf{Query routing:} Routed regulatory questions, service inquiries, and out-of-scope requests to separate processing paths, bypassing unnecessary retrieval; resolved follow-up questions while preserving user corrections and separating new topics from prior context.
 \item \textbf{Evaluation:} Created evaluation sets with reference answers and rubrics for retrieval relevance, answer completeness, citation correctness, and multi-turn behavior.
 \end{itemize}
 
