@@ -33,8 +33,8 @@ B.S. in Computer Science \& Engineering; College of Liberal Studies \hfill Seoul
 Developing \textbf{SR\&D Chat}, a RAG assistant for SNU researchers and staff working with Korean R\&D regulations.
 \begin{itemize}
 \item \textbf{Document processing:} Extracted and structured regulations and attachments, preserving tables and source references for retrieval and answer verification.
-\item \textbf{Retrieval:} Built retrieval and cited-answer workflows accounting for regulation versions, effective dates, and references between articles and appendices.
-\item \textbf{Query routing:} Routed regulatory questions, service inquiries, and out-of-scope requests to separate processing paths, bypassing unnecessary retrieval; resolved follow-up questions while preserving user corrections and separating new topics from prior context.
+\item \textbf{Retrieval:} Combined query decomposition, vector search, cross-reference expansion, and LLM reranking to select evidence for cited answers, accounting for regulation versions, effective dates, and exceptions.
+\item \textbf{Query routing:} Bypassed retrieval for service inquiries and stopped out-of-scope requests before search and answer generation; reconstructed follow-up questions while preserving user corrections and isolating new topics from prior context.
 \item \textbf{Evaluation:} Created evaluation sets with reference answers and rubrics for retrieval relevance, answer completeness, citation correctness, and multi-turn behavior.
 \end{itemize}
 
