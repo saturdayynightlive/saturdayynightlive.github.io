@@ -13,8 +13,9 @@ profile layout.
 - Coursework belongs in the CV, separated into completed and in progress.
 - Do not publish course assignment solutions, internal internship documents,
   private archives, personal identifiers, or unsupported performance claims.
-- SR&D Chat is under development and is not yet in institutional use. Do not
-  equate retrieval evidence coverage with answer accuracy.
+- Describe internship work only in general terms. Do not publish internal
+  product names, customer identities, implementation details, metrics, or
+  artifacts without company approval.
 
 ## Layout
 White background, restrained blue links, system sans-serif typography.
