@@ -40,11 +40,6 @@ section { margin-top: 44px; }
 .entry-mark { display: flex; align-items: center; justify-content: flex-start; min-height: 36px; padding-top: 5px; }
 .entry-mark img { display: block; width: 100%; max-width: 104px; height: auto; }
 .entry-mark .project-icon { width: 60px; height: 60px; border-radius: 13px; }
-.university-logo { display: block; width: 144px; height: auto; margin: 14px 0 18px; }
-.education-line { display: flex; gap: 24px; align-items: center; margin-top: 12px; }
-.education-line img { width: 104px; height: auto; flex-shrink: 0; }
-.education-line p { margin: 0; }
-
 .intellisys-logo { filter: brightness(0); }
 footer { margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted); }
 .detail-header { margin-top: 35px; }
@@ -68,8 +63,6 @@ li + li { margin-top: 8px; }
   .teaching-group { display: block; }
   .teaching-group > .entry-mark { width: 90px; margin-bottom: 16px; }
   .teaching-group > .entry-mark img { max-width: 90px; }
-  .education-line { gap: 18px; align-items: flex-start; }
-  .education-line img { width: 70px; margin-top: 4px; }
   section { margin-top: 36px; }
   .entry + .entry { margin-top: 27px; }
 }
