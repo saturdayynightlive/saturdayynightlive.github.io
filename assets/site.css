@@ -50,3 +50,16 @@ li + li { margin-top: 8px; }
   a { color: inherit; }
   .entry { break-inside: avoid; }
 }
+
+.name-ko { color: #777; font-size: 20px; font-weight: 400; margin-left: 8px; }
+.affiliation-entry { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 22px; align-items: start; }
+.entry-mark { display: flex; align-items: center; justify-content: center; min-height: 40px; padding-top: 4px; }
+.entry-mark img { display: block; width: 100%; max-width: 112px; height: auto; }
+.entry-mark .project-icon { width: 64px; height: 64px; border-radius: 14px; }
+.education-mark { flex-direction: column; gap: 10px; }
+.entry .entry-role { color: #666; margin-top: 3px; }
+@media (max-width: 600px) {
+  .affiliation-entry { grid-template-columns: 76px minmax(0, 1fr); gap: 16px; }
+  .entry-mark img { max-width: 76px; }
+  .entry-heading { gap: 5px; }
+}
