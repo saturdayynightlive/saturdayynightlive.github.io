@@ -1,35 +1,72 @@
 # Design
 
-Updated: 2026-10-03
+## Source of truth
+Active · 2026-11-09. Surfaces: `index.html`, `projects/simply5x5.html`, shared
+`assets/site.css`. Reviewed both pages, existing assets, desktop/mobile renders,
+and the Jon Barron and Kai Tzu-iunn Ong academic profiles. This file governs
+refinements to the existing static academic layout.
 
-## Scope
-The personal homepage and Simply5x5 project page use a conventional academic
-profile layout.
+## Brand
+Direct, personal, technically grounded. Trust comes from linked affiliations,
+released work, and precise dates. Avoid cards, slogans, gradients, decorative
+badges, animations, and inflated claims.
 
-## Content
-- Name, SNU affiliation, short ML/AI interests, and contact/CV links.
-- Current research project, teaching roles, and selected projects.
-- Selected projects with concise, factual descriptions.
-- Coursework belongs in the CV, separated into completed and in progress.
-- Do not publish course assignment solutions, internal internship documents,
-  private archives, personal identifiers, or unsupported performance claims.
-- Describe internship work only in general terms. Do not publish internal
-  product names, customer identities, implementation details, metrics, or
-  artifacts without company approval.
+## Product goals
+Help prospective mentors and collaborators understand the student's interests,
+experience, and projects and reach the CV or email quickly. Success means readable
+mobile content, clear chronology, working links, and restrained branding.
 
-## Layout
-White background, restrained blue links, system sans-serif typography.
-A narrow centered column with a small existing portrait in the introduction.
-Research, teaching, and project entries use headings, dates, and plain paragraphs.
-No cards, hero slogans, gradients, animation, or lengthy personal manifesto.
-On phones dates stack below titles; links wrap naturally.
+## Personas and jobs
+Research mentors and recruiters scan experience and technical interests.
+Collaborators inspect released projects and find contact information.
 
-## Implementation
-index.html and projects/simply5x5.html share assets/site.css.
-Static HTML/CSS, no build or JavaScript dependency. Preserve existing URLs.
-CV source is Hwan_Ji_CV.tex; rebuild Hwan_Ji_CV.pdf after content changes.
-Do not compress the CV just to hit a page count.
+## Information architecture
+`/`: introduction/contact, experience, projects, education, teaching.
+`/projects/simply5x5.html`: project description, implementation, release.
+`/Hwan_Ji_CV.pdf`: text-only CV. Preserve these routes.
 
-## Verification
-Check desktop and mobile layouts, keyboard focus, local link targets, image
-loading, and PDF page breaks. Commit only public deliverables.
+## Design principles
+Prioritize prose readability over prominent affiliation logos. Portrait and logos
+support identification. Keep role, organization, and dates visually distinct.
+Allow body copy to occupy the full mobile width, including below the portrait.
+
+## Visual language
+White background, near-black text, muted gray metadata, restrained blue links.
+Use the existing system sans-serif stack. Body 16px, line height 1.65; section
+headings 20px; dates 13px. Content width about 800px. Section spacing 44px,
+entry spacing 26px. Thin rules, no shadows. Use original logos and app icon.
+
+## Components
+Shared tokens and typography live in `assets/site.css`. Profile uses a floated
+portrait so prose flows beneath it. Affiliation rows use a restrained logo column
+on desktop. Mobile places logo and heading together, with prose beneath.
+Project detail shares type, spacing, links, and focus treatment.
+
+## Accessibility
+Target WCAG AA text contrast and keyboard operation. Semantic headings and named
+navigation. Visible focus outlines and descriptive image alt text. No motion.
+Local image dimensions prevent portrait layout shifts.
+
+## Responsive behavior
+Above 600px, use side-by-side headings and dates. At 600px and below, stack dates,
+reduce page padding and portrait size, and let entry prose span the content width.
+Validate at 360px, 390px, 768px, and 1100px without horizontal scrolling.
+
+## Interaction states
+Static pages have no app loading or empty states. Links show hover/focus states.
+Core profile and content must remain usable without JavaScript or remote fonts.
+
+## Content voice
+First-person, concise, factual. Incoming internship must remain clearly future.
+Do not publish internal product names, customer identities, implementation
+artifacts, or unsupported metrics. Coursework belongs in the CV. Preserve facts
+when editing layout.
+
+## Implementation constraints
+Static HTML/CSS, no new dependency or build requirement. Shared CSS changes must
+be checked on both routes. Inspect browser screenshots and local links/assets.
+PDF layout changes require rendering. Commit only public deliverables.
+
+## Open questions
+No blocking questions. Safari and Firefox remain outside this refinement's
+browser verification scope.
