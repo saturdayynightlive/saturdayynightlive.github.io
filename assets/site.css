@@ -63,3 +63,5 @@ li + li { margin-top: 8px; }
   .entry-mark img { max-width: 76px; }
   .entry-heading { gap: 5px; }
 }
+
+.intellisys-logo { filter: brightness(0); }
