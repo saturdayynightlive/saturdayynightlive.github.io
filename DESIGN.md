@@ -23,6 +23,7 @@ Collaborators inspect released projects and find contact information.
 ## Information architecture
 `/`: introduction/contact, experience, projects, education, teaching.
 `/projects/simply5x5.html`: project description, implementation, release.
+Tram project thumbnail links to a figure extracted from the original report.
 `/Hwan_Ji_CV.pdf`: text-only CV. Preserve these routes.
 
 ## Design principles
