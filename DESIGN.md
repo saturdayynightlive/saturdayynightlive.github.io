@@ -41,6 +41,8 @@ natural aspect ratio.
 Shared tokens and typography live in `assets/site.css`. Profile uses a floated
 portrait so prose flows beneath it. Affiliation rows use a restrained logo column
 on desktop. Mobile places logo and heading together, with prose beneath.
+University education shows the SNU logo below its heading, followed by separate
+College of Liberal Studies and Computer Science rows with their respective logos.
 Project detail shares type, spacing, links, and focus treatment.
 
 ## Accessibility
