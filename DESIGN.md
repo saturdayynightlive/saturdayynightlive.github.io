@@ -34,10 +34,8 @@ Allow body copy to occupy the full mobile width, including below the portrait.
 White background, near-black text, muted gray metadata, restrained blue links.
 Use the existing system sans-serif stack. Body 16px, line height 1.65; section
 headings 20px; dates 13px. Content width about 800px. Section spacing 44px,
-entry spacing 26px. Thin rules, no shadows. Use original logos and app icon. Profile uses the user-supplied outdoor photo,
-cropped around face and shoulders, with a 10px corner radius and a 0.9 brightness
-filter to temper the bright outdoor exposure against the white page. Strip photo metadata
-from the public derivative and retain the source photo.
+entry spacing 26px. Thin rules, no shadows. Use original logos and app icon. Profile uses the original studio portrait, with a 10px corner radius and its
+natural aspect ratio.
 
 ## Components
 Shared tokens and typography live in `assets/site.css`. Profile uses a floated
